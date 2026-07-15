@@ -45,7 +45,6 @@
 
   .wrap{ max-width:1080px; margin:0 auto; padding:0 28px; }
 
-  /* ---------- Starfield ---------- */
   .starfield{
     position:fixed; inset:0; z-index:-1; pointer-events:none;
     background:
@@ -62,7 +61,6 @@
     50%{ opacity:0.85; }
   }
 
-  /* ---------- Nav ---------- */
   header.nav{
     position:sticky; top:0; z-index:20;
     backdrop-filter: blur(10px);
@@ -84,7 +82,6 @@
   nav.links a{ text-decoration:none; transition:color 0.2s; }
   nav.links a:hover{ color:var(--gold); }
 
-  /* ---------- Hero ---------- */
   .hero{
     position:relative;
     padding:130px 0 110px;
@@ -120,7 +117,6 @@
   .btn-ghost{ border:1px solid var(--line); color:var(--text); }
   .btn-ghost:hover{ border-color:var(--gold); color:var(--gold); }
 
-  /* constellation svg under hero */
   .constellation{ margin:70px auto 0; max-width:640px; }
   .constellation svg{ width:100%; height:auto; display:block; }
   .const-line{
@@ -130,7 +126,6 @@
   .const-dot{ fill:var(--gold); }
   .const-label{ font-family:var(--mono); font-size:11px; fill:var(--text-dimmer); }
 
-  /* ---------- Section shell ---------- */
   section{ padding:100px 0; border-top:1px solid var(--line); }
   .section-head{ margin-bottom:56px; }
   .section-eyebrow{
@@ -141,7 +136,6 @@
     font-family:var(--serif); font-weight:500; font-size:clamp(28px,4vw,38px);
   }
 
-  /* ---------- About ---------- */
   .about-grid{
     display:grid; grid-template-columns:1.1fr 0.9fr; gap:64px; align-items:start;
   }
@@ -155,7 +149,6 @@
   .principle-name{ font-family:var(--mono); font-size:13px; color:var(--gold); margin-bottom:6px; }
   .principle-desc{ color:var(--text-dim); font-size:15px; }
 
-  /* ---------- Apps ---------- */
   .apps-grid{ display:grid; grid-template-columns:repeat(3,1fr); gap:22px; }
   .app-card{
     background:var(--bg-panel);
@@ -183,7 +176,6 @@
   .app-link{ font-family:var(--mono); font-size:13px; color:var(--card-accent); text-decoration:none; }
   .app-link:hover{ text-decoration:underline; }
 
-  /* ---------- Footer ---------- */
   footer{ padding:60px 0 44px; border-top:1px solid var(--line); }
   .footer-inner{ display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:20px; }
   .footer-brand{ font-family:var(--serif); font-size:16px; color:var(--text-dim); }
@@ -191,6 +183,13 @@
   .footer-links a{ text-decoration:none; transition:color 0.2s; }
   .footer-links a:hover{ color:var(--gold); }
   .footer-copy{ margin-top:26px; font-family:var(--mono); font-size:12px; color:var(--text-dimmer); }
+  .biz-info{
+    margin-top:34px; padding-top:24px; border-top:1px solid var(--line);
+    display:flex; flex-wrap:wrap; gap:8px 18px;
+    font-family:var(--sans); font-size:12.5px; color:var(--text-dimmer); line-height:1.7;
+  }
+  .biz-info a{ color:var(--text-dimmer); text-decoration:underline; text-underline-offset:2px; }
+  .biz-info a:hover{ color:var(--gold); }
 
   @media (max-width: 780px){
     .about-grid{ grid-template-columns:1fr; gap:44px; }
@@ -325,16 +324,24 @@
     <div class="footer-inner">
       <div class="footer-brand">October Sky · 옥토버 스카이</div>
       <div class="footer-links">
-        <a href="mailto:hello@octobersky.com">octoberskydemo@naver.com</a>
+        <a href="mailto:octoberskydemo@naver.com">octoberskydemo@naver.com</a>
         <a href="https://github.com/" target="_blank" rel="noopener">GitHub</a>
       </div>
+    </div>
+    <div class="biz-info">
+      <span>상호: October Sky(옥토버 스카이)</span>
+      <span>대표: 윤영민</span>
+      <span>사업자등록번호: 000-00-00000</span>
+      <span>통신판매업신고번호: 제0000-경기00-00000호</span>
+      <span>사업장 주소: 00시 00구 00로 00</span>
+      <span>전화: 000-0000-0000</span>
+      <a href="https://www.ftc.go.kr/bizCommPop.do?wrkr_no=0000000000" target="_blank" rel="noopener">사업자정보 확인</a>
     </div>
     <div class="footer-copy">© 2026 October Sky. All rights reserved.</div>
   </div>
 </footer>
 
 <script>
-  // subtle starfield
   const field = document.getElementById('starfield');
   const count = window.innerWidth < 780 ? 40 : 80;
   const frag = document.createDocumentFragment();
