@@ -12,7 +12,6 @@
   :root{
     --bg: #0E1424;
     --bg-panel: #151C34;
-    --bg-panel-2: #1B2440;
     --line: rgba(237,239,246,0.09);
     --text: #EDEFF6;
     --text-dim: #9AA3C0;
@@ -20,7 +19,6 @@
     --gold: #DCA75A;
     --gold-soft: rgba(220,167,90,0.14);
     --wolf: #C15B3E;
-    --wolf-soft: rgba(193,91,62,0.14);
     --serif: 'Fraunces', 'Noto Serif KR', serif;
     --sans: 'Inter', 'Noto Sans KR', sans-serif;
     --mono: 'IBM Plex Mono', monospace;
@@ -68,20 +66,32 @@
   .nav-inner{
     max-width:760px; margin:0 auto;
     display:flex; align-items:center; justify-content:space-between;
-    padding:16px 28px;
+    padding:16px 28px; gap:16px;
   }
-  .brand{ display:flex; align-items:center; gap:10px; font-family:var(--serif); font-size:17px; letter-spacing:0.02em; text-decoration:none; }
+  .brand{ display:flex; align-items:center; gap:10px; font-family:var(--serif); font-size:17px; letter-spacing:0.02em; text-decoration:none; flex-shrink:0; }
   .brand-mark{
     width:26px; height:26px; border-radius:50%;
     border:1px solid var(--gold);
     display:flex; align-items:center; justify-content:center;
     font-family:var(--mono); font-size:10px; color:var(--gold);
   }
+  .nav-right{ display:flex; align-items:center; gap:16px; }
   .back-link{
     font-family:var(--mono); font-size:13px; color:var(--text-dim);
-    text-decoration:none; transition:color 0.2s;
+    text-decoration:none; transition:color 0.2s; white-space:nowrap;
   }
   .back-link:hover{ color:var(--wolf); }
+
+  .lang-toggle{
+    display:flex; gap:3px; background:var(--bg-panel); border:1px solid var(--line);
+    border-radius:999px; padding:3px; flex-shrink:0;
+  }
+  .lang-toggle button{
+    font-family:var(--mono); font-size:11.5px; padding:6px 12px; border-radius:999px;
+    border:none; background:transparent; color:var(--text-dimmer); cursor:pointer;
+    transition:background 0.2s, color 0.2s;
+  }
+  .lang-toggle button.active{ background:var(--wolf); color:#fff; }
 
   .hero{ padding:76px 0 48px; }
   .eyebrow{
@@ -97,6 +107,11 @@
   .tagline{
     max-width:520px; margin-top:18px;
     font-size:16.5px; color:var(--text-dim);
+  }
+  .privacy-inline-link{
+    display:inline-block; margin-top:18px;
+    font-family:var(--mono); font-size:13.5px; color:var(--wolf);
+    text-decoration:underline; text-underline-offset:2px;
   }
 
   section{ padding:44px 0; border-top:1px solid var(--line); }
@@ -174,6 +189,7 @@
   @media (max-width: 600px){
     .hero{ padding:56px 0 36px; }
     .contact-card{ flex-direction:column; align-items:flex-start; }
+    .nav-inner{ flex-wrap:wrap; }
   }
 
   @media (prefers-reduced-motion: reduce){
@@ -191,7 +207,15 @@
       <span class="brand-mark">OS</span>
       October Sky
     </a>
-    <a class="back-link" href="/#apps">← 홈으로</a>
+    <div class="nav-right">
+      <a class="back-link" href="/#apps">
+        <span class="lang-ko">← 홈으로</span><span class="lang-en" hidden>← Home</span>
+      </a>
+      <div class="lang-toggle">
+        <button type="button" data-lang-btn="ko">한국어</button>
+        <button type="button" data-lang-btn="en">EN</button>
+      </div>
+    </div>
   </div>
 </header>
 
@@ -199,48 +223,82 @@
   <section class="hero" style="border-top:none;">
     <div class="wrap">
       <div class="eyebrow">WOLF · Support</div>
-      <h1 class="title">무엇을 도와드릴까요?</h1>
-      <p class="tagline">Strava·Apple Health·Health Connect와 연동되는 러닝·사이클링·수영 트래커, WOLF의 지원 페이지입니다. 아래에서 답을 찾지 못하셨다면 이메일로 편하게 문의해 주세요.</p>
+      <h1 class="title">
+        <span class="lang-ko">무엇을 도와드릴까요?</span>
+        <span class="lang-en" hidden>How can we help?</span>
+      </h1>
+      <p class="tagline">
+        <span class="lang-ko">Strava·Apple Health·Health Connect와 연동되는 러닝·사이클링·수영 트래커, WOLF의 지원 페이지입니다. 아래에서 답을 찾지 못하셨다면 이메일로 편하게 문의해 주세요.</span>
+        <span class="lang-en" hidden>Support page for WOLF, a running, cycling, and swimming tracker that connects with Strava, Apple Health, and Health Connect. If you can't find your answer below, feel free to reach out by email.</span>
+      </p>
+      <a class="privacy-inline-link" href="/wolf/privacy/">
+        <span class="lang-ko">개인정보처리방침도 확인해보세요 →</span>
+        <span class="lang-en" hidden>You can also check our Privacy Policy →</span>
+      </a>
     </div>
   </section>
 
   <section>
     <div class="wrap">
-      <h2 class="section-title">자주 묻는 질문</h2>
+      <h2 class="section-title">
+        <span class="lang-ko">자주 묻는 질문</span>
+        <span class="lang-en" hidden>Frequently Asked Questions</span>
+      </h2>
 
       <details class="faq-item" open>
-        <summary>Strava 연결이 안 돼요</summary>
+        <summary>
+          <span class="lang-ko">Strava 연결이 안 돼요</span>
+          <span class="lang-en" hidden>Strava won't connect</span>
+        </summary>
         <div class="faq-body">
-          <p>Settings → Connections 에서 Strava 연결을 해제한 뒤 다시 연결해 보세요. 로그인 화면에서 튕기는 경우, 기기의 인터넷 연결 상태와 Strava 앱(설치돼 있다면)의 로그인 상태를 확인해 주세요.</p>
+          <p class="lang-ko">Settings → Connections 에서 Strava 연결을 해제한 뒤 다시 연결해 보세요. 로그인 화면에서 튕기는 경우, 기기의 인터넷 연결 상태와 Strava 앱(설치돼 있다면)의 로그인 상태를 확인해 주세요.</p>
+          <p class="lang-en" hidden>Try disconnecting Strava in Settings → Connections, then reconnecting. If the login screen closes unexpectedly, check your device's internet connection and make sure you're logged into the Strava app (if installed).</p>
         </div>
       </details>
 
       <details class="faq-item">
-        <summary>Apple 건강 / Health Connect 데이터가 안 보여요</summary>
+        <summary>
+          <span class="lang-ko">Apple 건강 / Health Connect 데이터가 안 보여요</span>
+          <span class="lang-en" hidden>My Apple Health / Health Connect data isn't showing up</span>
+        </summary>
         <div class="faq-body">
-          <p>iOS는 설정 → 개인정보 보호 및 보안 → 건강 → WOLF 에서, Android는 Health Connect 앱의 앱 권한에서 WOLF에 필요한 항목(운동, 거리, 심박수 등)이 켜져 있는지 확인해 주세요.</p>
-          <p>앱을 업데이트한 뒤 새로 추가된 데이터 항목은 기존 사용자에게 재연결 안내가 한 번 표시됩니다 — 안내가 뜨면 눌러서 권한을 다시 허용해 주세요.</p>
+          <p class="lang-ko">iOS는 설정 → 개인정보 보호 및 보안 → 건강 → WOLF 에서, Android는 Health Connect 앱의 앱 권한에서 WOLF에 필요한 항목(운동, 거리, 심박수 등)이 켜져 있는지 확인해 주세요.</p>
+          <p class="lang-en" hidden>On iOS, check Settings → Privacy &amp; Security → Health → WOLF. On Android, check WOLF's app permissions in the Health Connect app to make sure the items it needs (workouts, distance, heart rate, etc.) are turned on.</p>
+          <p class="lang-ko">앱을 업데이트한 뒤 새로 추가된 데이터 항목은 기존 사용자에게 재연결 안내가 한 번 표시됩니다 — 안내가 뜨면 눌러서 권한을 다시 허용해 주세요.</p>
+          <p class="lang-en" hidden>When an update adds a new data type, existing users see a one-time reconnect prompt — tap it to grant the new permission.</p>
         </div>
       </details>
 
       <details class="faq-item">
-        <summary>운동 기록이 중복으로 보여요 / 일부가 안 보여요</summary>
+        <summary>
+          <span class="lang-ko">운동 기록이 중복으로 보여요 / 일부가 안 보여요</span>
+          <span class="lang-en" hidden>My workouts show up duplicated, or some are missing</span>
+        </summary>
         <div class="faq-body">
-          <p>Strava와 건강 앱 양쪽에 같은 운동이 기록돼 있으면 WOLF는 자동으로 하나만 남기고 정리합니다(같은 소스 안의 별개 운동은 합치지 않습니다). 여전히 이상하게 보인다면 캘린더에서 아래로 당겨 새로고침해 보세요.</p>
+          <p class="lang-ko">Strava와 건강 앱 양쪽에 같은 운동이 기록돼 있으면 WOLF는 자동으로 하나만 남기고 정리합니다(같은 소스 안의 별개 운동은 합치지 않습니다). 여전히 이상하게 보인다면 캘린더에서 아래로 당겨 새로고침해 보세요.</p>
+          <p class="lang-en" hidden>If the same workout is recorded in both Strava and a health app, WOLF automatically keeps just one (separate workouts from the same source are never merged). If something still looks off, try pulling down to refresh on the Calendar tab.</p>
         </div>
       </details>
 
       <details class="faq-item">
-        <summary>앱을 삭제하면 제 운동 데이터도 사라지나요?</summary>
+        <summary>
+          <span class="lang-ko">앱을 삭제하면 제 운동 데이터도 사라지나요?</span>
+          <span class="lang-en" hidden>If I delete the app, will my workout data disappear too?</span>
+        </summary>
         <div class="faq-body">
-          <p>WOLF는 여러분의 운동 기록을 자체 서버에 저장하지 않습니다. 데이터는 Strava 또는 Apple Health / Health Connect에 그대로 남아 있으며, 앱을 다시 설치하고 연결하면 그대로 불러옵니다. 앱 안에서 직접 남긴 일정 메모(계획)만 기기에 저장되어 삭제 시 함께 사라집니다.</p>
+          <p class="lang-ko">WOLF는 여러분의 운동 기록을 자체 서버에 저장하지 않습니다. 데이터는 Strava 또는 Apple Health / Health Connect에 그대로 남아 있으며, 앱을 다시 설치하고 연결하면 그대로 불러옵니다. 앱 안에서 직접 남긴 일정 메모(계획)만 기기에 저장되어 삭제 시 함께 사라집니다.</p>
+          <p class="lang-en" hidden>No — WOLF doesn't store your workout history on its own servers. Your data stays in Strava or Apple Health / Health Connect, and reappears as soon as you reinstall and reconnect. Only planned-event notes you added inside the app are stored on-device, and those are removed if you delete the app.</p>
         </div>
       </details>
 
       <details class="faq-item">
-        <summary>기능 제안이나 버그를 신고하고 싶어요</summary>
+        <summary>
+          <span class="lang-ko">기능 제안이나 버그를 신고하고 싶어요</span>
+          <span class="lang-en" hidden>I want to suggest a feature or report a bug</span>
+        </summary>
         <div class="faq-body">
-          <p>아래 이메일로 화면 캡처나 상황 설명을 함께 보내 주시면 빠르게 확인하겠습니다.</p>
+          <p class="lang-ko">아래 이메일로 화면 캡처나 상황 설명을 함께 보내 주시면 빠르게 확인하겠습니다.</p>
+          <p class="lang-en" hidden>Send us a screenshot and a short description at the email below — we'll take a look as soon as we can.</p>
         </div>
       </details>
     </div>
@@ -248,13 +306,19 @@
 
   <section>
     <div class="wrap">
-      <h2 class="section-title">문의하기</h2>
+      <h2 class="section-title">
+        <span class="lang-ko">문의하기</span>
+        <span class="lang-en" hidden>Contact</span>
+      </h2>
       <div class="contact-card">
         <div>
           <div class="contact-label">EMAIL</div>
           <div class="contact-email">octoberskydemo@naver.com</div>
         </div>
-        <a class="btn" href="mailto:octoberskydemo@naver.com">이메일 보내기</a>
+        <a class="btn" href="mailto:octoberskydemo@naver.com">
+          <span class="lang-ko">이메일 보내기</span>
+          <span class="lang-en" hidden>Send an email</span>
+        </a>
       </div>
     </div>
   </section>
@@ -275,7 +339,8 @@
       <div class="footer-brand">October Sky · 옥토버 스카이</div>
       <div class="footer-links">
         <a href="mailto:octoberskydemo@naver.com">octoberskydemo@naver.com</a>
-        <a href="/">홈으로</a>
+        <a href="/wolf/privacy/"><span class="lang-ko">개인정보처리방침</span><span class="lang-en" hidden>Privacy Policy</span></a>
+        <a href="/"><span class="lang-ko">홈으로</span><span class="lang-en" hidden>Home</span></a>
       </div>
     </div>
     <div class="biz-info">
@@ -303,6 +368,29 @@
     frag.appendChild(s);
   }
   field.appendChild(frag);
+</script>
+
+<script>
+(function(){
+  var KEY = 'wolf-site-lang';
+  function apply(lang){
+    document.querySelectorAll('.lang-ko').forEach(function(el){ el.hidden = (lang !== 'ko'); });
+    document.querySelectorAll('.lang-en').forEach(function(el){ el.hidden = (lang !== 'en'); });
+    document.querySelectorAll('[data-lang-btn]').forEach(function(b){
+      b.classList.toggle('active', b.getAttribute('data-lang-btn') === lang);
+    });
+    document.documentElement.lang = lang;
+  }
+  var saved = localStorage.getItem(KEY) || 'ko';
+  apply(saved);
+  document.querySelectorAll('[data-lang-btn]').forEach(function(b){
+    b.addEventListener('click', function(){
+      var lang = b.getAttribute('data-lang-btn');
+      localStorage.setItem(KEY, lang);
+      apply(lang);
+    });
+  });
+})();
 </script>
 
 </body>
