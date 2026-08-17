@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dayager 지원 · October Sky</title>
+<meta name="description" content="Dayager 앱 지원 페이지. 자주 묻는 질문과 문의처를 안내합니다.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,500&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&family=Noto+Sans+KR:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg: #0E1424;
+    --bg-panel: #151C34;
+    --line: rgba(237,239,246,0.09);
+    --text: #EDEFF6;
+    --text-dim: #9AA3C0;
+    --text-dimmer: #6B7396;
+    --gold: #DCA75A;
+    --gold-soft: rgba(220,167,90,0.14);
+    --dayager: #FF9E7D;
+    --serif: 'Fraunces', 'Noto Serif KR', serif;
+    --sans: 'Inter', 'Noto Sans KR', sans-serif;
+    --mono: 'IBM Plex Mono', monospace;
+  }
+
+  *{ box-sizing:border-box; margin:0; padding:0; }
+  html{ scroll-behavior:smooth; }
+
+  body{
+    background:var(--bg);
+    color:var(--text);
+    font-family:var(--sans);
+    line-height:1.65;
+    -webkit-font-smoothing:antialiased;
+    overflow-x:hidden;
+  }
+
+  a{ color:inherit; }
+  :focus-visible{ outline:2px solid var(--dayager); outline-offset:3px; }
+
+  .wrap{ max-width:760px; margin:0 auto; padding:0 28px; }
+
+  .starfield{
+    position:fixed; inset:0; z-index:-1; pointer-events:none;
+    background:
+      radial-gradient(ellipse 80% 50% at 50% -10%, rgba(255,158,125,0.10), transparent 60%),
+      var(--bg);
+  }
+  .star{
+    position:absolute; width:2px; height:2px; border-radius:50%;
+    background:var(--text); opacity:0.5;
+    animation: twinkle 4s ease-in-out infinite;
+  }
+  @keyframes twinkle{
+    0%,100%{ opacity:0.15; }
+    50%{ opacity:0.85; }
+  }
+
+  header.nav{
+    position:sticky; top:0; z-index:20;
+    backdrop-filter: blur(10px);
+    background:rgba(14,20,36,0.72);
+    border-bottom:1px solid var(--line);
+  }
+  .nav-inner{
+    max-width:760px; margin:0 auto;
+    display:flex; align-items:center; justify-content:space-between;
+    padding:16px 28px; gap:16px;
+  }
+  .brand{ display:flex; align-items:center; gap:10px; font-family:var(--serif); font-size:17px; letter-spacing:0.02em; text-decoration:none; flex-shrink:0; }
+  .brand-mark{
+    width:26px; height:26px; border-radius:50%;
+    border:1px solid var(--gold);
+    display:flex; align-items:center; justify-content:center;
+    font-family:var(--mono); font-size:10px; color:var(--gold);
+  }
+  .nav-right{ display:flex; align-items:center; gap:16px; }
+  .back-link{
+    font-family:var(--mono); font-size:13px; color:var(--text-dim);
+    text-decoration:none; transition:color 0.2s; white-space:nowrap;
+  }
+  .back-link:hover{ color:var(--dayager); }
+
+  .lang-toggle{
+    display:flex; gap:3px; background:var(--bg-panel); border:1px solid var(--line);
+    border-radius:999px; padding:3px; flex-shrink:0;
+  }
+  .lang-toggle button{
+    font-family:var(--mono); font-size:11.5px; padding:6px 12px; border-radius:999px;
+    border:none; background:transparent; color:var(--text-dimmer); cursor:pointer;
+    transition:background 0.2s, color 0.2s;
+  }
+  .lang-toggle button.active{ background:var(--dayager); color:#1B1408; }
+
+  .hero{ padding:76px 0 48px; }
+  .eyebrow{
+    font-family:var(--mono); font-size:12px; letter-spacing:0.14em;
+    color:var(--dayager); text-transform:uppercase; margin-bottom:18px;
+  }
+  h1.title{
+    font-family:var(--serif); font-weight:500;
+    font-size:clamp(34px, 6vw, 48px);
+    letter-spacing:-0.01em;
+    line-height:1.08;
+  }
+  .tagline{
+    max-width:520px; margin-top:18px;
+    font-size:16.5px; color:var(--text-dim);
+  }
+  .privacy-inline-link{
+    display:inline-block; margin-top:18px;
+    font-family:var(--mono); font-size:13.5px; color:var(--dayager);
+    text-decoration:underline; text-underline-offset:2px;
+  }
+
+  section{ padding:44px 0; border-top:1px solid var(--line); }
+  h2.section-title{
+    font-family:var(--serif); font-weight:500; font-size:22px;
+    margin-bottom:26px;
+  }
+
+  .faq-item{
+    border-bottom:1px solid var(--line);
+  }
+  .faq-item:first-child{ border-top:1px solid var(--line); }
+  .faq-item summary{
+    list-style:none; cursor:pointer;
+    display:flex; align-items:center; justify-content:space-between; gap:16px;
+    padding:20px 2px;
+    font-family:var(--sans); font-weight:500; font-size:15.5px;
+    color:var(--text);
+  }
+  .faq-item summary::-webkit-details-marker{ display:none; }
+  .faq-item summary::after{
+    content:'+';
+    font-family:var(--mono); font-size:18px; color:var(--dayager);
+    flex-shrink:0; transition:transform 0.2s;
+  }
+  .faq-item[open] summary::after{ transform:rotate(45deg); }
+  .faq-item .faq-body{
+    padding:0 2px 22px; color:var(--text-dim); font-size:14.5px; max-width:620px;
+  }
+  .faq-item .faq-body p + p{ margin-top:10px; }
+  .faq-item .faq-body a{ color:var(--dayager); text-decoration:underline; text-underline-offset:2px; }
+
+  .contact-card{
+    background:var(--bg-panel);
+    border:1px solid var(--line);
+    border-radius:16px;
+    padding:28px 26px;
+    display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:16px;
+  }
+  .contact-label{ font-family:var(--mono); font-size:12px; color:var(--text-dimmer); letter-spacing:0.06em; margin-bottom:8px; }
+  .contact-email{ font-family:var(--serif); font-size:19px; }
+  .btn{
+    display:inline-block; padding:12px 24px; border-radius:999px;
+    font-family:var(--mono); font-size:13.5px; text-decoration:none;
+    background:var(--dayager); color:#1B1408;
+    transition:transform 0.2s;
+  }
+  .btn:hover{ transform:translateY(-2px); }
+
+  .reviewer-note{
+    background:var(--gold-soft);
+    border:1px solid rgba(220,167,90,0.25);
+    border-radius:14px;
+    padding:20px 22px;
+    font-size:14px; color:var(--text-dim);
+  }
+  .reviewer-note .label{
+    font-family:var(--mono); font-size:11.5px; color:var(--gold);
+    text-transform:uppercase; letter-spacing:0.08em; margin-bottom:8px;
+  }
+
+  footer{ padding:50px 0 44px; border-top:1px solid var(--line); margin-top:30px; }
+  .footer-inner{ display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:20px; }
+  .footer-brand{ font-family:var(--serif); font-size:15px; color:var(--text-dim); }
+  .footer-links{ display:flex; gap:22px; font-family:var(--mono); font-size:12.5px; color:var(--text-dimmer); }
+  .footer-links a{ text-decoration:none; transition:color 0.2s; }
+  .footer-links a:hover{ color:var(--dayager); }
+  .footer-copy{ margin-top:24px; font-family:var(--mono); font-size:11.5px; color:var(--text-dimmer); }
+  .biz-info{
+    margin-top:30px; padding-top:22px; border-top:1px solid var(--line);
+    display:flex; flex-wrap:wrap; gap:8px 18px;
+    font-family:var(--sans); font-size:12px; color:var(--text-dimmer); line-height:1.7;
+  }
+
+  @media (max-width: 600px){
+    .hero{ padding:56px 0 36px; }
+    .contact-card{ flex-direction:column; align-items:flex-start; }
+    .nav-inner{ flex-wrap:wrap; }
+  }
+
+  @media (prefers-reduced-motion: reduce){
+    *{ animation-duration:0.01ms !important; animation-iteration-count:1 !important; scroll-behavior:auto !important; }
+  }
+</style>
+</head>
+<body>
+
+<div class="starfield" id="starfield"></div>
+
+<header class="nav">
+  <div class="nav-inner">
+    <a class="brand" href="/">
+      <span class="brand-mark">OS</span>
+      October Sky
+    </a>
+    <div class="nav-right">
+      <a class="back-link" href="/dayager/">
+        <span class="lang-ko">← Dayager</span><span class="lang-en" hidden>← Dayager</span>
+      </a>
+      <div class="lang-toggle">
+        <button type="button" data-lang-btn="ko">한국어</button>
+        <button type="button" data-lang-btn="en">EN</button>
+      </div>
+    </div>
+  </div>
+</header>
+
+<main>
+  <section class="hero" style="border-top:none;">
+    <div class="wrap">
+      <div class="eyebrow">Dayager · Support</div>
+      <h1 class="title">
+        <span class="lang-ko">무엇을 도와드릴까요?</span>
+        <span class="lang-en" hidden>How can we help?</span>
+      </h1>
+      <p class="tagline">
+        <span class="lang-ko">날씨와 일정을 목소리로 들려주는 아침 브리핑 알람, Dayager의 지원 페이지입니다. 아래에서 답을 찾지 못하셨다면 이메일로 편하게 문의해 주세요.</span>
+        <span class="lang-en" hidden>Support page for Dayager, a morning briefing alarm that reads your weather and schedule aloud. If you can't find your answer below, feel free to reach out by email.</span>
+      </p>
+      <a class="privacy-inline-link" href="/dayager/privacy/">
+        <span class="lang-ko">개인정보처리방침도 확인해보세요 →</span>
+        <span class="lang-en" hidden>You can also check our Privacy Policy →</span>
+      </a>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <h2 class="section-title">
+        <span class="lang-ko">자주 묻는 질문</span>
+        <span class="lang-en" hidden>Frequently Asked Questions</span>
+      </h2>
+
+      <details class="faq-item" open>
+        <summary>
+          <span class="lang-ko">알람이 울리지 않아요</span>
+          <span class="lang-en" hidden>My alarm isn't ringing</span>
+        </summary>
+        <div class="faq-body">
+          <p class="lang-ko">설정 → 알림 → Dayager 에서 알람 권한이 켜져 있는지 확인해 주세요. 무음 모드나 저전력 모드에서도 알람은 울리지만, 기기 설정에서 알람 권한 자체가 꺼져 있으면 울리지 않을 수 있습니다.</p>
+          <p class="lang-en" hidden>Check that alarm permission is enabled in Settings → Notifications → Dayager. Alarms still ring in Silent Mode or Low Power Mode, but they won't ring at all if the alarm permission itself is turned off.</p>
+        </div>
+      </details>
+
+      <details class="faq-item">
+        <summary>
+          <span class="lang-ko">언어를 바꿨는데 브리핑이 그대로예요</span>
+          <span class="lang-en" hidden>I changed the language, but the briefing didn't change</span>
+        </summary>
+        <div class="faq-body">
+          <p class="lang-ko">설정 → 언어 설정에서 원하는 언어를 선택하면 화면과 음성 브리핑 모두 즉시 반영됩니다. 기기의 시스템 언어와는 별개로 작동하니, 두 설정이 다르게 되어 있어도 정상입니다.</p>
+          <p class="lang-en" hidden>Selecting a language in Settings → Language applies immediately to both the on-screen text and the spoken briefing. This is independent of your device's system language, so it's fine if the two are set differently.</p>
+        </div>
+      </details>
+
+      <details class="faq-item">
+        <summary>
+          <span class="lang-ko">날씨나 현재 위치가 안 나와요</span>
+          <span class="lang-en" hidden>Weather or my location isn't showing up</span>
+        </summary>
+        <div class="faq-body">
+          <p class="lang-ko">설정 → 개인정보 보호 및 보안 → 위치 서비스 → Dayager 에서 위치 권한이 허용되어 있는지 확인해 주세요.</p>
+          <p class="lang-en" hidden>Check that location access is allowed in Settings → Privacy &amp; Security → Location Services → Dayager.</p>
+        </div>
+      </details>
+
+      <details class="faq-item">
+        <summary>
+          <span class="lang-ko">캘린더 일정이 브리핑에 안 나와요</span>
+          <span class="lang-en" hidden>My calendar events aren't included in the briefing</span>
+        </summary>
+        <div class="faq-body">
+          <p class="lang-ko">설정 → 개인정보 보호 및 보안 → 캘린더 → Dayager 에서 캘린더 접근이 허용되어 있는지 확인해 주세요.</p>
+          <p class="lang-en" hidden>Check that calendar access is allowed in Settings → Privacy &amp; Security → Calendars → Dayager.</p>
+        </div>
+      </details>
+
+      <details class="faq-item">
+        <summary>
+          <span class="lang-ko">기능 제안이나 버그를 신고하고 싶어요</span>
+          <span class="lang-en" hidden>I want to suggest a feature or report a bug</span>
+        </summary>
+        <div class="faq-body">
+          <p class="lang-ko">아래 이메일로 화면 캡처나 상황 설명을 함께 보내 주시면 빠르게 확인하겠습니다.</p>
+          <p class="lang-en" hidden>Send us a screenshot and a short description at the email below — we'll take a look as soon as we can.</p>
+        </div>
+      </details>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <h2 class="section-title">
+        <span class="lang-ko">문의하기</span>
+        <span class="lang-en" hidden>Contact</span>
+      </h2>
+      <div class="contact-card">
+        <div>
+          <div class="contact-label">EMAIL</div>
+          <div class="contact-email">octobersky0515@naver.com</div>
+        </div>
+        <a class="btn" href="mailto:octobersky0515@naver.com">
+          <span class="lang-ko">이메일 보내기</span>
+          <span class="lang-en" hidden>Send an email</span>
+        </a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="footer-inner">
+      <div class="footer-brand">October Sky · 옥토버 스카이</div>
+      <div class="footer-links">
+        <a href="mailto:octobersky0515@naver.com">octobersky0515@naver.com</a>
+        <a href="/dayager/privacy/"><span class="lang-ko">개인정보처리방침</span><span class="lang-en" hidden>Privacy Policy</span></a>
+        <a href="/"><span class="lang-ko">홈으로</span><span class="lang-en" hidden>Home</span></a>
+      </div>
+    </div>
+    <div class="biz-info">
+      <span>상호: October Sky(옥토버 스카이)</span>
+      <span>대표: 윤영민</span>
+      <span>사업자등록번호: 825-32-01767</span>
+      <span>사업장 주소: 서울특별시 강서구 강서로 186, 3층 3015호</span>
+      <span>전화: 010-3142-9165</span>
+    </div>
+    <div class="footer-copy">© 2026 October Sky. All rights reserved.</div>
+  </div>
+</footer>
+
+<script>
+  const field = document.getElementById('starfield');
+  const count = window.innerWidth < 780 ? 30 : 60;
+  const frag = document.createDocumentFragment();
+  for(let i=0;i<count;i++){
+    const s = document.createElement('div');
+    s.className = 'star';
+    s.style.left = Math.random()*100 + 'vw';
+    s.style.top = Math.random()*100 + 'vh';
+    s.style.animationDelay = (Math.random()*4) + 's';
+    s.style.width = s.style.height = (Math.random() < 0.15 ? '3px' : '2px');
+    frag.appendChild(s);
+  }
+  field.appendChild(frag);
+</script>
+
+<script>
+(function(){
+  var KEY = 'dayager-site-lang';
+  function apply(lang){
+    document.querySelectorAll('.lang-ko').forEach(function(el){ el.hidden = (lang !== 'ko'); });
+    document.querySelectorAll('.lang-en').forEach(function(el){ el.hidden = (lang !== 'en'); });
+    document.querySelectorAll('[data-lang-btn]').forEach(function(b){
+      b.classList.toggle('active', b.getAttribute('data-lang-btn') === lang);
+    });
+    document.documentElement.lang = lang;
+  }
+  var saved = localStorage.getItem(KEY) || 'ko';
+  apply(saved);
+  document.querySelectorAll('[data-lang-btn]').forEach(function(b){
+    b.addEventListener('click', function(){
+      var lang = b.getAttribute('data-lang-btn');
+      localStorage.setItem(KEY, lang);
+      apply(lang);
+    });
+  });
+})();
+</script>
+
+</body>
+</html>
