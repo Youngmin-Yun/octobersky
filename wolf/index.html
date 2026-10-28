@@ -8,8 +8,15 @@
 <link rel="icon" type="image/svg+xml" href="/favicon.svg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,500&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&family=Sora:wght@600&family=IBM+Plex+Sans+KR:wght@400;500;600;700&family=Gowun+Batang:wght@400;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <style>
+  /* 국문: 로고 서체 Sora와 같은 기하학적 형태의 G마켓 산스 */
+  @font-face{ font-family:'GmarketSans'; font-weight:300; font-style:normal; font-display:swap;
+    src:url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/GmarketSansLight.woff') format('woff'); }
+  @font-face{ font-family:'GmarketSans'; font-weight:500; font-style:normal; font-display:swap;
+    src:url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/GmarketSansMedium.woff') format('woff'); }
+  @font-face{ font-family:'GmarketSans'; font-weight:700; font-style:normal; font-display:swap;
+    src:url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/GmarketSansBold.woff') format('woff'); }
   :root{
     --bg: #0E1424;
     --bg-panel: #151C34;
@@ -20,10 +27,10 @@
     --gold: #DCA75A;
     --wolf: #C15B3E;
     --wolf-soft: rgba(193,91,62,0.14);
-    --serif: 'Fraunces', 'Gowun Batang', serif;
-    --sans: 'Inter', 'IBM Plex Sans KR', sans-serif;
-    --brand: 'Sora', 'IBM Plex Sans KR', sans-serif;
-    --mono: 'IBM Plex Mono', 'IBM Plex Sans KR', monospace;
+    --serif: 'Sora', 'GmarketSans', sans-serif;
+    --sans: 'Sora', 'GmarketSans', sans-serif;
+    --brand: 'Sora', 'GmarketSans', sans-serif;
+    --mono: 'Sora', 'GmarketSans', sans-serif;
   }
 
   *{ box-sizing:border-box; margin:0; padding:0; }
