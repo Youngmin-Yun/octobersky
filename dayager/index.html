@@ -5,9 +5,10 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Dayager · October Sky</title>
 <meta name="description" content="알람이 울리면 오늘의 날씨와 일정을 목소리로 들려주는 온디바이스 음성 브리핑 알람, Dayager.">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,500&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&family=Noto+Sans+KR:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,500&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&family=Sora:wght@600&family=IBM+Plex+Sans+KR:wght@400;500;600;700&family=Gowun+Batang:wght@400;700&display=swap" rel="stylesheet">
 <style>
   :root{
     --bg: #0E1424;
@@ -19,9 +20,10 @@
     --gold: #DCA75A;
     --dayager: #FF9E7D;
     --dayager-soft: rgba(255,158,125,0.14);
-    --serif: 'Fraunces', 'Noto Serif KR', serif;
-    --sans: 'Inter', 'Noto Sans KR', sans-serif;
-    --mono: 'IBM Plex Mono', monospace;
+    --serif: 'Fraunces', 'Gowun Batang', serif;
+    --sans: 'Inter', 'IBM Plex Sans KR', sans-serif;
+    --brand: 'Sora', 'IBM Plex Sans KR', sans-serif;
+    --mono: 'IBM Plex Mono', 'IBM Plex Sans KR', monospace;
   }
 
   *{ box-sizing:border-box; margin:0; padding:0; }
@@ -68,13 +70,8 @@
     display:flex; align-items:center; justify-content:space-between;
     padding:16px 28px; gap:16px;
   }
-  .brand{ display:flex; align-items:center; gap:10px; font-family:var(--serif); font-size:17px; letter-spacing:0.02em; text-decoration:none; flex-shrink:0; }
-  .brand-mark{
-    width:26px; height:26px; border-radius:50%;
-    border:1px solid var(--gold);
-    display:flex; align-items:center; justify-content:center;
-    font-family:var(--mono); font-size:10px; color:var(--gold);
-  }
+  .brand{ display:flex; align-items:center; gap:10px; font-family:var(--brand); font-weight:600; font-size:17px; letter-spacing:-0.01em; text-decoration:none; flex-shrink:0; }
+  .brand-mark{ width:30px; height:30px; flex-shrink:0; display:block; }
   .nav-right{ display:flex; align-items:center; gap:16px; }
   nav.links{ display:flex; gap:22px; font-family:var(--mono); font-size:13px; color:var(--text-dim); }
   nav.links a{ text-decoration:none; transition:color 0.2s; }
@@ -169,7 +166,7 @@
 
   footer{ padding:50px 0 44px; }
   .footer-inner{ display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:20px; }
-  .footer-brand{ font-family:var(--serif); font-size:15px; color:var(--text-dim); }
+  .footer-brand{ font-family:var(--brand); font-weight:600; letter-spacing:-0.01em; font-size:15px; color:var(--text-dim); }
   .footer-links{ display:flex; gap:22px; font-family:var(--mono); font-size:12.5px; color:var(--text-dimmer); }
   .footer-links a{ text-decoration:none; transition:color 0.2s; }
   .footer-links a:hover{ color:var(--dayager); }
@@ -201,7 +198,7 @@
 <header class="nav">
   <div class="nav-inner">
     <a class="brand" href="/">
-      <span class="brand-mark">OS</span>
+      <svg class="brand-mark" viewBox="6 -2.5 108 108" aria-hidden="true" focusable="false"><circle cx="60" cy="60" r="44" fill="#2F6FB3"/><path d="M 19.85 78 A 44 44 0 0 0 100.15 78 Z" fill="#1B4C80"/><path d="M 30 84 Q 70 78 88 34" fill="none" stroke="#FFFFFF" stroke-width="7" stroke-linecap="round"/><path d="M 88 34 L 92 24" fill="none" stroke="#E08A2E" stroke-width="7" stroke-linecap="round"/><g transform="translate(92 23) rotate(-67.6)"><polygon points="26,0 0,-12 7,0" fill="#E08A2E"/><polygon points="26,0 7,0 0,12" fill="#E08A2E"/><polygon points="26,0 7,0 0,12" fill="#000" fill-opacity="0.22"/></g></svg>
       October Sky
     </a>
     <div class="nav-right">
