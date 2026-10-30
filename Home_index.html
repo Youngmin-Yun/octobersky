@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>October Sky · 옥토버 스카이</title>
-<meta name="description" content="October Sky는 사람의 하루를 더 편리하고 이롭게 만드는 앱을 만드는 개발 스튜디오입니다. Every Words, Stetho, WOLF, Dayager를 만들었습니다.">
+<meta name="description" content="October Sky는 평범한 일상에 즐거움을 더하는 앱을 만듭니다. Every Words, Stetho, WOLF, Dayager를 만들었습니다.">
 <link rel="icon" type="image/svg+xml" href="/favicon.svg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -79,9 +79,9 @@
   }
   .nav-inner{
     display:flex; align-items:center; justify-content:space-between;
-    padding:16px 28px;
+    height:64px; padding:0 28px; gap:16px;
   }
-  .brand{ display:flex; align-items:center; gap:10px; font-family:var(--brand); font-weight:600; font-size:18px; letter-spacing:-0.01em; }
+  .brand{ display:flex; align-items:center; gap:10px; font-family:var(--brand); font-weight:600; font-size:18px; letter-spacing:-0.01em; text-decoration:none; color:inherit; flex-shrink:0; white-space:nowrap; }
   .brand-mark{ width:32px; height:32px; flex-shrink:0; display:block; }
   nav.links{ display:flex; gap:28px; font-family:var(--mono); font-size:13px; color:var(--text-dim); }
   nav.links a{ text-decoration:none; transition:color 0.2s; }
@@ -141,19 +141,6 @@
     font-family:var(--serif); font-weight:500; font-size:clamp(28px,4vw,38px);
   }
 
-  .about-grid{
-    display:grid; grid-template-columns:1.1fr 0.9fr; gap:64px; align-items:start;
-  }
-  .about-lead{
-    font-family:var(--serif); font-weight:400;
-    font-size:24px; line-height:1.5; color:var(--text);
-  }
-  .about-body{ margin-top:22px; color:var(--text-dim); font-size:16px; }
-  .principles{ display:flex; flex-direction:column; gap:26px; }
-  .principle{ padding-left:20px; border-left:1px solid var(--gold-soft); }
-  .principle-name{ font-family:var(--mono); font-size:13px; color:var(--gold); margin-bottom:6px; }
-  .principle-desc{ color:var(--text-dim); font-size:15px; }
-
   .apps-grid{ display:grid; grid-template-columns:repeat(3,1fr); gap:22px; }
   .app-card{
     background:var(--bg-panel);
@@ -198,10 +185,27 @@
   .biz-info a:hover{ color:var(--gold); }
 
   @media (max-width: 780px){
-    .about-grid{ grid-template-columns:1fr; gap:44px; }
     .apps-grid{ grid-template-columns:1fr; }
     nav.links{ display:none; }
     .hero{ padding:96px 0 80px; }
+  }
+
+  /* 상단 바: 모든 페이지 공통 · 화면 폭에 따라 단계적으로 축소 */
+  @media (max-width: 780px){
+    .nav-inner{ height:58px; padding:0 20px; gap:12px; }
+    .brand{ font-size:17px; gap:9px; }
+    .brand-mark{ width:30px; height:30px; }
+  }
+  @media (max-width: 480px){
+    .nav-inner{ height:54px; padding:0 16px; gap:10px; }
+    .nav-right{ gap:10px; }
+    .brand{ font-size:16px; gap:8px; }
+    .brand-mark{ width:28px; height:28px; }
+    .back-link{ font-size:12px; }
+    .lang-toggle button{ font-size:11px; padding:5px 10px; }
+  }
+  @media (max-width: 360px){
+    .back-link{ display:none; }
   }
 
   @media (prefers-reduced-motion: reduce){
@@ -215,12 +219,11 @@
 
 <header class="nav">
   <div class="nav-inner">
-    <div class="brand">
+    <a class="brand" href="/">
       <svg class="brand-mark" viewBox="6 -2.5 108 108" aria-hidden="true" focusable="false"><circle cx="60" cy="60" r="44" fill="#2F6FB3"/><path d="M 19.85 78 A 44 44 0 0 0 100.15 78 Z" fill="#1B4C80"/><path d="M 30 84 Q 70 78 88 34" fill="none" stroke="#FFFFFF" stroke-width="7" stroke-linecap="round"/><path d="M 88 34 L 92 24" fill="none" stroke="#E08A2E" stroke-width="7" stroke-linecap="round"/><g transform="translate(92 23) rotate(-67.6)"><polygon points="26,0 0,-12 7,0" fill="#E08A2E"/><polygon points="26,0 7,0 0,12" fill="#E08A2E"/><polygon points="26,0 7,0 0,12" fill="#000" fill-opacity="0.22"/></g></svg>
       October Sky
-    </div>
+    </a>
     <nav class="links">
-      <a href="#about">About</a>
       <a href="#apps">Apps</a>
       <a href="#contact">Contact</a>
     </nav>
@@ -234,7 +237,7 @@
       October Sky
       <span class="title-kr">옥토버 스카이</span>
     </h1>
-    <p class="tagline">사람의 하루를 조금 더 편리하고 이롭게 만드는 앱을 만듭니다.</p>
+    <p class="tagline">평범한 일상에 즐거움을 더하는 앱을 만듭니다.</p>
     <div class="hero-cta">
       <a class="btn btn-primary" href="#apps">만든 앱 보기</a>
       <a class="btn btn-ghost" href="#contact">문의하기</a>
@@ -250,30 +253,6 @@
         <text class="const-label" x="320" y="26" text-anchor="middle">STETHO</text>
         <text class="const-label" x="550" y="122" text-anchor="middle">WOLF</text>
       </svg>
-    </div>
-  </section>
-
-  <section id="about" class="wrap">
-    <div class="about-grid">
-      <div>
-        <div class="section-eyebrow">About</div>
-        <p class="about-lead">"인간의 삶을 더 유익하고 편리하게" — 이 문장 하나로 시작한 스튜디오입니다.</p>
-        <p class="about-body">October Sky는 October Sky를 설립한 한 명의 개발자가 기획, 디자인, 개발, 출시를 모두 맡아 만들어가는 스튜디오입니다.</p>
-      </div>
-      <div class="principles">
-        <div class="principle">
-          <div class="principle-name">CROSS-PLATFORM</div>
-          <div class="principle-desc">SwiftUI, Flutter 를 상황에 맞게 선택해 가장 적합한 방식으로 만듭니다.</div>
-        </div>
-        <div class="principle">
-          <div class="principle-name">END TO END</div>
-          <div class="principle-desc">기획부터 앱스토어 출시, 그 이후 운영까지 하나의 흐름으로 책임집니다.</div>
-        </div>
-        <div class="principle">
-          <div class="principle-name">REAL WORLD FIRST</div>
-          <div class="principle-desc">교육 현장, 운동하는 사람, 언어를 배우는 사람 — 실제 사용자의 하루를 기준으로 만듭니다.</div>
-        </div>
-      </div>
     </div>
   </section>
 
