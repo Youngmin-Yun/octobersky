@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>WOLF - Privacy Policy · October Sky</title>
-<meta name="description" content="Privacy Policy for the WOLF app by October Sky.">
+<title>WOLF 개인정보처리방침 · Privacy Policy · October Sky</title>
+<meta name="description" content="WOLF 앱 개인정보처리방침 (시행일 2026년 11월 3일). Privacy Policy for the WOLF app by October Sky.">
 <link rel="icon" type="image/svg+xml" href="/favicon.svg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -47,7 +47,7 @@
   a{ color:var(--wolf); text-decoration:underline; text-underline-offset:2px; }
   :focus-visible{ outline:2px solid var(--wolf); outline-offset:3px; }
 
-  .wrap{ max-width:720px; margin:0 auto; padding:0 28px; }
+  .wrap{ max-width:820px; margin:0 auto; padding:0 28px; }
 
   .starfield{
     position:fixed; inset:0; z-index:-1; pointer-events:none;
@@ -137,7 +137,71 @@
     font-family:var(--sans); font-size:12px; color:var(--text-dimmer); line-height:1.7;
   }
 
+  .policy h2{ scroll-margin-top:80px; }
+  .policy .intro{ font-size:16px; color:var(--text); max-width:none; margin-bottom:26px; }
+  .policy p, .policy li{ max-width:none; }
+  .policy p + p{ margin-top:10px; }
+  .policy .prev{ margin-top:14px; font-size:13px; color:var(--text-dimmer); }
+  .policy strong{ color:var(--text); font-weight:500; }
+
+  .summary{
+    background:var(--bg-panel); border:1px solid var(--line); border-radius:16px;
+    padding:22px 26px; margin-bottom:8px;
+  }
+  .summary-title{
+    font-size:12px; letter-spacing:0.14em; text-transform:uppercase;
+    color:var(--wolf); margin-bottom:10px;
+  }
+  .summary ul{ list-style:none; margin:0; }
+  .summary li{ position:relative; padding-left:16px; margin-bottom:6px; color:var(--text); }
+  .summary li:last-child{ margin-bottom:0; }
+  .summary li::before{
+    content:""; position:absolute; left:0; top:0.72em; width:5px; height:5px;
+    border-radius:50%; background:var(--wolf);
+  }
+
+  .table-wrap{ margin:14px 0 14px; border:1px solid var(--line); border-radius:14px; overflow:hidden; }
+  .ptable{ width:100%; border-collapse:collapse; font-size:13.5px; line-height:1.6; }
+  .ptable th, .ptable td{ padding:12px 14px; text-align:left; vertical-align:top; overflow-wrap:anywhere; }
+  .ptable th{
+    font-weight:500; font-size:12px; letter-spacing:0.06em; color:var(--text-dimmer);
+    background:var(--bg-panel); border-bottom:1px solid var(--line);
+  }
+  .ptable td{ color:var(--text-dim); border-bottom:1px solid var(--line); }
+  .ptable tr:last-child td{ border-bottom:none; }
+  .ptable td:first-child{ color:var(--text); font-weight:500; white-space:nowrap; }
+
+  .notice{
+    margin:16px 0 0; padding:14px 18px; border-radius:12px; font-size:14px; color:var(--text-dim);
+    background:rgba(193,91,62,0.08); border:1px solid rgba(193,91,62,0.35);
+  }
+  .notice strong{ display:block; color:var(--wolf); font-weight:500; margin-bottom:4px; }
+
+  .contact{
+    display:grid; gap:8px; padding:18px 22px; border:1px solid var(--line); border-radius:14px;
+    background:var(--bg-panel); font-size:15px; color:var(--text);
+  }
+  .contact-label{ display:inline-block; min-width:150px; font-size:13px; color:var(--text-dimmer); }
+
   @media (max-width: 600px){
+    .wrap{ padding:0 20px; }
+    .hero{ padding:56px 0 30px; }
+    .summary{ padding:18px 18px; }
+    /* 표는 좁은 화면에서 항목별 카드로 */
+    .table-wrap{ border:none; border-radius:0; overflow:visible; }
+    .ptable thead{ display:none; }
+    .ptable, .ptable tbody, .ptable tr, .ptable td{ display:block; width:100%; }
+    .ptable tr{
+      border:1px solid var(--line); border-radius:12px; background:var(--bg-panel);
+      padding:12px 16px; margin-bottom:10px;
+    }
+    .ptable td{ border:none; padding:4px 0; }
+    .ptable td:first-child{ white-space:normal; font-size:15px; padding-bottom:6px; }
+    .ptable td:not(:first-child)::before{
+      content:attr(data-label); display:block; font-size:11.5px; color:var(--text-dimmer);
+      letter-spacing:0.04em; margin-bottom:1px;
+    }
+    .contact-label{ display:block; min-width:0; }
   }
 
   /* 상단 바: 모든 페이지 공통 · 화면 폭에 따라 단계적으로 축소 */
@@ -194,81 +258,213 @@
         <span class="lang-en" hidden>Privacy Policy</span>
       </h1>
       <div class="updated">
-        <span class="lang-ko">최종 업데이트: 2026년 10월 13일</span>
-        <span class="lang-en" hidden>Last updated: October 13, 2026</span>
+        <span class="lang-ko">시행일: 2026년 11월 3일 · 운영자: October Sky</span>
+        <span class="lang-en" hidden>Effective: November 3, 2026 · Operated by October Sky</span>
       </div>
     </div>
   </section>
 
   <section class="policy">
     <div class="wrap">
-      <h2><span class="lang-ko">1. 수집하는 정보</span><span class="lang-en" hidden>1. Information We Collect</span></h2>
-      <p class="lang-ko">WOLF는 회원가입·로그인 기능이 없으며, 개인을 식별할 수 있는 정보를 자사 서버에 수집하거나 저장하지 않습니다. 아래 정보는 이용자의 기기 안에만 저장됩니다.</p>
-      <p class="lang-en" hidden>WOLF has no sign-up or login, and does not collect or store any personally identifiable information on our servers. The following data is stored only on your device:</p>
+    <div class="lang-ko">
+      <p class="intro">October Sky(이하 "회사")는 WOLF 앱(이하 "앱")을 이용하는 분의 개인정보를 소중히 다루며, 「개인정보 보호법」 등 관련 법령을 지킵니다. 이 방침은 앱이 어떤 정보를 어디에서, 어떤 목적으로 처리하는지 설명합니다.</p>
+
+      <div class="summary">
+        <div class="summary-title">요약</div>
+        <ul>
+          <li>회사는 회원가입이 없고, 이용자의 운동·건강·위치 정보를 회사 서버에 저장하지 않습니다.</li>
+          <li>운동 기록은 이용자가 연결한 서비스(스트라바, 애플 건강, 삼성 헬스)에서 기기로 직접 받아와 기기 안에서만 처리합니다.</li>
+          <li>이용자가 직접 요청한 경우에만 기록을 스트라바·삼성 헬스·자출사(bikejcs.com)로 보냅니다.</li>
+          <li>건강 데이터는 광고·판매·분석 목적으로 쓰지 않으며 제3자에게 팔거나 넘기지 않습니다.</li>
+        </ul>
+      </div>
+
+      <h2>1. 처리하는 정보와 목적</h2>
+      <div class="table-wrap"><table class="ptable">
+        <thead><tr><th scope="col">구분</th><th scope="col">항목</th><th scope="col">목적</th><th scope="col">저장 위치</th></tr></thead>
+        <tbody>
+          <tr><td data-label="구분">앱 설정</td><td data-label="항목">단위, 목표, 주 시작 요일, 언어, 테마, 장비·정비(마일리지) 정보, 숨긴 운동, 위젯 설정</td><td data-label="목적">앱 기능 제공</td><td data-label="저장 위치">기기</td></tr>
+          <tr><td data-label="구분">스트라바 연동</td><td data-label="항목">스트라바 인증 토큰, 운동 기록(종류, 날짜, 거리, 시간, 경로, 고도, 심박·케이던스·파워 등), 장비 정보</td><td data-label="목적">운동 기록 표시·분석, 장비 누적거리 계산</td><td data-label="저장 위치">인증 토큰은 기기의 보안 저장소, 운동 기록은 화면 표시용으로만 사용</td></tr>
+          <tr><td data-label="구분">애플 건강 (iOS)</td><td data-label="항목">운동, 경로, 심박 등 이용자가 허용한 항목</td><td data-label="목적">운동 기록 표시·분석</td><td data-label="저장 위치">기기</td></tr>
+          <tr><td data-label="구분">삼성 헬스 (Android)</td><td data-label="항목">운동(종류, 시간, 거리, 속도, 고도, 심박·케이던스·파워 기록), 운동 경로, 심박수</td><td data-label="목적">운동 기록 표시·분석, 이용자가 선택한 경우 WOLF로 기록한 운동 저장</td><td data-label="저장 위치">기기 (빠른 표시를 위한 동기화 사본 포함)</td></tr>
+          <tr><td data-label="구분">위치</td><td data-label="항목">GPS 위치(위도·경도·고도·시각)</td><td data-label="목적">RUN(경로 기록) 기능의 지도 표시와 운동 경로 기록</td><td data-label="저장 위치">기기</td></tr>
+          <tr><td data-label="구분">사진</td><td data-label="항목">이용자가 직접 고른 사진</td><td data-label="목적">Log 탭에서 사진 위에 운동 정보를 얹어 저장·공유</td><td data-label="저장 위치">기기 (회사로 전송하지 않음)</td></tr>
+          <tr><td data-label="구분">자출사 연동 (선택)</td><td data-label="항목">자출사 아이디·비밀번호, 기본 교통비, 몸무게, 출발·도착 지역(동 이름), 등록할 라이딩 정보(날짜, 구분, 거리, 시간)</td><td data-label="목적">이용자가 요청할 때 자출사 자계부에 라이딩 등록, 출퇴근 일지 조회</td><td data-label="저장 위치">기기 (비밀번호는 보안 저장소)</td></tr>
+        </tbody>
+      </table></div>
+      <p>앱은 회원가입을 받지 않으며 이름, 전화번호, 이메일 같은 정보를 수집하지 않습니다.</p>
+
+      <h2>2. 건강·운동 데이터 (애플 건강, 삼성 헬스)</h2>
       <ul>
-        <li class="lang-ko">Strava 인증 토큰(기기 내에 안전하게만 저장)</li>
-        <li class="lang-en" hidden>Strava authentication tokens (stored securely on device only)</li>
-        <li class="lang-ko">앱 설정(단위, 목표, 장비·정비 정보, 숨긴 운동 등 환경설정)</li>
-        <li class="lang-en" hidden>App settings (units, goals, gear and maintenance data, hidden activities and other preferences)</li>
-        <li class="lang-ko">네비게이션 기록 중인 경로(좌표·시각·속도·고도): 앱이 비정상 종료되었을 때 기록을 이어서 하기 위한 임시 저장이며, 기록을 마치거나 버리면 삭제됩니다.</li>
-        <li class="lang-en" hidden>Route data while recording in Navigation (coordinates, time, speed, altitude): kept temporarily so a recording can be resumed after an unexpected app termination, and deleted when you finish or discard the recording.</li>
-        <li class="lang-ko">Health 데이터(HealthKit/Health Connect): WOLF는 iOS의 HealthKit 및 Android의 Health Connect를 통해 운동 기록(활동 유형, 거리, 시간, 칼로리, 심박수, 걸음 수, 운동 경로 등)을 <strong>읽기만</strong> 합니다. 이 데이터는 <strong>기기 내에서만 처리</strong>되며 당사 서버로 전송되지 않습니다.</li>
-        <li class="lang-en" hidden>Health Data (HealthKit/Health Connect): WOLF only <strong>reads</strong> your workout data (activity type, distance, duration, calories, heart rate, steps, workout routes, etc.) through iOS HealthKit and Android Health Connect. This data is <strong>processed on-device only</strong> and is never transmitted to our servers.</li>
+        <li>건강 데이터는 이용자가 각 건강 앱의 권한 화면에서 허용한 항목만 읽습니다.</li>
+        <li>읽은 데이터는 기기 안에서 운동 기록 표시, 통계, 장비 누적거리, 위젯 계산에만 사용합니다.</li>
+        <li>건강 데이터는 회사 서버나 스트라바로 보내지 않습니다. 광고, 마케팅, 데이터 판매, 이용자 프로파일링에 사용하지 않습니다.</li>
+        <li>삼성 헬스: 이용자가 "RUN 기록 저장 위치"를 삼성 헬스로 정한 경우에만, WOLF로 기록한 운동(종류, 시간, 거리, 경로, 고도)을 삼성 헬스에 저장합니다. 저장에 실패한 기록은 기기에 보관했다가 다음 실행 때 다시 저장합니다.</li>
+        <li>삼성 헬스 기록을 빠르게 보여주기 위해 운동 목록의 사본(요약 수치와 지도용 경로)을 앱 전용 저장 공간에 보관합니다. 삼성 헬스 연결을 해제하면 이 사본은 삭제됩니다.</li>
+        <li>건강 앱 기록의 제목·내용을 WOLF에서 수정하면, 원본은 바뀌지 않고 기기 안에만 저장됩니다.</li>
       </ul>
 
-      <h2><span class="lang-ko">2. 위치정보의 처리</span><span class="lang-en" hidden>2. Location Information</span></h2>
-      <p class="lang-ko">WOLF는 지도(네비게이션) 기능을 사용하는 동안에만 기기의 GPS로 현재 위치를 확인합니다. 기록 중에는 화면이 꺼져 있어도 경로가 끊기지 않도록 백그라운드에서도 위치를 사용합니다.</p>
-      <p class="lang-en" hidden>WOLF uses your device's GPS only while you are using the Map (Navigation) feature. While recording, location is also used in the background so your route is not interrupted when the screen is off.</p>
+      <h2>3. 위치 정보</h2>
       <ul>
-        <li class="lang-ko">이용 목적: 지도 위 현재 위치와 불러온 GPX 코스 표시, 이동 거리·속도·시간·획득 고도 계산, 일시정지 처리, 잠금화면·다이내믹 아일랜드의 거리·시간 표시</li>
-        <li class="lang-en" hidden>Purpose: showing your current location and imported GPX course on the map; calculating distance, speed, time and elevation gain; handling pauses; showing distance and time on the Lock Screen and Dynamic Island</li>
-        <li class="lang-ko">위치정보는 <strong>기기 안에서만 처리</strong>되며, 당사 서버로 전송하거나 저장하지 않습니다.</li>
-        <li class="lang-en" hidden>Location data is <strong>processed on your device only</strong> and is never sent to or stored on our servers.</li>
-        <li class="lang-ko">이용자가 직접 선택한 경우에만 기록이 외부로 전달됩니다: GPX 파일로 저장·공유하거나, Strava에 업로드하는 경우(3항 참고).</li>
-        <li class="lang-en" hidden>Your route leaves your device only when you choose to: saving or sharing it as a GPX file, or uploading it to Strava (see Section 3).</li>
-        <li class="lang-ko">위치 권한은 기기 설정에서 언제든 변경하거나 철회할 수 있습니다. 위치 권한이 없으면 지도(네비게이션) 기능만 사용할 수 없고, 다른 기능은 그대로 이용할 수 있습니다.</li>
-        <li class="lang-en" hidden>You can change or revoke location permission at any time in your device settings. Without it, only the Map (Navigation) feature is unavailable; all other features keep working.</li>
+        <li>위치는 RUN(경로 기록) 기능을 쓸 때 지도에 현재 위치를 표시하고 운동 경로를 기록하는 데만 사용합니다.</li>
+        <li>기록 중에는 화면이 꺼지거나 다른 앱으로 전환해도 기록이 이어지도록 백그라운드 위치를 사용하며, 이때 알림이 표시됩니다.</li>
+        <li>기록 중인 경로는 앱이 갑자기 종료될 때를 대비해 기기에 임시 저장되고, 정상 종료하면 지워집니다.</li>
+        <li>기록한 경로는 이용자가 선택한 경우에만 스트라바 또는 삼성 헬스에 저장되거나, GPX 파일로 공유됩니다. 회사 서버로는 보내지 않습니다.</li>
+        <li>자출사 연동에는 GPS 위치를 보내지 않고, 이용자가 직접 입력한 동 이름만 보냅니다.</li>
       </ul>
 
-      <h2><span class="lang-ko">3. 외부 서비스 연동</span><span class="lang-en" hidden>3. Third-Party Services</span></h2>
+      <h2>4. 외부 서비스로 보내는 정보</h2>
+      <p>앱은 아래 경우에 한해 각 서비스로 정보를 보냅니다. 각 서비스의 정보 처리는 해당 서비스의 개인정보처리방침을 따릅니다.</p>
+      <div class="table-wrap"><table class="ptable">
+        <thead><tr><th scope="col">받는 곳</th><th scope="col">보내는 정보</th><th scope="col">언제</th></tr></thead>
+        <tbody>
+          <tr><td data-label="받는 곳"><a href="https://www.strava.com/legal/privacy" target="_blank" rel="noopener">Strava</a></td><td data-label="보내는 정보">인증 정보, 운동 기록 조회 요청, (선택 시) RUN 기록 GPX, 수정한 제목·내용</td><td data-label="언제">스트라바를 연결하고 이용할 때</td></tr>
+          <tr><td data-label="받는 곳"><a href="https://www.samsung.com/sec/info/privacy/" target="_blank" rel="noopener">삼성 헬스</a> (기기 안의 삼성 헬스 앱)</td><td data-label="보내는 정보">(선택 시) RUN 기록(종류, 시간, 거리, 경로, 고도)</td><td data-label="언제">RUN 기록 저장 위치를 삼성 헬스로 정했을 때</td></tr>
+          <tr><td data-label="받는 곳">자출사 (bikejcs.com)</td><td data-label="보내는 정보">자출사 아이디·비밀번호, 등록할 라이딩 정보(날짜, 구분, 거리, 시간, 교통비, 몸무게, 출발·경유·도착 동 이름)</td><td data-label="언제">이용자가 "자계부 등록"을 누를 때, 출퇴근 일지를 열 때</td></tr>
+          <tr><td data-label="받는 곳">카카오 지도 / OpenStreetMap</td><td data-label="보내는 정보">지도 화면에 필요한 지도 영역 정보 (지도 업체가 접속 기록을 남길 수 있음)</td><td data-label="언제">지도를 볼 때 (국내는 카카오 지도, 해외는 OpenStreetMap)</td></tr>
+          <tr><td data-label="받는 곳">공지 서버 (Cloudflare)</td><td data-label="보내는 정보">운영체제 종류, 앱 버전, 언어 (이름·계정 등 개인을 식별하는 정보는 보내지 않으며, 통신 과정에서 접속 IP가 Cloudflare에 전달될 수 있음)</td><td data-label="언제">앱 시작 시 공지 확인</td></tr>
+          <tr><td data-label="받는 곳">Google Play</td><td data-label="보내는 정보">앱 업데이트 확인 요청</td><td data-label="언제">앱 시작 시 (Android)</td></tr>
+        </tbody>
+      </table></div>
+      <div class="notice"><strong>자출사 이용 시 유의사항</strong> 자출사(bikejcs.com)는 보안 연결(HTTPS)을 지원하지 않아, 아이디·비밀번호가 암호화되지 않은 상태로 전송될 수 있습니다. 앱은 이를 연동 화면에서 안내하며, 다른 서비스와 다른 비밀번호를 쓰도록 권장합니다.</div>
+
+      <h2>5. 제3자 제공과 처리 위탁</h2>
+      <p>회사는 이용자의 개인정보를 제3자에게 판매하거나 제공하지 않습니다. 위 4항의 전송은 이용자가 직접 연결·요청한 서비스 이용을 위한 것입니다. 회사는 개인정보 처리 업무를 외부에 위탁하지 않습니다.</p>
+
+      <h2>6. 보관 기간과 삭제</h2>
       <ul>
-        <li class="lang-ko"><strong>Strava</strong>: 이용자가 Strava 계정을 연동(OAuth)하면, 앱이 Strava API로 <strong>이용자 본인의</strong> 운동 기록(경로 포함)과 장비 정보를 불러와 기기에서만 표시합니다. 네비게이션 기록을 마친 뒤 이용자가 업로드를 선택한 경우에만, 기기에서 Strava 서버로 직접 운동 기록 파일(GPX: 경로 좌표, 시각, 고도)과 이용자가 입력한 제목·설명을 전송합니다. 이 과정에서 당사 서버를 거치지 않습니다. 연동은 설정에서 언제든 해제할 수 있으며, 해제 시 기기에 저장된 인증 토큰이 삭제됩니다. 업로드된 기록은 <a href="https://www.strava.com/legal/privacy" target="_blank" rel="noopener">Strava의 개인정보처리방침</a>을 따릅니다.</li>
-        <li class="lang-en" hidden><strong>Strava</strong>: When you connect your Strava account (OAuth), the app uses the Strava API to load <strong>your own</strong> activities (including routes) and gear, and displays them on your device only. Only if you choose to upload after finishing a Navigation recording, the activity file (GPX: route coordinates, time, altitude) and the title and description you entered are sent directly from your device to Strava, without passing through our servers. You can disconnect at any time in Settings, which deletes the tokens stored on your device. Uploaded activities are governed by <a href="https://www.strava.com/legal/privacy" target="_blank" rel="noopener">Strava's Privacy Policy</a>.</li>
-        <li class="lang-ko"><strong>Strava 로그인 중계 페이지</strong>: Strava 로그인 후 인증 결과를 앱으로 넘겨주기 위해 정적 웹페이지(GitHub Pages)를 사용합니다. 이 페이지는 인증 코드만 앱으로 전달하며, 어떤 정보도 저장하지 않습니다.</li>
-        <li class="lang-en" hidden><strong>Strava sign-in redirect page</strong>: A static web page (GitHub Pages) is used to hand the Strava sign-in result back to the app. It only passes the authorization code to the app and stores nothing.</li>
-        <li class="lang-ko"><strong>Apple 건강 / Health Connect</strong>: Apple과 Google의 플랫폼 서비스이며, 이용자가 허용한 운동 기록을 읽기만 합니다. 접근 권한은 기기 설정에서 언제든 철회할 수 있습니다.</li>
-        <li class="lang-en" hidden><strong>Apple Health / Health Connect</strong>: Platform services from Apple and Google. WOLF only reads the workout data you allow, and you can revoke access at any time in your device settings.</li>
-        <li class="lang-ko"><strong>지도 서비스</strong>: 지도 화면 표시를 위해 카카오맵 SDK와 Apple 지도(MapKit, iOS)를 사용합니다. 지도를 그리는 과정에서 해당 지도 서비스와 통신하며, 이는 각 회사의 정책(<a href="https://www.kakao.com/policy/privacy" target="_blank" rel="noopener">카카오</a>, <a href="https://www.apple.com/kr/legal/privacy/" target="_blank" rel="noopener">Apple</a>)을 따릅니다. WOLF는 위치 좌표를 이용한 장소 검색·주소 변환·길찾기 API를 호출하지 않습니다.</li>
-        <li class="lang-en" hidden><strong>Map services</strong>: The Kakao Maps SDK and Apple Maps (MapKit, iOS) are used to display maps. Drawing the map involves communication with these services, governed by their policies (<a href="https://www.kakao.com/policy/privacy" target="_blank" rel="noopener">Kakao</a>, <a href="https://www.apple.com/legal/privacy/" target="_blank" rel="noopener">Apple</a>). WOLF does not call any place search, geocoding or routing APIs with your location.</li>
+        <li>앱이 처리하는 정보는 모두 이용자 기기에 저장되며, 회사는 별도로 보관하지 않습니다.</li>
+        <li>서비스 연결 해제: 설정 &gt; 외부 서비스 연결에서 해제하면 해당 인증 정보가 기기에서 삭제됩니다. 삼성 헬스는 동기화 사본도 함께 삭제됩니다.</li>
+        <li>건강 앱 권한을 완전히 끄려면 애플 건강 또는 삼성 헬스 앱의 설정(데이터 권한)에서 해제할 수 있습니다.</li>
+        <li>자출사 연동 정보는 자출사 연동 화면에서 삭제할 수 있습니다.</li>
+        <li>앱을 삭제하면 기기에 저장된 모든 정보가 함께 삭제됩니다.</li>
+        <li>스트라바·삼성 헬스·자출사에 이미 저장된 기록은 각 서비스에서 삭제해야 합니다.</li>
       </ul>
 
-      <h2><span class="lang-ko">4. 자동으로 전송되는 정보</span><span class="lang-en" hidden>4. Information Sent Automatically</span></h2>
+      <h2>7. 이용자의 권리</h2>
+      <p>이용자는 언제든지 서비스 연결을 해제하거나, 기기 설정에서 위치·알림 권한을 끄거나, 앱을 삭제하여 정보 처리를 중단할 수 있습니다. 회사 서버에는 이용자의 개인정보가 없으므로 열람·정정·삭제 요청은 대부분 앱과 각 서비스에서 직접 할 수 있으며, 문의가 있으면 아래 연락처로 연락해 주세요.</p>
+
+      <h2>8. 안전성 확보 조치</h2>
       <ul>
-        <li class="lang-ko"><strong>공지 팝업 조회</strong>: 앱 공지를 보여주기 위해 당사가 운영하는 서버(Cloudflare Workers)에 <strong>앱 버전과 언어 설정</strong>만 전송합니다. 위치정보, 운동 기록, 계정 정보는 포함되지 않으며, 이용자를 식별하는 정보와 함께 저장하지 않습니다.</li>
-        <li class="lang-en" hidden><strong>Notice pop-ups</strong>: To show app notices, only the <strong>app version and language setting</strong> are sent to our server (Cloudflare Workers). No location, workout or account data is included, and nothing is stored together with information that identifies you.</li>
-        <li class="lang-ko"><strong>업데이트 확인</strong>: 새 버전이 있는지 확인하기 위해 Apple의 공개 앱 조회 API에 앱 식별자와 국가 코드를 전송합니다(iOS).</li>
-        <li class="lang-en" hidden><strong>Update check</strong>: To check for a newer version, the app identifier and country code are sent to Apple's public app lookup API (iOS).</li>
-        <li class="lang-ko">위 요청 과정에서 인터넷 통신 특성상 각 서비스 제공자(Cloudflare, Apple)가 IP 주소 등 접속 정보를 처리할 수 있습니다.</li>
-        <li class="lang-en" hidden>As with any internet request, the service providers (Cloudflare, Apple) may process connection data such as your IP address.</li>
-        <li class="lang-ko">WOLF는 광고 SDK나 분석(트래킹) SDK를 사용하지 않습니다.</li>
-        <li class="lang-en" hidden>WOLF does not use any advertising or analytics (tracking) SDKs.</li>
+        <li>스트라바 인증 토큰과 자출사 비밀번호는 기기의 보안 저장소(Android Keystore / iOS 키체인)를 이용해 암호화해 저장합니다.</li>
+        <li>앱이 저장하는 정보는 앱 전용 저장 공간에 있어 다른 앱이 읽을 수 없습니다.</li>
+        <li>스트라바·카카오·공지 서버와의 통신은 보안 연결(HTTPS)을 사용합니다.</li>
       </ul>
 
-      <h2><span class="lang-ko">5. 데이터 공유</span><span class="lang-en" hidden>5. Data Sharing</span></h2>
-      <p class="lang-ko">당사는 이용자의 개인정보를 제3자에게 판매, 거래, 공유하지 않습니다. 위 3항의 Strava 업로드처럼 이용자가 직접 선택한 경우에만 해당 서비스로 정보가 전달됩니다.</p>
-      <p class="lang-en" hidden>We do not sell, trade, or share your personal information with any third parties. Information is sent to another service only when you choose to, such as a Strava upload described in Section 3.</p>
+      <h2>9. 아동의 개인정보</h2>
+      <p>앱은 만 14세 미만 아동을 대상으로 하지 않으며, 아동의 개인정보를 알면서 수집하지 않습니다.</p>
 
-      <h2><span class="lang-ko">6. 보관 및 파기</span><span class="lang-en" hidden>6. Retention and Deletion</span></h2>
-      <p class="lang-ko">기기에 저장된 정보는 앱을 삭제하면 함께 삭제됩니다. Strava 연동을 해제하면 인증 토큰이 즉시 삭제되며, 이미 Strava에 업로드된 기록은 Strava 앱이나 웹사이트에서 직접 삭제할 수 있습니다.</p>
-      <p class="lang-en" hidden>Data stored on your device is deleted when you delete the app. Disconnecting Strava immediately deletes the authentication tokens; activities already uploaded to Strava can be deleted in the Strava app or website.</p>
+      <h2>10. 개인정보 보호책임자 및 문의</h2>
+      <div class="contact">
+        <div><span class="contact-label">개인정보 보호책임자</span>윤영민(대표)</div>
+        <div><span class="contact-label">운영자</span>October Sky</div>
+        <div><span class="contact-label">이메일</span><a href="mailto:octobersky0515@naver.com">octobersky0515@naver.com</a></div>
+      </div>
 
-      <h2><span class="lang-ko">7. 개인정보 보호책임자 및 문의</span><span class="lang-en" hidden>7. Privacy Officer and Contact</span></h2>
-      <p class="lang-ko">개인정보 보호책임자: 윤영민(대표)<br>본 개인정보처리방침에 대해 문의사항이 있으시면 아래 이메일로 연락해 주세요: <a href="mailto:octobersky0515@naver.com">octobersky0515@naver.com</a></p>
-      <p class="lang-en" hidden>Privacy Officer: Youngmin Yun (Representative)<br>If you have any questions about this Privacy Policy, please contact us at: <a href="mailto:octobersky0515@naver.com">octobersky0515@naver.com</a></p>
+      <h2>11. 방침의 변경</h2>
+      <p>이 방침이 바뀌면 이 페이지에 시행일과 함께 게시합니다. 중요한 변경은 앱 공지로도 알립니다.</p>
+      <p class="prev">이전 버전: 2026년 7월 7일</p>
+    </div>
 
-      <h2><span class="lang-ko">8. 방침의 변경</span><span class="lang-en" hidden>8. Changes to This Policy</span></h2>
-      <p class="lang-ko">본 방침이 변경되는 경우 이 페이지를 통해 변경 내용과 시행일을 안내합니다.</p>
-      <p class="lang-en" hidden>If this policy changes, we will post the changes and their effective date on this page.</p>
+    <div class="lang-en" lang="en" hidden>
+      <p class="intro">October Sky ("we") respects the privacy of everyone who uses the WOLF app (the "App"). This policy explains what information the App handles, where it comes from, and why.</p>
+
+      <div class="summary">
+        <div class="summary-title">Summary</div>
+        <ul>
+          <li>There is no account sign-up, and we do not store your workout, health, or location data on our servers.</li>
+          <li>Workouts are read directly from the services you connect (Strava, Apple Health, Samsung Health) and processed only on your device.</li>
+          <li>Workouts are sent to Strava, Samsung Health, or 자출사 (bikejcs.com) only when you ask.</li>
+          <li>Health data is never used for advertising, sold, or shared with third parties.</li>
+        </ul>
+      </div>
+
+      <h2>1. Information the App Handles</h2>
+      <div class="table-wrap"><table class="ptable">
+        <thead><tr><th scope="col">Category</th><th scope="col">Data</th><th scope="col">Purpose</th><th scope="col">Stored</th></tr></thead>
+        <tbody>
+          <tr><td data-label="Category">App settings</td><td data-label="Data">Units, goals, week start, language, theme, gear and maintenance (mileage) items, hidden workouts, widget settings</td><td data-label="Purpose">Providing app features</td><td data-label="Stored">On device</td></tr>
+          <tr><td data-label="Category">Strava</td><td data-label="Data">Strava access token; workouts (type, date, distance, time, route, elevation, heart rate, cadence, power); gear</td><td data-label="Purpose">Showing and analyzing workouts, gear distance</td><td data-label="Stored">Token in the device's secure storage; workouts used for display only</td></tr>
+          <tr><td data-label="Category">Apple Health (iOS)</td><td data-label="Data">Workouts, routes, heart rate and other types you allow</td><td data-label="Purpose">Showing and analyzing workouts</td><td data-label="Stored">On device</td></tr>
+          <tr><td data-label="Category">Samsung Health (Android)</td><td data-label="Data">Exercise (type, time, distance, speed, elevation, heart rate/cadence/power logs), exercise routes, heart rate</td><td data-label="Purpose">Showing and analyzing workouts; saving workouts recorded in WOLF if you choose</td><td data-label="Stored">On device (including a synced copy for fast loading)</td></tr>
+          <tr><td data-label="Category">Location</td><td data-label="Data">GPS location (latitude, longitude, altitude, time)</td><td data-label="Purpose">Map display and route recording in RUN</td><td data-label="Stored">On device</td></tr>
+          <tr><td data-label="Category">Photos</td><td data-label="Data">Photos you pick</td><td data-label="Purpose">Adding workout overlays in the Log tab, then saving or sharing</td><td data-label="Stored">On device (never sent to us)</td></tr>
+          <tr><td data-label="Category">자출사 (optional)</td><td data-label="Data">자출사 ID and password, default fare, weight, start/end areas (neighborhood names), ride details to register (date, type, distance, time)</td><td data-label="Purpose">Registering rides and viewing your commute log on 자출사 when you ask</td><td data-label="Stored">On device (password in secure storage)</td></tr>
+        </tbody>
+      </table></div>
+      <p>The App does not collect your name, phone number, or email address.</p>
+
+      <h2>2. Health and Workout Data (Apple Health, Samsung Health)</h2>
+      <ul>
+        <li>The App reads only the data types you allow in each health app's permission screen.</li>
+        <li>This data is used on your device only, for workout lists, statistics, gear distance, and widgets.</li>
+        <li>Health data is never sent to our servers or to Strava, and is never used for advertising, marketing, data sales, or profiling.</li>
+        <li>Samsung Health: only if you set "Save RUN recordings to" Samsung Health, workouts recorded in WOLF (type, time, distance, route, elevation) are saved to Samsung Health. If saving fails, the workout is kept on your device and saved the next time you open the App.</li>
+        <li>To load Samsung Health workouts quickly, the App keeps a copy of your workout list (summary values and a simplified route for maps) in its private storage. This copy is deleted when you disconnect Samsung Health.</li>
+        <li>If you edit the title or description of a health-app workout in WOLF, the original stays unchanged and your edit is stored on your device only.</li>
+      </ul>
+
+      <h2>3. Location</h2>
+      <ul>
+        <li>Location is used only in RUN, to show your position on the map and record your route.</li>
+        <li>While recording, the App uses background location so recording continues with the screen off or in another app; a notification is shown during this time.</li>
+        <li>The route being recorded is saved temporarily on your device in case the App closes unexpectedly, and deleted when you finish.</li>
+        <li>Recorded routes are saved to Strava or Samsung Health, or shared as a GPX file, only when you choose. They are never sent to our servers.</li>
+        <li>No GPS location is sent to 자출사; only the neighborhood names you enter.</li>
+      </ul>
+
+      <h2>4. Information Sent to Other Services</h2>
+      <p>The App sends information only in the cases below. Each service handles it under its own privacy policy.</p>
+      <div class="table-wrap"><table class="ptable">
+        <thead><tr><th scope="col">Recipient</th><th scope="col">Information</th><th scope="col">When</th></tr></thead>
+        <tbody>
+          <tr><td data-label="Recipient"><a href="https://www.strava.com/legal/privacy" target="_blank" rel="noopener">Strava</a></td><td data-label="Information">Authentication, workout requests, RUN recordings as GPX (if chosen), edited titles and descriptions</td><td data-label="When">When you connect and use Strava</td></tr>
+          <tr><td data-label="Recipient"><a href="https://www.samsung.com/us/account/privacy-policy/" target="_blank" rel="noopener">Samsung Health</a> (the Samsung Health app on your device)</td><td data-label="Information">RUN recordings (type, time, distance, route, elevation), if chosen</td><td data-label="When">When "Save RUN recordings to" is Samsung Health</td></tr>
+          <tr><td data-label="Recipient">자출사 (bikejcs.com)</td><td data-label="Information">자출사 ID and password; ride details (date, type, distance, time, fare, weight, start/via/end neighborhood names)</td><td data-label="When">When you tap "Register to Log" or open the commute log</td></tr>
+          <tr><td data-label="Recipient">Kakao Map / OpenStreetMap</td><td data-label="Information">The map area needed to draw the map (map providers may keep access logs)</td><td data-label="When">When a map is shown (Kakao in Korea, OpenStreetMap elsewhere)</td></tr>
+          <tr><td data-label="Recipient">Notice server (Cloudflare)</td><td data-label="Information">Platform, app version, language (no name or account; your IP address may reach Cloudflare as part of the connection)</td><td data-label="When">When the App starts, to check for notices</td></tr>
+          <tr><td data-label="Recipient">Google Play</td><td data-label="Information">App update check</td><td data-label="When">When the App starts (Android)</td></tr>
+        </tbody>
+      </table></div>
+      <div class="notice"><strong>Note on 자출사</strong> 자출사 (bikejcs.com) does not support secure connections (HTTPS), so your ID and password may be sent unencrypted. The App explains this on the connection screen and recommends using a password you don't use elsewhere.</div>
+
+      <h2>5. Sharing and Processing by Others</h2>
+      <p>We do not sell or share your personal information with third parties. The transfers in section 4 happen only to provide services you connect or request. We do not outsource the processing of personal information.</p>
+
+      <h2>6. Retention and Deletion</h2>
+      <ul>
+        <li>All information the App handles is stored on your device; we keep no separate copy.</li>
+        <li>Disconnecting a service in Settings &gt; Connections deletes its credentials from your device. For Samsung Health, the synced copy is also deleted.</li>
+        <li>To fully revoke health access, turn it off in Apple Health or Samsung Health settings (data permissions).</li>
+        <li>자출사 connection details can be deleted on the 자출사 settings screen.</li>
+        <li>Deleting the App removes all information stored by it on your device.</li>
+        <li>Workouts already saved to Strava, Samsung Health, or 자출사 must be deleted in those services.</li>
+      </ul>
+
+      <h2>7. Your Rights</h2>
+      <p>You can stop processing at any time by disconnecting a service, turning off location or notification permissions in your device settings, or deleting the App. Because we hold no personal information on our servers, most access, correction, and deletion can be done directly in the App and the connected services. For any questions, contact us below.</p>
+
+      <h2>8. Security</h2>
+      <ul>
+        <li>The Strava access token and 자출사 password are encrypted using the device's secure storage (Android Keystore / iOS Keychain).</li>
+        <li>Data stored by the App is kept in app-private storage that other apps cannot read.</li>
+        <li>Connections to Strava, Kakao, and our notice server use HTTPS.</li>
+      </ul>
+
+      <h2>9. Children</h2>
+      <p>The App is not directed to children under 14 and does not knowingly collect their personal information.</p>
+
+      <h2>10. Privacy Officer and Contact</h2>
+      <div class="contact">
+        <div><span class="contact-label">Privacy Officer</span>Youngmin Yun (Representative)</div>
+        <div><span class="contact-label">Operator</span>October Sky</div>
+        <div><span class="contact-label">Email</span><a href="mailto:octobersky0515@naver.com">octobersky0515@naver.com</a></div>
+      </div>
+
+      <h2>11. Changes</h2>
+      <p>If this policy changes, the updated version will be posted on this page with its effective date. Important changes will also be announced in the App.</p>
+      <p class="prev">Previous version: July 7, 2026</p>
+    </div>
     </div>
   </section>
 </main>
@@ -321,12 +517,15 @@
     });
     document.documentElement.lang = lang;
   }
-  var saved = localStorage.getItem(KEY) || 'ko';
+  var hash = (location.hash || '').replace('#', '');
+  var saved = 'ko';
+  try { saved = localStorage.getItem(KEY) || 'ko'; } catch (e) {}
+  if (hash === 'en' || hash === 'ko') saved = hash;
   apply(saved);
   document.querySelectorAll('[data-lang-btn]').forEach(function(b){
     b.addEventListener('click', function(){
       var lang = b.getAttribute('data-lang-btn');
-      localStorage.setItem(KEY, lang);
+      try { localStorage.setItem(KEY, lang); } catch (e) {}
       apply(lang);
     });
   });
