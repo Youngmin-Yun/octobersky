@@ -1,0 +1,454 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Shooting Kitty · October Sky</title>
+<meta name="description" content="생선 구슬을 터뜨리면 고양이가 달려와 물어 가는 버블 슈터, Shooting Kitty. A cat-themed bubble shooter by October Sky for iPhone, iPad and Android.">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  /* 국문: 로고 서체 Sora와 같은 기하학적 형태의 G마켓 산스 */
+  @font-face{ font-family:'GmarketSans'; font-weight:300; font-style:normal; font-display:swap;
+    src:url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/GmarketSansLight.woff') format('woff'); }
+  @font-face{ font-family:'GmarketSans'; font-weight:500; font-style:normal; font-display:swap;
+    src:url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/GmarketSansMedium.woff') format('woff'); }
+  @font-face{ font-family:'GmarketSans'; font-weight:700; font-style:normal; font-display:swap;
+    src:url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/GmarketSansBold.woff') format('woff'); }
+  :root{
+    --bg: #0E1424;
+    --bg-panel: #151C34;
+    --line: rgba(237,239,246,0.09);
+    --text: #EDEFF6;
+    --text-dim: #9AA3C0;
+    --text-dimmer: #6B7396;
+    --gold: #DCA75A;
+    --sk: #5FC8D8;
+    --sk-soft: rgba(95,200,216,0.14);
+    --serif: 'Sora', 'GmarketSans', sans-serif;
+    --sans: 'Sora', 'GmarketSans', sans-serif;
+    --brand: 'Sora', 'GmarketSans', sans-serif;
+    --mono: 'Sora', 'GmarketSans', sans-serif;
+  }
+
+  *{ box-sizing:border-box; margin:0; padding:0; }
+  html{ scroll-behavior:smooth; }
+
+  body{
+    background:var(--bg);
+    color:var(--text);
+    font-family:var(--sans);
+    line-height:1.65;
+    -webkit-font-smoothing:antialiased;
+    overflow-x:hidden;
+  }
+
+  a{ color:inherit; }
+  :focus-visible{ outline:2px solid var(--sk); outline-offset:3px; }
+
+  .wrap{ max-width:920px; margin:0 auto; padding:0 28px; }
+
+  .starfield{
+    position:fixed; inset:0; z-index:-1; pointer-events:none;
+    background:
+      radial-gradient(ellipse 80% 50% at 50% -10%, rgba(95,200,216,0.12), transparent 60%),
+      var(--bg);
+  }
+  .star{
+    position:absolute; width:2px; height:2px; border-radius:50%;
+    background:var(--text); opacity:0.5;
+    animation: twinkle 4s ease-in-out infinite;
+  }
+  @keyframes twinkle{
+    0%,100%{ opacity:0.15; }
+    50%{ opacity:0.85; }
+  }
+
+  header.nav{
+    position:sticky; top:0; z-index:20;
+    backdrop-filter: blur(10px);
+    background:rgba(14,20,36,0.72);
+    border-bottom:1px solid var(--line);
+  }
+  .nav-inner{
+    display:flex; align-items:center; justify-content:space-between;
+    height:64px; padding:0 28px; gap:16px;
+  }
+  .brand{ display:flex; align-items:center; gap:10px; font-family:var(--brand); font-weight:600; font-size:18px; letter-spacing:-0.01em; text-decoration:none; color:inherit; flex-shrink:0; white-space:nowrap; }
+  .brand-mark{ width:32px; height:32px; flex-shrink:0; display:block; }
+  .nav-right{ display:flex; align-items:center; gap:16px; }
+  nav.links{ display:flex; gap:22px; font-family:var(--mono); font-size:13px; color:var(--text-dim); }
+  nav.links a{ text-decoration:none; transition:color 0.2s; }
+  nav.links a:hover{ color:var(--sk); }
+
+  .lang-toggle{
+    display:flex; gap:3px; background:var(--bg-panel); border:1px solid var(--line);
+    border-radius:999px; padding:3px; flex-shrink:0;
+  }
+  .lang-toggle button{
+    font-family:var(--mono); font-size:11.5px; padding:6px 12px; border-radius:999px;
+    border:none; background:transparent; color:var(--text-dimmer); cursor:pointer;
+    transition:background 0.2s, color 0.2s;
+  }
+  .lang-toggle button.active{ background:var(--sk); color:#1B1408; }
+
+  .hero{
+    padding:96px 0 70px;
+    text-align:center;
+    border-bottom:1px solid var(--line);
+  }
+  .eyebrow{
+    font-family:var(--mono); font-size:13px; letter-spacing:0.14em;
+    color:var(--sk); text-transform:uppercase; margin-bottom:22px;
+  }
+  h1.title{
+    font-family:var(--serif); font-weight:600;
+    font-size:clamp(44px, 9vw, 84px);
+    letter-spacing:-0.01em;
+    line-height:1;
+  }
+  .tagline-en{
+    margin-top:18px; font-family:var(--mono); font-size:13px; letter-spacing:0.16em;
+    color:var(--text-dimmer); text-transform:uppercase;
+  }
+  .lede{
+    max-width:560px; margin:30px auto 0;
+    font-size:17.5px; color:var(--text-dim);
+  }
+  .hero-cta{ margin-top:40px; display:flex; gap:14px; justify-content:center; flex-wrap:wrap; }
+  .store-btn{
+    display:flex; align-items:center; gap:10px;
+    padding:12px 22px; border-radius:12px;
+    border:1px solid var(--line); background:var(--bg-panel);
+    text-decoration:none; transition:border-color 0.2s, transform 0.2s;
+  }
+  .store-btn:hover{ border-color:var(--sk); transform:translateY(-2px); }
+  .store-btn .store-kind{ font-family:var(--mono); font-size:10.5px; color:var(--text-dimmer); display:block; }
+  .store-btn .store-name{ font-family:var(--sans); font-size:14.5px; font-weight:600; }
+  .store-btn.disabled{ opacity:0.45; pointer-events:none; }
+
+  section{ padding:80px 0; border-bottom:1px solid var(--line); }
+  .section-eyebrow{
+    font-family:var(--mono); font-size:12px; letter-spacing:0.14em;
+    color:var(--text-dimmer); text-transform:uppercase; margin-bottom:14px; text-align:center;
+  }
+  h2.section-title{
+    font-family:var(--serif); font-weight:500; font-size:clamp(26px,4vw,34px);
+    text-align:center; margin-bottom:52px;
+  }
+
+  .features-grid{
+    display:grid; grid-template-columns:repeat(3,1fr); gap:22px;
+  }
+  .feature{
+    background:var(--bg-panel); border:1px solid var(--line); border-radius:16px;
+    padding:28px 24px;
+    transition:border-color 0.25s, transform 0.25s;
+  }
+  .feature:hover{ border-color:var(--sk); transform:translateY(-4px); }
+  .feature-icon{
+    width:38px; height:38px; border-radius:10px; background:var(--sk-soft);
+    display:flex; align-items:center; justify-content:center;
+    font-family:var(--mono); font-size:16px; color:var(--sk); margin-bottom:16px;
+  }
+  .feature-name{ font-family:var(--serif); font-size:18.5px; font-weight:500; margin-bottom:8px; }
+  .feature-desc{ color:var(--text-dim); font-size:14px; }
+
+  .lang-row{
+    display:flex; justify-content:center; gap:14px; flex-wrap:wrap; margin-top:44px;
+  }
+  .lang-pill{
+    font-family:var(--mono); font-size:12.5px; color:var(--text-dim);
+    border:1px solid var(--line); border-radius:999px; padding:8px 18px;
+  }
+
+  .cta-band{ text-align:center; border-bottom:none; }
+  .cta-band h2.section-title{ margin-bottom:28px; }
+  .cta-note{
+    margin-top:22px; font-family:var(--mono); font-size:12.5px; color:var(--text-dimmer);
+  }
+
+  footer{ padding:60px 0 44px; border-top:1px solid var(--line); }
+  .footer-inner{ display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:20px; }
+  .footer-brand{ font-family:var(--brand); font-weight:600; letter-spacing:-0.01em; font-size:16px; color:var(--text-dim); }
+  .footer-links{ display:flex; flex-wrap:wrap; gap:10px 24px; font-family:var(--mono); font-size:13px; color:var(--text-dimmer); }
+  .footer-links a{ color:inherit; text-decoration:none; white-space:nowrap; transition:color 0.2s; }
+  .footer-links a:hover{ color:var(--sk); }
+  .footer-copy{ margin-top:26px; font-family:var(--mono); font-size:12px; color:var(--text-dimmer); }
+  .biz-info{
+    margin-top:34px; padding-top:24px; border-top:1px solid var(--line);
+    display:flex; flex-wrap:wrap; gap:8px 18px;
+    font-family:var(--sans); font-size:12.5px; color:var(--text-dimmer); line-height:1.7;
+  }
+  .biz-info a{ color:var(--text-dimmer); text-decoration:underline; text-underline-offset:2px; }
+  .biz-info a:hover{ color:var(--sk); }
+  /* 푸터는 홈과 같은 폭으로 */
+  .footer-wrap{ max-width:1080px; }
+
+  @media (max-width: 780px){
+    .features-grid{ grid-template-columns:1fr; }
+    nav.links{ display:none; }
+  }
+  @media (max-width: 600px){
+    .hero{ padding:64px 0 50px; }
+  }
+
+  /* 상단 바: 모든 페이지 공통 · 화면 폭에 따라 단계적으로 축소 */
+  @media (max-width: 780px){
+    .nav-inner{ height:58px; padding:0 20px; gap:12px; }
+    .brand{ font-size:17px; gap:9px; }
+    .brand-mark{ width:30px; height:30px; }
+  }
+  @media (max-width: 480px){
+    .nav-inner{ height:54px; padding:0 16px; gap:10px; }
+    .nav-right{ gap:10px; }
+    .brand{ font-size:16px; gap:8px; }
+    .brand-mark{ width:28px; height:28px; }
+    .back-link{ font-size:12px; }
+    .lang-toggle button{ font-size:11px; padding:5px 10px; }
+  }
+  @media (max-width: 360px){
+    .back-link{ display:none; }
+  }
+
+  @media (prefers-reduced-motion: reduce){
+    *{ animation-duration:0.01ms !important; animation-iteration-count:1 !important; scroll-behavior:auto !important; }
+  }
+</style>
+</head>
+<body>
+
+<div class="starfield" id="starfield"></div>
+
+<header class="nav">
+  <div class="nav-inner">
+    <a class="brand" href="/">
+      <svg class="brand-mark" viewBox="6 -2.5 108 108" aria-hidden="true" focusable="false"><circle cx="60" cy="60" r="44" fill="#2F6FB3"/><path d="M 19.85 78 A 44 44 0 0 0 100.15 78 Z" fill="#1B4C80"/><path d="M 30 84 Q 70 78 88 34" fill="none" stroke="#FFFFFF" stroke-width="7" stroke-linecap="round"/><path d="M 88 34 L 92 24" fill="none" stroke="#E08A2E" stroke-width="7" stroke-linecap="round"/><g transform="translate(92 23) rotate(-67.6)"><polygon points="26,0 0,-12 7,0" fill="#E08A2E"/><polygon points="26,0 7,0 0,12" fill="#E08A2E"/><polygon points="26,0 7,0 0,12" fill="#000" fill-opacity="0.22"/></g></svg>
+      October Sky
+    </a>
+    <div class="nav-right">
+      <nav class="links">
+        <a href="#features"><span class="lang-ko">기능</span><span class="lang-en" hidden>Features</span></a>
+        <a href="/shootingkitty/support/"><span class="lang-ko">지원</span><span class="lang-en" hidden>Support</span></a>
+        <a href="/shootingkitty/privacy/"><span class="lang-ko">개인정보</span><span class="lang-en" hidden>Privacy</span></a>
+      </nav>
+      <div class="lang-toggle">
+        <button type="button" data-lang-btn="ko">한국어</button>
+        <button type="button" data-lang-btn="en">EN</button>
+      </div>
+    </div>
+  </div>
+</header>
+
+<main>
+  <section class="hero">
+    <div class="wrap">
+      <div class="eyebrow">BUBBLE SHOOTER · iPhone · iPad · Android</div>
+      <h1 class="title">Shooting Kitty</h1>
+      <div class="tagline-en"><span class="lang-ko">생선 구슬 버블 슈터</span><span class="lang-en" hidden>A fishy bubble shooter</span></div>
+      <p class="lede">
+        <span class="lang-ko">캣휠을 굴려 조준하고, 같은 색 생선 구슬을 맞춰 펑! 떨어진 생선은 고양이들이 달려와 물어 가요. 추억의 버블 슈터에 귀여운 고양이들을 더했습니다.</span>
+        <span class="lang-en" hidden>Spin the cat wheel to aim, match fish bubbles of the same color, and pop! The kitties come running to grab the fish that fall. A classic bubble shooter, with cats.</span>
+      </p>
+      <div class="hero-cta">
+        <a class="store-btn disabled" href="#" aria-disabled="true">
+          <span>
+            <span class="store-kind"><span class="lang-ko">출시 준비 중</span><span class="lang-en" hidden>Coming soon on</span></span>
+            <span class="store-name">App Store</span>
+          </span>
+        </a>
+        <a class="store-btn disabled" href="#" aria-disabled="true">
+          <span>
+            <span class="store-kind"><span class="lang-ko">출시 준비 중</span><span class="lang-en" hidden>Coming soon on</span></span>
+            <span class="store-name">Google Play</span>
+          </span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <section id="features">
+    <div class="wrap">
+      <div class="section-eyebrow">HOW TO PLAY</div>
+      <h2 class="section-title">
+        <span class="lang-ko">쏘고, 맞추고, 터뜨리고 — 고양이가 물어 가요</span>
+        <span class="lang-en" hidden>Aim, match, pop — and the kitties grab the fish</span>
+      </h2>
+
+      <div class="features-grid">
+        <div class="feature">
+          <div class="feature-icon">●</div>
+          <div class="feature-name">
+            <span class="lang-ko">생선 구슬 펑!</span>
+            <span class="lang-en" hidden>Pop the Fish Bubbles</span>
+          </div>
+          <div class="feature-desc">
+            <span class="lang-ko">같은 색 구슬을 3개 이상 맞추면 풍선처럼 펑 터지고, 안에 있던 생선이 바닥으로 떨어져요. 구슬은 7가지 색이에요.</span>
+            <span class="lang-en" hidden>Match three or more bubbles of the same color and they pop like balloons, dropping the fish inside to the floor. Bubbles come in seven colors.</span>
+          </div>
+        </div>
+
+        <div class="feature">
+          <div class="feature-icon">♡</div>
+          <div class="feature-name">
+            <span class="lang-ko">고양이가 물어 가요</span>
+            <span class="lang-en" hidden>Kitties Grab the Fish</span>
+          </div>
+          <div class="feature-desc">
+            <span class="lang-ko">떨어진 생선은 그냥 사라지지 않아요. 고양이가 왼쪽이나 오른쪽에서 달려와 냉큼 물고 가요.</span>
+            <span class="lang-en" hidden>Fallen fish don't just disappear — a kitty dashes in from the left or right and runs off with it.</span>
+          </div>
+        </div>
+
+        <div class="feature">
+          <div class="feature-icon">◎</div>
+          <div class="feature-name">
+            <span class="lang-ko">캣휠로 조준</span>
+            <span class="lang-en" hidden>Aim with the Cat Wheel</span>
+          </div>
+          <div class="feature-desc">
+            <span class="lang-ko">왼쪽 조이스틱으로 조준하면 캣휠 안의 고양이가 달리며 발사대를 돌려요. 오른쪽 FIRE 버튼으로 발사!</span>
+            <span class="lang-en" hidden>Aim with the joystick on the left and the cat in the wheel runs to turn the launcher. Hit FIRE on the right to shoot!</span>
+          </div>
+        </div>
+
+        <div class="feature">
+          <div class="feature-icon">∞</div>
+          <div class="feature-name">
+            <span class="lang-ko">끝없는 라운드</span>
+            <span class="lang-en" hidden>Endless Rounds</span>
+          </div>
+          <div class="feature-desc">
+            <span class="lang-ko">엔딩 없이 라운드가 계속 이어져요. 라운드마다 구슬 배치가 다르고, 뒤로 갈수록 점점 어려워져요.</span>
+            <span class="lang-en" hidden>There is no ending — rounds keep coming. Every round has a different layout, and they get harder as you go.</span>
+          </div>
+        </div>
+
+        <div class="feature">
+          <div class="feature-icon">▼</div>
+          <div class="feature-name">
+            <span class="lang-ko">내려오는 천장</span>
+            <span class="lang-en" hidden>The Ceiling Drops</span>
+          </div>
+          <div class="feature-desc">
+            <span class="lang-ko">8발을 쏠 때마다 천장이 한 줄씩 내려와요. 구슬이 한계선을 넘으면 게임 오버. 첫 라운드에서는 조준 점선이 도와줘요.</span>
+            <span class="lang-en" hidden>Every eight shots the ceiling drops one row. If the bubbles cross the line, it is game over. The first round shows an aiming guide to help you.</span>
+          </div>
+        </div>
+
+        <div class="feature">
+          <div class="feature-icon">★</div>
+          <div class="feature-name">
+            <span class="lang-ko">이어하기 · 기록</span>
+            <span class="lang-en" hidden>Continue & Records</span>
+          </div>
+          <div class="feature-desc">
+            <span class="lang-ko">앱을 꺼도 하던 라운드를 처음부터 다시 이어 할 수 있어요. 최고 라운드와 모은 생선 수도 기록돼요.</span>
+            <span class="lang-en" hidden>Close the app anytime and continue from the start of the round you were on. Your best round and fish count are saved.</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="lang-row">
+        <span class="lang-pill"><span class="lang-ko">무료 · 광고</span><span class="lang-en" hidden>Free · Ads</span></span>
+        <span class="lang-pill"><span class="lang-ko">회원가입 없음</span><span class="lang-en" hidden>No sign-up</span></span>
+        <span class="lang-pill">iPhone · iPad · Android</span>
+        <span class="lang-pill">한국어 · English</span>
+      </div>
+    </div>
+  </section>
+
+  <section class="cta-band">
+    <div class="wrap">
+      <h2 class="section-title">
+        <span class="lang-ko">곧 만나요</span>
+        <span class="lang-en" hidden>Coming soon</span>
+      </h2>
+      <div class="hero-cta">
+        <a class="store-btn disabled" href="#" aria-disabled="true">
+          <span>
+            <span class="store-kind"><span class="lang-ko">출시 준비 중</span><span class="lang-en" hidden>Coming soon on</span></span>
+            <span class="store-name">App Store</span>
+          </span>
+        </a>
+        <a class="store-btn disabled" href="#" aria-disabled="true">
+          <span>
+            <span class="store-kind"><span class="lang-ko">출시 준비 중</span><span class="lang-en" hidden>Coming soon on</span></span>
+            <span class="store-name">Google Play</span>
+          </span>
+        </a>
+      </div>
+      <p class="cta-note">
+        <span class="lang-ko">App Store와 Google Play에 출시를 준비하고 있어요. 한국어와 영어로 즐길 수 있습니다.</span>
+        <span class="lang-en" hidden>Coming to the App Store and Google Play, in English and Korean.</span>
+      </p>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap footer-wrap">
+    <div class="footer-inner">
+      <div class="footer-brand">October Sky · 옥토버 스카이</div>
+      <div class="footer-links">
+        <a href="mailto:octobersky0515@naver.com">octobersky0515@naver.com</a>
+        <a href="/shootingkitty/support/"><span class="lang-ko">Shooting Kitty 지원</span><span class="lang-en" hidden>Support</span></a>
+        <a href="/shootingkitty/privacy/"><span class="lang-ko">개인정보처리방침</span><span class="lang-en" hidden>Privacy Policy</span></a>
+        <a href="/"><span class="lang-ko">홈으로</span><span class="lang-en" hidden>Home</span></a>
+      </div>
+    </div>
+    <div class="biz-info">
+      <span>상호: October Sky(옥토버 스카이)</span>
+      <span>대표: 윤영민</span>
+      <span>사업자등록번호: 825-32-01767</span>
+      <span>통신판매업신고번호: 제 2026-서울강서-2645 호</span>
+      <span>사업장 주소: 서울특별시 강서구 강서로 186, 3층 3015호</span>
+      <span>전화: 010-3142-9165</span>
+    </div>
+    <div class="footer-copy">© 2026 October Sky. All rights reserved.</div>
+  </div>
+</footer>
+
+<script>
+  const field = document.getElementById('starfield');
+  const count = window.innerWidth < 780 ? 40 : 80;
+  const frag = document.createDocumentFragment();
+  for(let i=0;i<count;i++){
+    const s = document.createElement('div');
+    s.className = 'star';
+    s.style.left = Math.random()*100 + 'vw';
+    s.style.top = Math.random()*100 + 'vh';
+    s.style.animationDelay = (Math.random()*4) + 's';
+    s.style.width = s.style.height = (Math.random() < 0.15 ? '3px' : '2px');
+    frag.appendChild(s);
+  }
+  field.appendChild(frag);
+</script>
+
+<script>
+(function(){
+  var KEY = 'shootingkitty-site-lang';
+  function apply(lang){
+    document.querySelectorAll('.lang-ko').forEach(function(el){ el.hidden = (lang !== 'ko'); });
+    document.querySelectorAll('.lang-en').forEach(function(el){ el.hidden = (lang !== 'en'); });
+    document.querySelectorAll('[data-lang-btn]').forEach(function(b){
+      b.classList.toggle('active', b.getAttribute('data-lang-btn') === lang);
+    });
+    document.documentElement.lang = lang;
+  }
+  var saved = localStorage.getItem(KEY) || 'ko';
+  apply(saved);
+  document.querySelectorAll('[data-lang-btn]').forEach(function(b){
+    b.addEventListener('click', function(){
+      var lang = b.getAttribute('data-lang-btn');
+      localStorage.setItem(KEY, lang);
+      apply(lang);
+    });
+  });
+})();
+</script>
+
+</body>
+</html>
