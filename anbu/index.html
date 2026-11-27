@@ -1,0 +1,568 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>안부 — 알람으로 전하는 안심 · October Sky</title>
+<meta name="description" content="안부 — 혼자 지내는 가족이 기상·약 알람을 끄면 그 소식이 가족에게 알림으로 전해지는 앱. 알람을 쓰는 분의 앱과 소식을 받는 분의 앱, 두 앱을 함께 씁니다.">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  /* 국문: 로고 서체 Sora와 같은 기하학적 형태의 G마켓 산스 */
+  @font-face{ font-family:'GmarketSans'; font-weight:300; font-style:normal; font-display:swap;
+    src:url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/GmarketSansLight.woff') format('woff'); }
+  @font-face{ font-family:'GmarketSans'; font-weight:500; font-style:normal; font-display:swap;
+    src:url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/GmarketSansMedium.woff') format('woff'); }
+  @font-face{ font-family:'GmarketSans'; font-weight:700; font-style:normal; font-display:swap;
+    src:url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/GmarketSansBold.woff') format('woff'); }
+  :root{
+    --bg: #0E1424;
+    --bg-panel: #151C34;
+    --line: rgba(237,239,246,0.09);
+    --text: #EDEFF6;
+    --text-dim: #9AA3C0;
+    --text-dimmer: #6B7396;
+    --gold: #DCA75A;
+    --anbu: #F2836B;
+    --anbu-soft: rgba(242,131,107,0.14);
+    --anbu-teal: #3FC1B0;
+    --anbu-teal-soft: rgba(63,193,176,0.14);
+    --serif: 'Sora', 'GmarketSans', sans-serif;
+    --sans: 'Sora', 'GmarketSans', sans-serif;
+    --brand: 'Sora', 'GmarketSans', sans-serif;
+    --mono: 'Sora', 'GmarketSans', sans-serif;
+  }
+
+  *{ box-sizing:border-box; margin:0; padding:0; }
+  html{ scroll-behavior:smooth; }
+
+  body{
+    background:var(--bg);
+    color:var(--text);
+    font-family:var(--sans);
+    line-height:1.65;
+    -webkit-font-smoothing:antialiased;
+    overflow-x:hidden;
+  }
+
+  a{ color:inherit; }
+  :focus-visible{ outline:2px solid var(--anbu); outline-offset:3px; }
+
+  .wrap{ max-width:920px; margin:0 auto; padding:0 28px; }
+
+  .starfield{
+    position:fixed; inset:0; z-index:-1; pointer-events:none;
+    background:
+      radial-gradient(ellipse 80% 50% at 50% -10%, rgba(242,131,107,0.12), transparent 60%),
+      var(--bg);
+  }
+  .star{
+    position:absolute; width:2px; height:2px; border-radius:50%;
+    background:var(--text); opacity:0.5;
+    animation: twinkle 4s ease-in-out infinite;
+  }
+  @keyframes twinkle{
+    0%,100%{ opacity:0.15; }
+    50%{ opacity:0.85; }
+  }
+
+  header.nav{
+    position:sticky; top:0; z-index:20;
+    backdrop-filter: blur(10px);
+    background:rgba(14,20,36,0.72);
+    border-bottom:1px solid var(--line);
+  }
+  .nav-inner{
+    display:flex; align-items:center; justify-content:space-between;
+    height:64px; padding:0 28px; gap:16px;
+  }
+  .brand{ display:flex; align-items:center; gap:10px; font-family:var(--brand); font-weight:600; font-size:18px; letter-spacing:-0.01em; text-decoration:none; color:inherit; flex-shrink:0; white-space:nowrap; }
+  .brand-mark{ width:32px; height:32px; flex-shrink:0; display:block; }
+  .nav-right{ display:flex; align-items:center; gap:16px; }
+  nav.links{ display:flex; gap:22px; font-family:var(--mono); font-size:13px; color:var(--text-dim); }
+  nav.links a{ text-decoration:none; transition:color 0.2s; }
+  nav.links a:hover{ color:var(--anbu); }
+
+  .lang-toggle{
+    display:flex; gap:3px; background:var(--bg-panel); border:1px solid var(--line);
+    border-radius:999px; padding:3px; flex-shrink:0;
+  }
+  .lang-toggle button{
+    font-family:var(--mono); font-size:11.5px; padding:6px 12px; border-radius:999px;
+    border:none; background:transparent; color:var(--text-dimmer); cursor:pointer;
+    transition:background 0.2s, color 0.2s;
+  }
+  .lang-toggle button.active{ background:var(--anbu); color:#fff; }
+
+  .hero{
+    padding:96px 0 70px;
+    text-align:center;
+    border-bottom:1px solid var(--line);
+  }
+  .eyebrow{
+    font-family:var(--mono); font-size:13px; letter-spacing:0.14em;
+    color:var(--anbu); text-transform:uppercase; margin-bottom:22px;
+  }
+  h1.title{
+    font-family:var(--serif); font-weight:600;
+    font-size:clamp(44px, 8vw, 76px);
+    letter-spacing:-0.01em;
+    line-height:1;
+  }
+  .tagline-en{
+    margin-top:18px; font-family:var(--mono); font-size:13px; letter-spacing:0.16em;
+    color:var(--text-dimmer); text-transform:uppercase;
+  }
+  .lede{
+    max-width:560px; margin:30px auto 0;
+    font-size:17.5px; color:var(--text-dim);
+  }
+  .hero-cta{ margin-top:40px; display:flex; gap:14px; justify-content:center; flex-wrap:wrap; }
+  .store-btn{
+    display:flex; align-items:center; gap:10px;
+    padding:12px 22px; border-radius:12px;
+    border:1px solid var(--line); background:var(--bg-panel);
+    text-decoration:none; transition:border-color 0.2s, transform 0.2s;
+  }
+  .store-btn:hover{ border-color:var(--anbu); transform:translateY(-2px); }
+  .store-btn .store-kind{ font-family:var(--mono); font-size:10.5px; color:var(--text-dimmer); display:block; }
+  .store-btn .store-name{ font-family:var(--sans); font-size:14.5px; font-weight:600; }
+  .store-btn.disabled{ opacity:0.45; pointer-events:none; }
+
+  section{ padding:80px 0; border-bottom:1px solid var(--line); }
+  .section-eyebrow{
+    font-family:var(--mono); font-size:12px; letter-spacing:0.14em;
+    color:var(--text-dimmer); text-transform:uppercase; margin-bottom:14px; text-align:center;
+  }
+  h2.section-title{
+    font-family:var(--serif); font-weight:500; font-size:clamp(26px,4vw,34px);
+    text-align:center; margin-bottom:52px;
+  }
+
+  .features-grid{
+    display:grid; grid-template-columns:repeat(3,1fr); gap:22px;
+  }
+  .feature{
+    background:var(--bg-panel); border:1px solid var(--line); border-radius:16px;
+    padding:28px 24px;
+    transition:border-color 0.25s, transform 0.25s;
+  }
+  .feature:hover{ border-color:var(--anbu); transform:translateY(-4px); }
+  .feature-icon{
+    width:38px; height:38px; border-radius:10px; background:var(--anbu-soft);
+    display:flex; align-items:center; justify-content:center;
+    font-family:var(--mono); font-size:16px; color:var(--anbu); margin-bottom:16px;
+  }
+  .feature-name{ font-family:var(--serif); font-size:18.5px; font-weight:500; margin-bottom:8px; }
+  .feature-desc{ color:var(--text-dim); font-size:14px; }
+
+  .lang-row{
+    display:flex; justify-content:center; gap:14px; flex-wrap:wrap; margin-top:44px;
+  }
+  .lang-pill{
+    font-family:var(--mono); font-size:12.5px; color:var(--text-dim);
+    border:1px solid var(--line); border-radius:999px; padding:8px 18px;
+  }
+
+  .cta-band{ text-align:center; border-bottom:none; }
+  .cta-band h2.section-title{ margin-bottom:28px; }
+  .cta-note{
+    margin-top:22px; font-family:var(--mono); font-size:12.5px; color:var(--text-dimmer);
+  }
+
+  footer{ padding:60px 0 44px; border-top:1px solid var(--line); }
+  .footer-inner{ display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:20px; }
+  .footer-brand{ font-family:var(--brand); font-weight:600; letter-spacing:-0.01em; font-size:16px; color:var(--text-dim); }
+  .footer-links{ display:flex; flex-wrap:wrap; gap:10px 24px; font-family:var(--mono); font-size:13px; color:var(--text-dimmer); }
+  .footer-links a{ color:inherit; text-decoration:none; white-space:nowrap; transition:color 0.2s; }
+  .footer-links a:hover{ color:var(--anbu); }
+  .footer-copy{ margin-top:26px; font-family:var(--mono); font-size:12px; color:var(--text-dimmer); }
+  .biz-info{
+    margin-top:34px; padding-top:24px; border-top:1px solid var(--line);
+    display:flex; flex-wrap:wrap; gap:8px 18px;
+    font-family:var(--sans); font-size:12.5px; color:var(--text-dimmer); line-height:1.7;
+  }
+  .biz-info a{ color:var(--text-dimmer); text-decoration:underline; text-underline-offset:2px; }
+  .biz-info a:hover{ color:var(--anbu); }
+  /* 푸터는 홈과 같은 폭으로 */
+  .footer-wrap{ max-width:1080px; }
+
+  @media (max-width: 780px){
+    .features-grid{ grid-template-columns:1fr; }
+    nav.links{ display:none; }
+  }
+  @media (max-width: 600px){
+    .hero{ padding:64px 0 50px; }
+  }
+
+  /* 상단 바: 모든 페이지 공통 · 화면 폭에 따라 단계적으로 축소 */
+  @media (max-width: 780px){
+    .nav-inner{ height:58px; padding:0 20px; gap:12px; }
+    .brand{ font-size:17px; gap:9px; }
+    .brand-mark{ width:30px; height:30px; }
+  }
+  @media (max-width: 480px){
+    .nav-inner{ height:54px; padding:0 16px; gap:10px; }
+    .nav-right{ gap:10px; }
+    .brand{ font-size:16px; gap:8px; }
+    .brand-mark{ width:28px; height:28px; }
+    .back-link{ font-size:12px; }
+    .lang-toggle button{ font-size:11px; padding:5px 10px; }
+  }
+  @media (max-width: 360px){
+    .back-link{ display:none; }
+  }
+
+
+  /* 안부 — 두 앱 소개 · 사용 순서 · 요금 */
+  .pair{ display:grid; grid-template-columns:1fr 1fr; gap:22px; }
+  .app-box{ background:var(--bg-panel); border:1px solid var(--line); border-radius:18px; padding:30px 28px; position:relative; overflow:hidden; }
+  .app-box::before{ content:''; position:absolute; left:0; top:0; right:0; height:3px; background:var(--box-accent); }
+  .app-box.client{ --box-accent:var(--anbu); --box-soft:var(--anbu-soft); }
+  .app-box.admin{ --box-accent:var(--anbu-teal); --box-soft:var(--anbu-teal-soft); }
+  .app-box-head{ display:flex; align-items:center; gap:14px; margin-bottom:16px; }
+  .app-ico{ width:52px; height:52px; border-radius:14px; background:var(--box-accent); display:flex; align-items:center; justify-content:center; flex-shrink:0; }
+  .app-ico svg{ width:30px; height:30px; }
+  .app-role{ font-family:var(--mono); font-size:11.5px; letter-spacing:0.08em; color:var(--box-accent); }
+  .app-title{ font-family:var(--serif); font-size:19px; font-weight:600; margin-top:2px; }
+  .app-who{ color:var(--text-dim); font-size:14.5px; margin-bottom:16px; }
+  .app-box ul{ list-style:none; display:grid; gap:9px; margin-bottom:22px; }
+  .app-box li{ position:relative; padding-left:18px; font-size:14px; color:var(--text-dim); }
+  .app-box li::before{ content:''; position:absolute; left:2px; top:9px; width:6px; height:6px; border-radius:50%; background:var(--box-accent); }
+  .app-box li strong{ color:var(--text); font-weight:500; }
+  .app-stores{ display:flex; gap:10px; flex-wrap:wrap; }
+  .app-stores .store-btn{ padding:10px 16px; }
+  .app-stores .store-btn:hover{ border-color:var(--box-accent); }
+
+  .steps{ display:grid; grid-template-columns:repeat(4,1fr); gap:18px; counter-reset:step; }
+  .step{ background:var(--bg-panel); border:1px solid var(--line); border-radius:16px; padding:24px 20px; counter-increment:step; }
+  .step::before{ content:counter(step); display:flex; width:30px; height:30px; border-radius:50%; align-items:center; justify-content:center;
+    background:var(--anbu-soft); color:var(--anbu); font-family:var(--mono); font-size:14px; font-weight:600; margin-bottom:14px; }
+  .step-name{ font-family:var(--serif); font-size:16.5px; font-weight:500; margin-bottom:6px; }
+  .step-desc{ color:var(--text-dim); font-size:13.5px; }
+
+  .price{ max-width:640px; margin:0 auto; background:var(--bg-panel); border:1px solid var(--line); border-radius:18px; padding:30px 30px; text-align:center; }
+  .price-big{ font-family:var(--serif); font-size:clamp(24px,4vw,30px); font-weight:600; }
+  .price-big em{ font-style:normal; color:var(--anbu-teal); }
+  .price-sub{ color:var(--text-dim); font-size:14.5px; margin-top:12px; }
+  .price-note{ color:var(--text-dimmer); font-size:12.5px; margin-top:14px; }
+
+  @media (max-width: 860px){
+    .pair{ grid-template-columns:1fr; }
+    .steps{ grid-template-columns:1fr 1fr; }
+  }
+  @media (max-width: 480px){
+    .steps{ grid-template-columns:1fr; }
+    .app-box{ padding:26px 20px; }
+    .price{ padding:26px 20px; }
+  }
+
+  @media (prefers-reduced-motion: reduce){
+    *{ animation-duration:0.01ms !important; animation-iteration-count:1 !important; scroll-behavior:auto !important; }
+  }
+</style>
+</head>
+<body>
+
+<div class="starfield" id="starfield"></div>
+
+<header class="nav">
+  <div class="nav-inner">
+    <a class="brand" href="/">
+      <svg class="brand-mark" viewBox="6 -2.5 108 108" aria-hidden="true" focusable="false"><circle cx="60" cy="60" r="44" fill="#2F6FB3"/><path d="M 19.85 78 A 44 44 0 0 0 100.15 78 Z" fill="#1B4C80"/><path d="M 30 84 Q 70 78 88 34" fill="none" stroke="#FFFFFF" stroke-width="7" stroke-linecap="round"/><path d="M 88 34 L 92 24" fill="none" stroke="#E08A2E" stroke-width="7" stroke-linecap="round"/><g transform="translate(92 23) rotate(-67.6)"><polygon points="26,0 0,-12 7,0" fill="#E08A2E"/><polygon points="26,0 7,0 0,12" fill="#E08A2E"/><polygon points="26,0 7,0 0,12" fill="#000" fill-opacity="0.22"/></g></svg>
+      October Sky
+    </a>
+    <div class="nav-right">
+      <nav class="links">
+        <a href="#features"><span class="lang-ko">기능</span><span class="lang-en" hidden>Features</span></a>
+        <a href="/anbu/support/"><span class="lang-ko">지원</span><span class="lang-en" hidden>Support</span></a>
+        <a href="/anbu/privacy/"><span class="lang-ko">개인정보</span><span class="lang-en" hidden>Privacy</span></a>
+      </nav>
+      <div class="lang-toggle">
+        <button type="button" data-lang-btn="ko">한국어</button>
+        <button type="button" data-lang-btn="en">EN</button>
+      </div>
+    </div>
+  </div>
+</header>
+
+<main>
+  <section class="hero">
+    <div class="wrap">
+      <div class="eyebrow">FAMILY CARE · iPhone · iPad · Android</div>
+      <h1 class="title"><span class="lang-ko">안부</span><span class="lang-en" hidden>Anbu</span></h1>
+      <div class="tagline-en"><span class="lang-ko">알람으로 전하는 안심, 알림으로 받는 안심</span><span class="lang-en" hidden>Peace of mind, one alarm at a time</span></div>
+      <p class="lede">
+        <span class="lang-ko">혼자 지내는 가족이 아침에 일어나 알람을 끄면, 약 알람을 끄면 — 그 소식이 가족에게 알림으로 전해져요. 알람을 끄지 않으면 경고가 가서 바로 전화해 볼 수 있어요.</span>
+        <span class="lang-en" hidden>When someone who lives alone turns off their wake-up or medicine alarm, their family gets a notification. If the alarm isn't turned off, family is alerted so they can call right away.</span>
+      </p>
+    </div>
+  </section>
+
+  <section id="apps">
+    <div class="wrap">
+      <div class="section-eyebrow">TWO APPS, ONE FAMILY</div>
+      <h2 class="section-title">
+        <span class="lang-ko">두 앱을 함께 써요</span>
+        <span class="lang-en" hidden>Two apps that work together</span>
+      </h2>
+      <div class="pair">
+        <div class="app-box client">
+          <div class="app-box-head">
+            <div class="app-ico" aria-hidden="true"><svg viewBox="0 0 32 32" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="16" cy="17.5" r="9"/><path d="M16 12.5v5.2l3.2 2"/><path d="M6.5 8.5l4-3.2M25.5 8.5l-4-3.2M10 26l-1.8 2.2M22 26l1.8 2.2"/></svg></div>
+            <div>
+              <div class="app-role"><span class="lang-ko">전하는 분 앱</span><span class="lang-en" hidden>SENDER APP</span></div>
+              <div class="app-title"><span class="lang-ko">안부 - 알람으로 전하는 안심</span><span class="lang-en" hidden>Anbu — Peace of Mind by Alarm</span></div>
+            </div>
+          </div>
+          <p class="app-who"><span class="lang-ko">혼자 지내며 알람을 쓰는 분이 설치해요.</span><span class="lang-en" hidden>For the person who lives alone and uses the alarms.</span></p>
+          <ul>
+            <li><span class="lang-ko"><strong>기상 알람·약 알람</strong> — 요일 반복, 특정 날짜에 한 번</span><span class="lang-en" hidden><strong>Wake-up and medicine alarms</strong> — repeat by weekday, or once on a date</span></li>
+            <li><span class="lang-ko"><strong>10분 뒤 다시</strong>(미루기)와 벨소리 고르기</span><span class="lang-en" hidden><strong>Snooze for 10 minutes</strong> and choose your ringtone</span></li>
+            <li><span class="lang-ko">알람을 끄면 가족에게 <strong>"알람을 껐어요"</strong>, 미루면 <strong>"10분만 더"</strong> 소식이 가요</span><span class="lang-en" hidden>Turning off sends <strong>"Alarm turned off"</strong> to family; snoozing sends <strong>"10 more minutes"</strong></span></li>
+            <li><span class="lang-ko">가족이 부탁한 알람 추가·수정·삭제는 <strong>내가 승인해야</strong> 적용돼요</span><span class="lang-en" hidden>Alarm changes requested by family apply <strong>only after you approve</strong></span></li>
+          </ul>
+          <div class="app-stores">
+          <a class="store-btn disabled" href="#" aria-disabled="true">
+            <span>
+              <span class="store-kind"><span class="lang-ko">출시 준비 중</span><span class="lang-en" hidden>Coming soon on</span></span>
+              <span class="store-name">App Store</span>
+            </span>
+          </a>
+          <a class="store-btn disabled" href="#" aria-disabled="true">
+            <span>
+              <span class="store-kind"><span class="lang-ko">출시 준비 중</span><span class="lang-en" hidden>Coming soon on</span></span>
+              <span class="store-name">Google Play</span>
+            </span>
+          </a>
+          </div>
+        </div>
+        <div class="app-box admin">
+          <div class="app-box-head">
+            <div class="app-ico" aria-hidden="true"><svg viewBox="0 0 32 32" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 21.5v-6.2a7 7 0 0 1 14 0v6.2l2 2.5H7z"/><path d="M13.5 27a2.6 2.6 0 0 0 5 0"/><path d="M16 18.6c-1.6-1.2-3-2.3-3-3.7a1.6 1.6 0 0 1 3-.8 1.6 1.6 0 0 1 3 .8c0 1.4-1.4 2.5-3 3.7z" fill="#fff" stroke="none"/></svg></div>
+            <div>
+              <div class="app-role"><span class="lang-ko">받는 분 앱</span><span class="lang-en" hidden>RECEIVER APP</span></div>
+              <div class="app-title"><span class="lang-ko">안부 - 알림으로 받는 안심</span><span class="lang-en" hidden>Anbu — Peace of Mind by Notification</span></div>
+            </div>
+          </div>
+          <p class="app-who"><span class="lang-ko">소식을 받는 가족이 설치해요.</span><span class="lang-en" hidden>For family members who receive the updates.</span></p>
+          <ul>
+            <li><span class="lang-ko"><strong>오늘 알람 상태</strong>를 한눈에 — 껐는지, 미뤘는지, 아직인지</span><span class="lang-en" hidden>See <strong>today's alarms</strong> at a glance — off, snoozed, or not yet</span></li>
+            <li><span class="lang-ko">알람 뒤 <strong>30분 안에 끄지 않으면 경고</strong>(10분마다 다시, 최대 6번)</span><span class="lang-en" hidden><strong>Alert if not turned off within 30 minutes</strong> (repeats every 10 minutes, up to 6 times)</span></li>
+            <li><span class="lang-ko">경고 화면의 <strong>"전화하기"</strong>로 바로 연락하면 경고가 꺼져요</span><span class="lang-en" hidden>Call right away with <strong>"Call"</strong> on the alert screen to dismiss it</span></li>
+            <li><span class="lang-ko"><strong>기록 달력</strong>으로 놓친 날 확인(6개월), 알람 추가·변경 부탁하기</span><span class="lang-en" hidden>Check missed days on the <strong>history calendar</strong> (6 months) and request alarm changes</span></li>
+          </ul>
+          <div class="app-stores">
+          <a class="store-btn disabled" href="#" aria-disabled="true">
+            <span>
+              <span class="store-kind"><span class="lang-ko">출시 준비 중</span><span class="lang-en" hidden>Coming soon on</span></span>
+              <span class="store-name">App Store</span>
+            </span>
+          </a>
+          <a class="store-btn disabled" href="#" aria-disabled="true">
+            <span>
+              <span class="store-kind"><span class="lang-ko">출시 준비 중</span><span class="lang-en" hidden>Coming soon on</span></span>
+              <span class="store-name">Google Play</span>
+            </span>
+          </a>
+          </div>
+        </div>
+      </div>
+      <div class="lang-row">
+        <span class="lang-pill"><span class="lang-ko">홈 화면 이름은 둘 다 "안부" — 아이콘 색으로 구분해요</span><span class="lang-en" hidden>Both appear as "안부" on the home screen — tell them apart by icon color</span></span>
+      </div>
+    </div>
+  </section>
+
+  <section id="how">
+    <div class="wrap">
+      <div class="section-eyebrow">HOW IT WORKS</div>
+      <h2 class="section-title">
+        <span class="lang-ko">이렇게 시작해요</span>
+        <span class="lang-en" hidden>Getting started</span>
+      </h2>
+      <div class="steps">
+        <div class="step">
+          <div class="step-name"><span class="lang-ko">두 앱 설치</span><span class="lang-en" hidden>Install both apps</span></div>
+          <div class="step-desc"><span class="lang-ko">알람을 쓰는 분은 <b>전하는 분 앱</b>, 소식을 받는 가족은 <b>받는 분 앱</b>을 받아요.</span><span class="lang-en" hidden>The person using alarms installs the <b>Sender app</b>; family installs the <b>Receiver app</b>.</span></div>
+        </div>
+        <div class="step">
+          <div class="step-name"><span class="lang-ko">번호로 연결</span><span class="lang-en" hidden>Connect with a code</span></div>
+          <div class="step-desc"><span class="lang-ko">전하는 분 앱이 만든 6자리 번호를 받는 분 앱에 입력하면 연결돼요. 처음 연결한 사람이 관리자예요.</span><span class="lang-en" hidden>Enter the 6-digit code from the Sender app into the Receiver app. The first person to connect becomes the manager.</span></div>
+        </div>
+        <div class="step">
+          <div class="step-name"><span class="lang-ko">알람 맞추기</span><span class="lang-en" hidden>Set alarms</span></div>
+          <div class="step-desc"><span class="lang-ko">평소 알람처럼 기상·약 알람을 맞춰요. 가족이 대신 부탁할 수도 있어요(승인 필요).</span><span class="lang-en" hidden>Set wake-up and medicine alarms as usual. Family can also request alarms (approval needed).</span></div>
+        </div>
+        <div class="step">
+          <div class="step-name"><span class="lang-ko">소식 받기</span><span class="lang-en" hidden>Get updates</span></div>
+          <div class="step-desc"><span class="lang-ko">알람을 끄면 가족에게 소식이 가고, 끄지 않으면 경고가 가요.</span><span class="lang-en" hidden>When the alarm is turned off, family is notified — and alerted if it is not.</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="features">
+    <div class="wrap">
+      <div class="section-eyebrow">DETAILS</div>
+      <h2 class="section-title">
+        <span class="lang-ko">가족 모두가 편하도록</span>
+        <span class="lang-en" hidden>Made easy for the whole family</span>
+      </h2>
+      <div class="features-grid">
+        <div class="feature">
+          <div class="feature-icon">⇄</div>
+          <div class="feature-name">
+            <span class="lang-ko">여러 가족과 함께</span>
+            <span class="lang-en" hidden>Many-to-many</span>
+          </div>
+          <div class="feature-desc">
+            <span class="lang-ko">한 분의 소식을 여러 가족이 받을 수 있고, 한 가족이 여러 분의 소식을 볼 수도 있어요. 관리자가 초대 번호로 가족을 더 늘려요.</span>
+            <span class="lang-en" hidden>Several family members can follow one person, and one person can follow several. The manager invites more family with an invite code.</span>
+          </div>
+        </div>
+        <div class="feature">
+          <div class="feature-icon">◷</div>
+          <div class="feature-name">
+            <span class="lang-ko">각자의 현지 시간</span>
+            <span class="lang-en" hidden>Local time for everyone</span>
+          </div>
+          <div class="feature-desc">
+            <span class="lang-ko">알람과 기록은 각자의 현지 시간으로 보여요. 가족이 외국에 살아도 헷갈리지 않아요.</span>
+            <span class="lang-en" hidden>Alarms and history show in each person's local time, even if family lives abroad.</span>
+          </div>
+        </div>
+        <div class="feature">
+          <div class="feature-icon">✓</div>
+          <div class="feature-name">
+            <span class="lang-ko">앱을 몰라도 쉽게</span>
+            <span class="lang-en" hidden>Simple as an alarm</span>
+          </div>
+          <div class="feature-desc">
+            <span class="lang-ko">전하는 분 앱은 평범한 알람 앱과 똑같이 생겼어요. 따로 배울 것 없이 알람만 끄면 돼요.</span>
+            <span class="lang-en" hidden>The Sender app looks just like a regular alarm app. Nothing to learn — just turn off the alarm.</span>
+          </div>
+        </div>
+        <div class="feature">
+          <div class="feature-icon">◎</div>
+          <div class="feature-name">
+            <span class="lang-ko">가입 없이</span>
+            <span class="lang-en" hidden>No sign-up</span>
+          </div>
+          <div class="feature-desc">
+            <span class="lang-ko">회원가입·로그인이 없고 실명을 묻지 않아요. 가족에게 보일 이름은 직접 적고, 별명도 괜찮아요. 전화번호·위치는 받지 않아요.</span>
+            <span class="lang-en" hidden>No accounts or logins, and no real name required. You type the name family sees, and a nickname is fine. No phone number or location.</span>
+          </div>
+        </div>
+        <div class="feature">
+          <div class="feature-icon">▤</div>
+          <div class="feature-name">
+            <span class="lang-ko">기록은 6개월</span>
+            <span class="lang-en" hidden>6 months of history</span>
+          </div>
+          <div class="feature-desc">
+            <span class="lang-ko">알람 기록은 6개월 동안 보관하고 달력으로 볼 수 있어요. 오래 소식이 없으면 가족에게 알려 드려요.</span>
+            <span class="lang-en" hidden>Alarm history is kept for 6 months on a calendar. Family is notified if there has been no word for a long time.</span>
+          </div>
+        </div>
+        <div class="feature">
+          <div class="feature-icon">♪</div>
+          <div class="feature-name">
+            <span class="lang-ko">광고 없음</span>
+            <span class="lang-en" hidden>No ads</span>
+          </div>
+          <div class="feature-desc">
+            <span class="lang-ko">두 앱 모두 무료이고 광고가 없어요.</span>
+            <span class="lang-en" hidden>Both apps are free with no ads.</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="price" class="cta-band">
+    <div class="wrap">
+      <div class="section-eyebrow">PRICING</div>
+      <h2 class="section-title">
+        <span class="lang-ko">무료로 시작해요</span>
+        <span class="lang-en" hidden>Free to start</span>
+      </h2>
+      <div class="price">
+        <div class="price-big"><span class="lang-ko">전하는 분 한 명마다 <em>가족 2명까지 무료</em></span><span class="lang-en" hidden><em>Up to 2 family members free</em> per sender</span></div>
+        <p class="price-sub"><span class="lang-ko">세 번째 가족부터는 한 명을 연결할 때마다 4,400원이에요. 결제는 받는 분 앱에서 관리자가 해요.</span><span class="lang-en" hidden>From the third family member, each new connection is ₩4,400, paid by the manager in the Receiver app.</span></p>
+        <p class="price-note"><span class="lang-ko">한 번 연결할 때마다 쓰는 상품이라, 가족을 내보낸 뒤 다시 추가하면 다시 결제해요. 두 앱 모두 광고는 없어요.</span><span class="lang-en" hidden>Each purchase covers one connection, so removing and re-adding a family member requires a new purchase. Neither app has ads.</span></p>
+      </div>
+      <p class="cta-note">
+        <span class="lang-ko">App Store와 Google Play에 출시를 준비하고 있어요. 앱은 한국어로 제공돼요.</span>
+        <span class="lang-en" hidden>Coming soon to the App Store and Google Play. The apps are available in Korean.</span>
+      </p>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap footer-wrap">
+    <div class="footer-inner">
+      <div class="footer-brand">October Sky · 옥토버 스카이</div>
+      <div class="footer-links">
+        <a href="mailto:octobersky0515@naver.com">octobersky0515@naver.com</a>
+        <a href="/anbu/support/"><span class="lang-ko">안부 지원</span><span class="lang-en" hidden>Support</span></a>
+        <a href="/anbu/privacy/"><span class="lang-ko">개인정보처리방침</span><span class="lang-en" hidden>Privacy Policy</span></a>
+        <a href="/"><span class="lang-ko">홈으로</span><span class="lang-en" hidden>Home</span></a>
+      </div>
+    </div>
+    <div class="biz-info">
+      <span>상호: October Sky(옥토버 스카이)</span>
+      <span>대표: 윤영민</span>
+      <span>사업자등록번호: 825-32-01767</span>
+      <span>통신판매업신고번호: 제 2026-서울강서-2645 호</span>
+      <span>사업장 주소: 서울특별시 강서구 강서로 186, 3층 3015호</span>
+      <span>전화: 010-3142-9165</span>
+    </div>
+    <div class="footer-copy">© 2026 October Sky. All rights reserved.</div>
+  </div>
+</footer>
+
+<script>
+  const field = document.getElementById('starfield');
+  const count = window.innerWidth < 780 ? 40 : 80;
+  const frag = document.createDocumentFragment();
+  for(let i=0;i<count;i++){
+    const s = document.createElement('div');
+    s.className = 'star';
+    s.style.left = Math.random()*100 + 'vw';
+    s.style.top = Math.random()*100 + 'vh';
+    s.style.animationDelay = (Math.random()*4) + 's';
+    s.style.width = s.style.height = (Math.random() < 0.15 ? '3px' : '2px');
+    frag.appendChild(s);
+  }
+  field.appendChild(frag);
+</script>
+
+<script>
+(function(){
+  var KEY = 'anbu-site-lang';
+  function apply(lang){
+    document.querySelectorAll('.lang-ko').forEach(function(el){ el.hidden = (lang !== 'ko'); });
+    document.querySelectorAll('.lang-en').forEach(function(el){ el.hidden = (lang !== 'en'); });
+    document.querySelectorAll('[data-lang-btn]').forEach(function(b){
+      b.classList.toggle('active', b.getAttribute('data-lang-btn') === lang);
+    });
+    document.documentElement.lang = lang;
+  }
+  var saved = localStorage.getItem(KEY) || 'ko';
+  apply(saved);
+  document.querySelectorAll('[data-lang-btn]').forEach(function(b){
+    b.addEventListener('click', function(){
+      var lang = b.getAttribute('data-lang-btn');
+      localStorage.setItem(KEY, lang);
+      apply(lang);
+    });
+  });
+})();
+</script>
+
+</body>
+</html>

@@ -1,0 +1,529 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>안부 지원 · Support · October Sky</title>
+<meta name="description" content="안부(전하는 분 앱·받는 분 앱) 지원 페이지. 연결, 가족 추가, 경고, 알림, 결제, 데이터 삭제 등 자주 묻는 질문과 문의처를 안내합니다.">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  /* 국문: 로고 서체 Sora와 같은 기하학적 형태의 G마켓 산스 */
+  @font-face{ font-family:'GmarketSans'; font-weight:300; font-style:normal; font-display:swap;
+    src:url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/GmarketSansLight.woff') format('woff'); }
+  @font-face{ font-family:'GmarketSans'; font-weight:500; font-style:normal; font-display:swap;
+    src:url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/GmarketSansMedium.woff') format('woff'); }
+  @font-face{ font-family:'GmarketSans'; font-weight:700; font-style:normal; font-display:swap;
+    src:url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/GmarketSansBold.woff') format('woff'); }
+  :root{
+    --bg: #0E1424;
+    --bg-panel: #151C34;
+    --line: rgba(237,239,246,0.09);
+    --text: #EDEFF6;
+    --text-dim: #9AA3C0;
+    --text-dimmer: #6B7396;
+    --gold: #DCA75A;
+    --gold-soft: rgba(220,167,90,0.14);
+    --anbu: #F2836B;
+    --anbu-teal: #3FC1B0;
+    --anbu-teal-soft: rgba(63,193,176,0.14);
+    --anbu-soft: rgba(242,131,107,0.14);
+    --serif: 'Sora', 'GmarketSans', sans-serif;
+    --sans: 'Sora', 'GmarketSans', sans-serif;
+    --brand: 'Sora', 'GmarketSans', sans-serif;
+    --mono: 'Sora', 'GmarketSans', sans-serif;
+  }
+
+  *{ box-sizing:border-box; margin:0; padding:0; }
+  html{ scroll-behavior:smooth; }
+
+  body{
+    background:var(--bg);
+    color:var(--text);
+    font-family:var(--sans);
+    line-height:1.65;
+    -webkit-font-smoothing:antialiased;
+    overflow-x:hidden;
+  }
+
+  a{ color:inherit; }
+  :focus-visible{ outline:2px solid var(--anbu); outline-offset:3px; }
+
+  .wrap{ max-width:760px; margin:0 auto; padding:0 28px; }
+
+  .starfield{
+    position:fixed; inset:0; z-index:-1; pointer-events:none;
+    background:
+      radial-gradient(ellipse 80% 50% at 50% -10%, rgba(242,131,107,0.10), transparent 60%),
+      var(--bg);
+  }
+  .star{
+    position:absolute; width:2px; height:2px; border-radius:50%;
+    background:var(--text); opacity:0.5;
+    animation: twinkle 4s ease-in-out infinite;
+  }
+  @keyframes twinkle{
+    0%,100%{ opacity:0.15; }
+    50%{ opacity:0.85; }
+  }
+
+  header.nav{
+    position:sticky; top:0; z-index:20;
+    backdrop-filter: blur(10px);
+    background:rgba(14,20,36,0.72);
+    border-bottom:1px solid var(--line);
+  }
+  .nav-inner{
+    display:flex; align-items:center; justify-content:space-between;
+    height:64px; padding:0 28px; gap:16px;
+  }
+  .brand{ display:flex; align-items:center; gap:10px; font-family:var(--brand); font-weight:600; font-size:18px; letter-spacing:-0.01em; text-decoration:none; color:inherit; flex-shrink:0; white-space:nowrap; }
+  .brand-mark{ width:32px; height:32px; flex-shrink:0; display:block; }
+  .nav-right{ display:flex; align-items:center; gap:16px; }
+  .back-link{
+    font-family:var(--mono); font-size:13px; color:var(--text-dim);
+    text-decoration:none; transition:color 0.2s; white-space:nowrap;
+  }
+  .back-link:hover{ color:var(--anbu); }
+
+  .lang-toggle{
+    display:flex; gap:3px; background:var(--bg-panel); border:1px solid var(--line);
+    border-radius:999px; padding:3px; flex-shrink:0;
+  }
+  .lang-toggle button{
+    font-family:var(--mono); font-size:11.5px; padding:6px 12px; border-radius:999px;
+    border:none; background:transparent; color:var(--text-dimmer); cursor:pointer;
+    transition:background 0.2s, color 0.2s;
+  }
+  .lang-toggle button.active{ background:var(--anbu); color:#fff; }
+
+  .hero{ padding:76px 0 48px; }
+  .eyebrow{
+    font-family:var(--mono); font-size:12px; letter-spacing:0.14em;
+    color:var(--anbu); text-transform:uppercase; margin-bottom:18px;
+  }
+  h1.title{
+    font-family:var(--serif); font-weight:500;
+    font-size:clamp(34px, 6vw, 48px);
+    letter-spacing:-0.01em;
+    line-height:1.08;
+  }
+  .tagline{
+    max-width:520px; margin-top:18px;
+    font-size:16.5px; color:var(--text-dim);
+  }
+  .privacy-inline-link{
+    display:inline-block; margin-top:18px;
+    font-family:var(--mono); font-size:13.5px; color:var(--anbu);
+    text-decoration:underline; text-underline-offset:2px;
+  }
+
+  section{ padding:44px 0; border-top:1px solid var(--line); }
+  h2.section-title{
+    font-family:var(--serif); font-weight:500; font-size:22px;
+    margin-bottom:26px;
+  }
+
+  .faq-item{
+    border-bottom:1px solid var(--line);
+  }
+  .faq-item:first-child{ border-top:1px solid var(--line); }
+  .faq-item summary{
+    list-style:none; cursor:pointer;
+    display:flex; align-items:center; justify-content:space-between; gap:16px;
+    padding:20px 2px;
+    font-family:var(--sans); font-weight:500; font-size:15.5px;
+    color:var(--text);
+  }
+  .faq-item summary::-webkit-details-marker{ display:none; }
+  .faq-item summary::after{
+    content:'+';
+    font-family:var(--mono); font-size:18px; color:var(--anbu);
+    flex-shrink:0; transition:transform 0.2s;
+  }
+  .faq-item[open] summary::after{ transform:rotate(45deg); }
+  .faq-item .faq-body{
+    padding:0 2px 22px; color:var(--text-dim); font-size:14.5px; max-width:620px;
+  }
+  .faq-item .faq-body p + p{ margin-top:10px; }
+  .faq-item .faq-body strong{ color:var(--text); font-weight:500; }
+  .faq-item .faq-body a{ color:var(--anbu); text-decoration:underline; text-underline-offset:2px; }
+
+  .contact-card{
+    background:var(--bg-panel);
+    border:1px solid var(--line);
+    border-radius:16px;
+    padding:28px 26px;
+    display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:16px;
+  }
+  .contact-label{ font-family:var(--mono); font-size:12px; color:var(--text-dimmer); letter-spacing:0.06em; margin-bottom:8px; }
+  .contact-email{ font-family:var(--serif); font-size:19px; overflow-wrap:anywhere; }
+  .btn{
+    display:inline-block; padding:12px 24px; border-radius:999px;
+    font-family:var(--mono); font-size:13.5px; text-decoration:none;
+    background:var(--anbu); color:#1B1408;
+    transition:transform 0.2s;
+  }
+  .btn:hover{ transform:translateY(-2px); }
+
+  .reviewer-note{
+    background:var(--gold-soft);
+    border:1px solid rgba(220,167,90,0.25);
+    border-radius:14px;
+    padding:20px 22px;
+    font-size:14px; color:var(--text-dim);
+  }
+  .reviewer-note .label{
+    font-family:var(--mono); font-size:11.5px; color:var(--gold);
+    text-transform:uppercase; letter-spacing:0.08em; margin-bottom:8px;
+  }
+
+  footer{ padding:60px 0 44px; border-top:1px solid var(--line); }
+  .footer-inner{ display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:20px; }
+  .footer-brand{ font-family:var(--brand); font-weight:600; letter-spacing:-0.01em; font-size:16px; color:var(--text-dim); }
+  .footer-links{ display:flex; flex-wrap:wrap; gap:10px 24px; font-family:var(--mono); font-size:13px; color:var(--text-dimmer); }
+  .footer-links a{ color:inherit; text-decoration:none; white-space:nowrap; transition:color 0.2s; }
+  .footer-links a:hover{ color:var(--anbu); }
+  .footer-copy{ margin-top:26px; font-family:var(--mono); font-size:12px; color:var(--text-dimmer); }
+  .biz-info{
+    margin-top:34px; padding-top:24px; border-top:1px solid var(--line);
+    display:flex; flex-wrap:wrap; gap:8px 18px;
+    font-family:var(--sans); font-size:12.5px; color:var(--text-dimmer); line-height:1.7;
+  }
+  .biz-info a{ color:var(--text-dimmer); text-decoration:underline; text-underline-offset:2px; }
+  .biz-info a:hover{ color:var(--anbu); }
+  /* 푸터는 홈과 같은 폭으로 */
+  .footer-wrap{ max-width:1080px; }
+
+  @media (max-width: 600px){
+    .hero{ padding:56px 0 36px; }
+    .contact-card{ flex-direction:column; align-items:flex-start; }
+  }
+
+  /* 상단 바: 모든 페이지 공통 · 화면 폭에 따라 단계적으로 축소 */
+  @media (max-width: 780px){
+    .nav-inner{ height:58px; padding:0 20px; gap:12px; }
+    .brand{ font-size:17px; gap:9px; }
+    .brand-mark{ width:30px; height:30px; }
+  }
+  @media (max-width: 480px){
+    .nav-inner{ height:54px; padding:0 16px; gap:10px; }
+    .nav-right{ gap:10px; }
+    .brand{ font-size:16px; gap:8px; }
+    .brand-mark{ width:28px; height:28px; }
+    .back-link{ font-size:12px; }
+    .lang-toggle button{ font-size:11px; padding:5px 10px; }
+  }
+  @media (max-width: 360px){
+    .back-link{ display:none; }
+  }
+
+  @media (prefers-reduced-motion: reduce){
+    *{ animation-duration:0.01ms !important; animation-iteration-count:1 !important; scroll-behavior:auto !important; }
+  }
+</style>
+</head>
+<body>
+
+<div class="starfield" id="starfield"></div>
+
+<header class="nav">
+  <div class="nav-inner">
+    <a class="brand" href="/">
+      <svg class="brand-mark" viewBox="6 -2.5 108 108" aria-hidden="true" focusable="false"><circle cx="60" cy="60" r="44" fill="#2F6FB3"/><path d="M 19.85 78 A 44 44 0 0 0 100.15 78 Z" fill="#1B4C80"/><path d="M 30 84 Q 70 78 88 34" fill="none" stroke="#FFFFFF" stroke-width="7" stroke-linecap="round"/><path d="M 88 34 L 92 24" fill="none" stroke="#E08A2E" stroke-width="7" stroke-linecap="round"/><g transform="translate(92 23) rotate(-67.6)"><polygon points="26,0 0,-12 7,0" fill="#E08A2E"/><polygon points="26,0 7,0 0,12" fill="#E08A2E"/><polygon points="26,0 7,0 0,12" fill="#000" fill-opacity="0.22"/></g></svg>
+      October Sky
+    </a>
+    <div class="nav-right">
+      <a class="back-link" href="/anbu/">
+        <span class="lang-ko">← 안부</span><span class="lang-en" hidden>← Anbu</span>
+      </a>
+      <div class="lang-toggle">
+        <button type="button" data-lang-btn="ko">한국어</button>
+        <button type="button" data-lang-btn="en">EN</button>
+      </div>
+    </div>
+  </div>
+</header>
+
+<main>
+  <section class="hero" style="border-top:none;">
+    <div class="wrap">
+      <div class="eyebrow">Anbu · Support</div>
+      <h1 class="title">
+        <span class="lang-ko">무엇을 도와드릴까요?</span>
+        <span class="lang-en" hidden>How can we help?</span>
+      </h1>
+      <p class="tagline">
+        <span class="lang-ko">안부(전하는 분 앱 "안부 - 알람으로 전하는 안심", 받는 분 앱 "안부 - 알림으로 받는 안심")의 지원 페이지입니다. 아래에서 답을 찾지 못하셨다면 이메일로 편하게 문의해 주세요. 어느 앱인지, 기기 모델과 운영체제 버전(iOS·Android), 화면 캡처를 함께 보내 주시면 더 빨리 확인할 수 있어요.</span>
+        <span class="lang-en" hidden>Support page for Anbu — the Sender app and the Receiver app. If you can't find your answer below, feel free to email us. Including which app, your device model, OS version (iOS or Android), and a screenshot helps us respond faster.</span>
+      </p>
+      <a class="privacy-inline-link" href="/anbu/privacy/">
+        <span class="lang-ko">개인정보처리방침도 확인해보세요 →</span>
+        <span class="lang-en" hidden>You can also check our Privacy Policy →</span>
+      </a>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <h2 class="section-title">
+        <span class="lang-ko">자주 묻는 질문</span>
+        <span class="lang-en" hidden>Frequently Asked Questions</span>
+      </h2>
+
+      <details class="faq-item" open>
+        <summary>
+          <span class="lang-ko">앱이 왜 두 개인가요?</span>
+          <span class="lang-en" hidden>Why are there two apps?</span>
+        </summary>
+        <div class="faq-body">
+          <p class="lang-ko">알람을 쓰는 분과 소식을 받는 가족이 하는 일이 달라서 앱을 나눴어요. 알람을 쓰는 분은 <strong>전하는 분 앱</strong>(붉은 자명종 아이콘), 소식을 받는 가족은 <strong>받는 분 앱</strong>(청록 종 아이콘)을 설치해 주세요. 홈 화면 이름은 둘 다 "안부"예요.</p>
+          <p class="lang-en" hidden>The person using the alarms and the family receiving updates do different things, so there are two apps. The person using the alarms installs the <strong>Sender app</strong> (red alarm-clock icon); family installs the <strong>Receiver app</strong> (teal bell icon). Both are named "안부" on the home screen.</p>
+        </div>
+      </details>
+
+      <details class="faq-item">
+        <summary>
+          <span class="lang-ko">처음에 어떻게 연결하나요?</span>
+          <span class="lang-en" hidden>How do we connect for the first time?</span>
+        </summary>
+        <div class="faq-body">
+          <p class="lang-ko">전하는 분 앱을 처음 열면 <strong>6자리 연결 번호</strong>가 나와요. 공유 버튼으로 가족에게 보내고, 가족은 받는 분 앱에 그 번호를 입력하면 연결돼요. 처음 연결한 가족이 <strong>관리자</strong>가 돼요.</p>
+          <p class="lang-en" hidden>When the Sender app is opened for the first time, it shows a <strong>6-digit code</strong>. Share it with family, and they enter it in the Receiver app to connect. The first family member to connect becomes the <strong>manager</strong>.</p>
+        </div>
+      </details>
+
+      <details class="faq-item">
+        <summary>
+          <span class="lang-ko">가족을 더 추가하고 싶어요</span>
+          <span class="lang-en" hidden>How do I add more family members?</span>
+        </summary>
+        <div class="faq-body">
+          <p class="lang-ko">가족 추가는 <strong>관리자</strong>가 받는 분 앱에서 <strong>초대 번호</strong>를 만들어서 해요. 번호 하나로 한 명이 연결되고, 10분 동안 쓸 수 있어요. 새 가족은 받는 분 앱에 그 번호를 입력하면 돼요.</p>
+          <p class="lang-ko">전하는 분 한 명마다 가족 2명까지 무료이고, 세 번째부터는 한 명마다 결제가 필요해요(아래 결제 안내 참고).</p>
+          <p class="lang-en" hidden>The <strong>manager</strong> creates an <strong>invite code</strong> in the Receiver app. Each code connects one person and is valid for 10 minutes. The new family member enters it in the Receiver app.</p>
+          <p class="lang-en" hidden>Up to 2 family members are free per sender; from the third, each new connection requires a purchase (see payments below).</p>
+        </div>
+      </details>
+
+      <details class="faq-item">
+        <summary>
+          <span class="lang-ko">전하는 분 앱에서 연결 번호를 다시 만들 수 없어요</span>
+          <span class="lang-en" hidden>The Sender app won't make a new code</span>
+        </summary>
+        <div class="faq-body">
+          <p class="lang-ko">가족이 한 명이라도 연결돼 있으면, 가족 추가는 관리자가 받는 분 앱에서 해요. 그래서 전하는 분 앱에서는 번호를 다시 만들 수 없어요. 연결된 가족이 모두 끊겼을 때만 다시 만들 수 있어요.</p>
+          <p class="lang-en" hidden>Once at least one family member is connected, adding family is done by the manager in the Receiver app, so the Sender app cannot create a new code. It can create one again only when no family is connected.</p>
+        </div>
+      </details>
+
+      <details class="faq-item">
+        <summary>
+          <span class="lang-ko">관리자는 누구이고, 바꿀 수 있나요?</span>
+          <span class="lang-en" hidden>Who is the manager, and can it change?</span>
+        </summary>
+        <div class="faq-body">
+          <p class="lang-ko">처음 연결한 가족이 관리자예요. 가족이 두 명 이상이면 관리자가 받는 분 앱에서 다른 가족에게 <strong>관리자를 넘길</strong> 수 있어요. 관리자가 연결을 끊으면 그다음에 연결한 가족이 관리자가 돼요.</p>
+          <p class="lang-en" hidden>The first family member to connect is the manager. With two or more family members, the manager can <strong>hand over</strong> the role in the Receiver app. If the manager disconnects, the next family member to have connected becomes the manager.</p>
+        </div>
+      </details>
+
+      <details class="faq-item">
+        <summary>
+          <span class="lang-ko">경고는 언제 오나요? 어떻게 끄나요?</span>
+          <span class="lang-en" hidden>When do alerts come, and how do I stop them?</span>
+        </summary>
+        <div class="faq-body">
+          <p class="lang-ko">알람이 울린 뒤 <strong>30분 안에 끄지 않으면</strong> 받는 분 앱에 경고가 가요. 끌 때까지 10분마다 다시 알려 드려요(최대 6번).</p>
+          <p class="lang-ko">경고 화면의 <strong>"○○에게 전화하기"</strong>를 눌러 전화하면 경고가 꺼지고, 그 알람은 기록에 "전화"로 남아요. 그 사이 전하는 분이 알람을 끄면 경고도 멈춰요.</p>
+          <p class="lang-en" hidden>If an alarm is <strong>not turned off within 30 minutes</strong>, the Receiver app gets an alert, repeated every 10 minutes until it is turned off (up to 6 times).</p>
+          <p class="lang-en" hidden>Tap <strong>"Call ○○"</strong> on the alert screen to call and dismiss the alert; that alarm is recorded as "Called". If the sender turns the alarm off in the meantime, the alerts stop.</p>
+        </div>
+      </details>
+
+      <details class="faq-item">
+        <summary>
+          <span class="lang-ko">알림이 오지 않아요</span>
+          <span class="lang-en" hidden>I'm not getting notifications</span>
+        </summary>
+        <div class="faq-body">
+          <p class="lang-ko">기기 설정에서 안부 앱의 <strong>알림 허용</strong>이 켜져 있는지 확인해 주세요.</p>
+          <p class="lang-ko">iPhone·iPad의 <strong>집중 모드</strong>(방해금지)를 쓰고 있다면, 집중 모드 설정에서 <strong>"긴급한 알림"</strong>을 켜야 경고가 떠요.</p>
+          <p class="lang-en" hidden>Check that <strong>notifications are allowed</strong> for Anbu in your device settings.</p>
+          <p class="lang-en" hidden>If you use a <strong>Focus</strong> mode (Do Not Disturb) on iPhone or iPad, turn on <strong>"Time Sensitive Notifications"</strong> in that Focus to receive alerts.</p>
+        </div>
+      </details>
+
+      <details class="faq-item">
+        <summary>
+          <span class="lang-ko">기기를 껐다 켠 직후에도 알람이 울리나요?</span>
+          <span class="lang-en" hidden>Does the alarm ring right after restarting the device?</span>
+        </summary>
+        <div class="faq-body">
+          <p class="lang-ko">네, 알람은 울려요. 다만 <strong>와이파이 전용 iPad</strong>는 전원을 켠 뒤 잠금을 한 번 풀기 전에는 알람을 끈 소식이 늦게 전달될 수 있어요. iPhone과 Android 폰은 정상적으로 전달돼요.</p>
+          <p class="lang-en" hidden>Yes, the alarm rings. However, on a <strong>Wi-Fi-only iPad</strong>, the update that the alarm was turned off may be delayed until the iPad is unlocked once after restarting. iPhone and Android phones send it normally.</p>
+        </div>
+      </details>
+
+      <details class="faq-item">
+        <summary>
+          <span class="lang-ko">가족이 모두 끊기거나 전화가 와도 알람은 울리나요?</span>
+          <span class="lang-en" hidden>Do alarms still ring if family disconnects or a call comes in?</span>
+        </summary>
+        <div class="faq-body">
+          <p class="lang-ko">네. 연결된 가족이 모두 끊겨도 알람은 그대로 울리고, 알람이 울리는 중에 전화가 와도 계속 울려요.</p>
+          <p class="lang-en" hidden>Yes. Alarms keep ringing even if all family disconnects, and they keep ringing if a phone call comes in.</p>
+        </div>
+      </details>
+
+      <details class="faq-item">
+        <summary>
+          <span class="lang-ko">가족이 알람을 대신 맞춰 줄 수 있나요?</span>
+          <span class="lang-en" hidden>Can family set alarms for me?</span>
+        </summary>
+        <div class="faq-body">
+          <p class="lang-ko">받는 분 앱에서 알람 <strong>추가·수정·삭제를 부탁</strong>할 수 있어요. 전하는 분이 <strong>승인해야</strong> 적용되고, 7일 동안 답이 없으면 자동으로 취소돼요.</p>
+          <p class="lang-en" hidden>Family can <strong>request</strong> to add, change, or delete alarms from the Receiver app. Changes apply <strong>only after the sender approves</strong>, and requests are cancelled automatically after 7 days without an answer.</p>
+        </div>
+      </details>
+
+      <details class="faq-item">
+        <summary>
+          <span class="lang-ko">결제는 언제, 왜 다시 하나요?</span>
+          <span class="lang-en" hidden>When do I pay, and why again?</span>
+        </summary>
+        <div class="faq-body">
+          <p class="lang-ko">전하는 분 한 명마다 가족 2명까지 무료예요. 세 번째 가족부터는 <strong>한 명을 연결할 때마다 4,400원</strong>을 관리자가 받는 분 앱에서 결제해요.</p>
+          <p class="lang-ko">연결 한 번에 쓰는 상품이라, 가족을 내보낸 뒤 다시 추가하면 다시 결제해요. 그래서 "구매 복원"은 없어요. 결제했는데 연결을 못 했다면 그 결제는 남아 있다가 다음 연결 때 쓰여요.</p>
+          <p class="lang-ko">결제는 결제한 사람에게 묶여서, 그 사람이 관리하는 어느 전하는 분에게든 쓸 수 있어요. 관리자가 바뀌면 새 관리자가 결제해요.</p>
+          <p class="lang-en" hidden>Up to 2 family members are free per sender. From the third, the manager pays <strong>₩4,400 for each new connection</strong> in the Receiver app.</p>
+          <p class="lang-en" hidden>Each purchase covers one connection, so removing and re-adding someone requires a new purchase, and there is no "Restore Purchases". If you paid but did not complete a connection, the purchase stays available for your next connection.</p>
+          <p class="lang-en" hidden>Purchases belong to the person who paid and can be used for any sender they manage. If the manager changes, the new manager pays.</p>
+        </div>
+      </details>
+
+      <details class="faq-item">
+        <summary>
+          <span class="lang-ko">환불받고 싶어요</span>
+          <span class="lang-en" hidden>I want a refund</span>
+        </summary>
+        <div class="faq-body">
+          <p class="lang-ko">결제는 Apple과 Google이 처리하므로 환불도 각 스토어를 통해 요청해 주세요. iPhone·iPad는 <a href="https://reportaproblem.apple.com" target="_blank" rel="noopener">reportaproblem.apple.com</a>, Android는 Google Play의 주문 내역에서 요청할 수 있어요. 회사는 결제 정보에 접근할 수 없어 직접 환불해 드릴 수 없어요.</p>
+          <p class="lang-en" hidden>Payments are processed by Apple and Google, so please request refunds through each store: <a href="https://reportaproblem.apple.com" target="_blank" rel="noopener">reportaproblem.apple.com</a> for iPhone and iPad, or your order history in Google Play for Android. We cannot access payment details and cannot issue refunds directly.</p>
+        </div>
+      </details>
+
+      <details class="faq-item">
+        <summary>
+          <span class="lang-ko">앱을 지우면 어떻게 되나요?</span>
+          <span class="lang-en" hidden>What happens if I delete the app?</span>
+        </summary>
+        <div class="faq-body">
+          <p class="lang-ko">기기 안의 데이터는 바로 지워져요. 다시 설치하면 처음부터 다시 연결해야 해요.</p>
+          <p class="lang-ko">서버의 데이터는 자동으로 정리돼요. 전하는 분의 소식이 15일 동안 없으면 가족에게 "소식 없음"을 알리고, 30일이 지나면 그 전하는 분의 데이터(알람, 기록, 연결, 결제 기록)를 모두 지우고 연결을 끊어요.</p>
+          <p class="lang-en" hidden>Data on the device is deleted right away. If you reinstall, you will need to connect again from the start.</p>
+          <p class="lang-en" hidden>Server data is cleaned up automatically. If there is no word from a sender for 15 days, family is notified; after 30 days, all of that sender's data (alarms, history, connections, and purchase records) is deleted and the connections are removed.</p>
+        </div>
+      </details>
+
+      <details class="faq-item">
+        <summary>
+          <span class="lang-ko">데이터를 지우고 싶어요</span>
+          <span class="lang-en" hidden>How do I delete my data?</span>
+        </summary>
+        <div class="faq-body">
+          <p class="lang-ko">안부는 회원가입이 없어서 계정 삭제 버튼도 없어요. 서버에는 무작위로 만든 기기 값만 있어 이메일로는 누구의 데이터인지 확인할 수 없기 때문에, 회사가 따로 지워 드릴 수도 없어요. 대신 데이터는 이렇게 지워져요.</p>
+          <p class="lang-ko"><strong>연결 끊기</strong>를 하면 그 연결은 바로 끊어져요. <strong>앱을 지우면</strong> 기기 안의 데이터는 바로 지워지고, 서버의 데이터(알람, 기록, 연결, 결제 기록)는 <strong>30일 뒤 자동으로 모두 지워져요.</strong></p>
+          <p class="lang-en" hidden>Anbu has no accounts, so there is no delete-account button. The server only holds random device values, so we cannot tell by email whose data is whose and cannot delete it for you. Instead, data is deleted like this:</p>
+          <p class="lang-en" hidden><strong>Disconnect</strong> removes that connection immediately. <strong>Deleting the app</strong> deletes data on the device right away, and server data (alarms, history, connections, purchase records) is <strong>deleted automatically after 30 days.</strong></p>
+        </div>
+      </details>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <h2 class="section-title">
+        <span class="lang-ko">문의하기</span>
+        <span class="lang-en" hidden>Contact</span>
+      </h2>
+      <div class="contact-card">
+        <div>
+          <div class="contact-label">EMAIL</div>
+          <div class="contact-email">octobersky0515@naver.com</div>
+        </div>
+        <a class="btn" href="mailto:octobersky0515@naver.com">
+          <span class="lang-ko">이메일 보내기</span>
+          <span class="lang-en" hidden>Send an email</span>
+        </a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap footer-wrap">
+    <div class="footer-inner">
+      <div class="footer-brand">October Sky · 옥토버 스카이</div>
+      <div class="footer-links">
+        <a href="mailto:octobersky0515@naver.com">octobersky0515@naver.com</a>
+        <a href="/anbu/"><span class="lang-ko">안부</span><span class="lang-en" hidden>Anbu</span></a>
+        <a href="/anbu/privacy/"><span class="lang-ko">개인정보처리방침</span><span class="lang-en" hidden>Privacy Policy</span></a>
+        <a href="/"><span class="lang-ko">홈으로</span><span class="lang-en" hidden>Home</span></a>
+      </div>
+    </div>
+    <div class="biz-info">
+      <span>상호: October Sky(옥토버 스카이)</span>
+      <span>대표: 윤영민</span>
+      <span>사업자등록번호: 825-32-01767</span>
+      <span>통신판매업신고번호: 제 2026-서울강서-2645 호</span>
+      <span>사업장 주소: 서울특별시 강서구 강서로 186, 3층 3015호</span>
+      <span>전화: 010-3142-9165</span>
+    </div>
+    <div class="footer-copy">© 2026 October Sky. All rights reserved.</div>
+  </div>
+</footer>
+
+<script>
+  const field = document.getElementById('starfield');
+  const count = window.innerWidth < 780 ? 30 : 60;
+  const frag = document.createDocumentFragment();
+  for(let i=0;i<count;i++){
+    const s = document.createElement('div');
+    s.className = 'star';
+    s.style.left = Math.random()*100 + 'vw';
+    s.style.top = Math.random()*100 + 'vh';
+    s.style.animationDelay = (Math.random()*4) + 's';
+    s.style.width = s.style.height = (Math.random() < 0.15 ? '3px' : '2px');
+    frag.appendChild(s);
+  }
+  field.appendChild(frag);
+</script>
+
+<script>
+(function(){
+  var KEY = 'anbu-site-lang';
+  function apply(lang){
+    document.querySelectorAll('.lang-ko').forEach(function(el){ el.hidden = (lang !== 'ko'); });
+    document.querySelectorAll('.lang-en').forEach(function(el){ el.hidden = (lang !== 'en'); });
+    document.querySelectorAll('[data-lang-btn]').forEach(function(b){
+      b.classList.toggle('active', b.getAttribute('data-lang-btn') === lang);
+    });
+    document.documentElement.lang = lang;
+  }
+  var saved = localStorage.getItem(KEY) || 'ko';
+  apply(saved);
+  document.querySelectorAll('[data-lang-btn]').forEach(function(b){
+    b.addEventListener('click', function(){
+      var lang = b.getAttribute('data-lang-btn');
+      localStorage.setItem(KEY, lang);
+      apply(lang);
+    });
+  });
+})();
+</script>
+
+</body>
+</html>
