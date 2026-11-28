@@ -214,7 +214,7 @@
     .brand{ font-size:16px; gap:8px; }
     .brand-mark{ width:28px; height:28px; }
     .back-link{ font-size:12px; }
-    .lang-toggle button{ font-size:11px; padding:5px 10px; }
+    .lang-toggle button{ font-size:10.5px; padding:5px 7px; }
   }
   @media (max-width: 360px){
     .back-link{ display:none; }
@@ -237,11 +237,13 @@
     </a>
     <div class="nav-right">
       <a class="back-link" href="/anbu/">
-        <span class="lang-ko">← 안부</span><span class="lang-en" hidden>← Anbu</span>
+        <span class="lang-ko">← 안부</span><span class="lang-en" hidden>← All Well</span><span class="lang-ja" hidden>← たより</span><span class="lang-zh" hidden>← 報平安</span>
       </a>
       <div class="lang-toggle">
         <button type="button" data-lang-btn="ko">한국어</button>
         <button type="button" data-lang-btn="en">EN</button>
+        <button type="button" data-lang-btn="ja">日本語</button>
+        <button type="button" data-lang-btn="zh">繁中</button>
       </div>
     </div>
   </div>
@@ -250,18 +252,18 @@
 <main>
   <section class="hero" style="border-top:none;">
     <div class="wrap">
-      <div class="eyebrow">Anbu · Support</div>
+      <div class="eyebrow">All Well · Support</div>
       <h1 class="title">
         <span class="lang-ko">무엇을 도와드릴까요?</span>
-        <span class="lang-en" hidden>How can we help?</span>
+        <span class="lang-en" hidden>How can we help?</span><span class="lang-ja" hidden>お困りですか？</span><span class="lang-zh" hidden>需要什麼協助？</span>
       </h1>
       <p class="tagline">
         <span class="lang-ko">안부(전하는 분 앱 "안부 - 알람으로 전하는 안심", 받는 분 앱 "안부 - 알림으로 받는 안심")의 지원 페이지입니다. 아래에서 답을 찾지 못하셨다면 이메일로 편하게 문의해 주세요. 어느 앱인지, 기기 모델과 운영체제 버전(iOS·Android), 화면 캡처를 함께 보내 주시면 더 빨리 확인할 수 있어요.</span>
-        <span class="lang-en" hidden>Support page for Anbu — the Sender app and the Receiver app. If you can't find your answer below, feel free to email us. Including which app, your device model, OS version (iOS or Android), and a screenshot helps us respond faster.</span>
+        <span class="lang-en" hidden>Support page for All Well — the Sender app and the Receiver app. If you can't find your answer below, feel free to email us. Including which app, your device model, OS version (iOS or Android), and a screenshot helps us respond faster.</span><span class="lang-ja" hidden>たより（知らせる人のアプリ・見守る人のアプリ）のサポートページです。下に答えが見つからない場合は、お気軽にメールでお問い合わせください。どちらのアプリか、端末の機種、OSのバージョン（iOS・Android）、スクリーンショットを添えていただくと、より早くお答えできます。</span><span class="lang-zh" hidden>這是報平安（報平安者 App、關心者 App）的支援頁面。若在下方找不到答案，歡迎寄電子郵件詢問。附上是哪一個 App、裝置型號、作業系統版本（iOS 或 Android）與螢幕截圖，能讓我們更快回覆。</span>
       </p>
       <a class="privacy-inline-link" href="/anbu/privacy/">
         <span class="lang-ko">개인정보처리방침도 확인해보세요 →</span>
-        <span class="lang-en" hidden>You can also check our Privacy Policy →</span>
+        <span class="lang-en" hidden>You can also check our Privacy Policy →</span><span class="lang-ja" hidden>プライバシーポリシーもご確認いただけます →</span><span class="lang-zh" hidden>也可以查看隱私權政策 →</span>
       </a>
     </div>
   </section>
@@ -270,174 +272,176 @@
     <div class="wrap">
       <h2 class="section-title">
         <span class="lang-ko">자주 묻는 질문</span>
-        <span class="lang-en" hidden>Frequently Asked Questions</span>
+        <span class="lang-en" hidden>Frequently Asked Questions</span><span class="lang-ja" hidden>よくある質問</span><span class="lang-zh" hidden>常見問題</span>
       </h2>
 
       <details class="faq-item" open>
         <summary>
           <span class="lang-ko">앱이 왜 두 개인가요?</span>
-          <span class="lang-en" hidden>Why are there two apps?</span>
+          <span class="lang-en" hidden>Why are there two apps?</span><span class="lang-ja" hidden>なぜアプリが2つあるのですか？</span><span class="lang-zh" hidden>為什麼有兩個 App？</span>
         </summary>
         <div class="faq-body">
           <p class="lang-ko">알람을 쓰는 분과 소식을 받는 가족이 하는 일이 달라서 앱을 나눴어요. 알람을 쓰는 분은 <strong>전하는 분 앱</strong>(붉은 자명종 아이콘), 소식을 받는 가족은 <strong>받는 분 앱</strong>(청록 종 아이콘)을 설치해 주세요. 홈 화면 이름은 둘 다 "안부"예요.</p>
-          <p class="lang-en" hidden>The person using the alarms and the family receiving updates do different things, so there are two apps. The person using the alarms installs the <strong>Sender app</strong> (red alarm-clock icon); family installs the <strong>Receiver app</strong> (teal bell icon). Both are named "안부" on the home screen.</p>
+          <p class="lang-en" hidden>The person using the alarms and the family receiving updates do different things, so there are two apps. The person using the alarms installs the <strong>Sender app</strong> (red alarm-clock icon); family installs the <strong>Receiver app</strong> (teal bell icon). Both are named "All Well" on the home screen.</p><p class="lang-ja" hidden>アラームを使う人と知らせを受け取る家族では役割が違うため、アプリを分けました。アラームを使う人は<strong>知らせる人のアプリ</strong>（赤い目覚まし時計のアイコン）、知らせを受け取る家族は<strong>見守る人のアプリ</strong>（青緑のベルのアイコン）をインストールしてください。ホーム画面ではどちらも「たより」と表示されます。</p><p class="lang-zh" hidden>使用鬧鐘的人和接收消息的家人要做的事不同，所以分成兩個 App。使用鬧鐘的人請安裝<strong>報平安者 App</strong>（紅色鬧鐘圖示），接收消息的家人請安裝<strong>關心者 App</strong>（藍綠色鈴鐺圖示）。主畫面上兩者都顯示為「報平安」。</p>
         </div>
       </details>
 
       <details class="faq-item">
         <summary>
           <span class="lang-ko">처음에 어떻게 연결하나요?</span>
-          <span class="lang-en" hidden>How do we connect for the first time?</span>
+          <span class="lang-en" hidden>How do we connect for the first time?</span><span class="lang-ja" hidden>最初はどうやってつながりますか？</span><span class="lang-zh" hidden>第一次要怎麼連結？</span>
         </summary>
         <div class="faq-body">
           <p class="lang-ko">전하는 분 앱을 처음 열면 <strong>6자리 연결 번호</strong>가 나와요. 공유 버튼으로 가족에게 보내고, 가족은 받는 분 앱에 그 번호를 입력하면 연결돼요. 처음 연결한 가족이 <strong>관리자</strong>가 돼요.</p>
-          <p class="lang-en" hidden>When the Sender app is opened for the first time, it shows a <strong>6-digit code</strong>. Share it with family, and they enter it in the Receiver app to connect. The first family member to connect becomes the <strong>manager</strong>.</p>
+          <p class="lang-en" hidden>When the Sender app is opened for the first time, it shows a <strong>6-digit code</strong>. Share it with family, and they enter it in the Receiver app to connect. The first family member to connect becomes the <strong>manager</strong>.</p><p class="lang-ja" hidden>知らせる人のアプリを初めて開くと<strong>6桁の番号</strong>が表示されます。この番号を家族に伝え、家族が見守る人のアプリに入力するとつながります。最初につながった家族が<strong>管理者</strong>になります。</p><p class="lang-zh" hidden>第一次開啟報平安者 App 時，會顯示<strong>6 位數號碼</strong>。把號碼告訴家人，家人在關心者 App 輸入後就會連結。第一位連結的家人會成為<strong>管理者</strong>。</p>
         </div>
       </details>
 
       <details class="faq-item">
         <summary>
           <span class="lang-ko">가족을 더 추가하고 싶어요</span>
-          <span class="lang-en" hidden>How do I add more family members?</span>
+          <span class="lang-en" hidden>How do I add more family members?</span><span class="lang-ja" hidden>家族を追加するには？</span><span class="lang-zh" hidden>要如何增加家人？</span>
         </summary>
         <div class="faq-body">
           <p class="lang-ko">가족 추가는 <strong>관리자</strong>가 받는 분 앱에서 <strong>초대 번호</strong>를 만들어서 해요. 번호 하나로 한 명이 연결되고, 10분 동안 쓸 수 있어요. 새 가족은 받는 분 앱에 그 번호를 입력하면 돼요.</p>
           <p class="lang-ko">전하는 분 한 명마다 가족 2명까지 무료이고, 세 번째부터는 한 명마다 결제가 필요해요(아래 결제 안내 참고).</p>
-          <p class="lang-en" hidden>The <strong>manager</strong> creates an <strong>invite code</strong> in the Receiver app. Each code connects one person and is valid for 10 minutes. The new family member enters it in the Receiver app.</p>
-          <p class="lang-en" hidden>Up to 2 family members are free per sender; from the third, each new connection requires a purchase (see payments below).</p>
+          <p class="lang-en" hidden>The <strong>manager</strong> creates an <strong>invite code</strong> in the Receiver app. Each code connects one person and is valid for 10 minutes. The new family member enters it in the Receiver app.</p><p class="lang-ja" hidden><strong>管理者</strong>が見守る人のアプリで<strong>招待番号</strong>を作ります。番号1つで1人がつながり、有効期限は10分です。新しい家族は見守る人のアプリにその番号を入力します。</p><p class="lang-zh" hidden>由<strong>管理者</strong>在關心者 App 產生<strong>邀請號碼</strong>。一個號碼可連結一人，有效時間為 10 分鐘。新家人在關心者 App 輸入該號碼即可。</p>
+          <p class="lang-en" hidden>Up to 2 family members are free per sender; from the third, each new connection requires a purchase (see payments below).</p><p class="lang-ja" hidden>知らせる人1人につき家族2人までは無料で、3人目からは1人つなぐごとに購入が必要です（下の購入の項目を参照）。</p><p class="lang-zh" hidden>每位報平安者可免費連結 2 位家人，從第三位起每連結一人都需要購買（請參考下方付款說明）。</p>
         </div>
       </details>
 
       <details class="faq-item">
         <summary>
           <span class="lang-ko">전하는 분 앱에서 연결 번호를 다시 만들 수 없어요</span>
-          <span class="lang-en" hidden>The Sender app won't make a new code</span>
+          <span class="lang-en" hidden>The Sender app won't make a new code</span><span class="lang-ja" hidden>知らせる人のアプリで新しい番号が作れません</span><span class="lang-zh" hidden>報平安者 App 無法產生新號碼</span>
         </summary>
         <div class="faq-body">
           <p class="lang-ko">가족이 한 명이라도 연결돼 있으면, 가족 추가는 관리자가 받는 분 앱에서 해요. 그래서 전하는 분 앱에서는 번호를 다시 만들 수 없어요. 연결된 가족이 모두 끊겼을 때만 다시 만들 수 있어요.</p>
-          <p class="lang-en" hidden>Once at least one family member is connected, adding family is done by the manager in the Receiver app, so the Sender app cannot create a new code. It can create one again only when no family is connected.</p>
+          <p class="lang-en" hidden>Once at least one family member is connected, adding family is done by the manager in the Receiver app, so the Sender app cannot create a new code. It can create one again only when no family is connected.</p><p class="lang-ja" hidden>家族が1人でもつながっていると、家族の追加は見守る人のアプリで管理者が行うため、知らせる人のアプリでは新しい番号を作れません。つながっている家族が1人もいなくなったときだけ、もう一度作れます。</p><p class="lang-zh" hidden>只要有一位家人已連結，增加家人就由管理者在關心者 App 進行，因此報平安者 App 無法產生新號碼。只有在所有家人都解除連結時，才能再次產生。</p>
         </div>
       </details>
 
       <details class="faq-item">
         <summary>
           <span class="lang-ko">관리자는 누구이고, 바꿀 수 있나요?</span>
-          <span class="lang-en" hidden>Who is the manager, and can it change?</span>
+          <span class="lang-en" hidden>Who is the manager, and can it change?</span><span class="lang-ja" hidden>管理者は誰ですか？変更できますか？</span><span class="lang-zh" hidden>誰是管理者？可以更換嗎？</span>
         </summary>
         <div class="faq-body">
           <p class="lang-ko">처음 연결한 가족이 관리자예요. 가족이 두 명 이상이면 관리자가 받는 분 앱에서 다른 가족에게 <strong>관리자를 넘길</strong> 수 있어요. 관리자가 연결을 끊으면 그다음에 연결한 가족이 관리자가 돼요.</p>
-          <p class="lang-en" hidden>The first family member to connect is the manager. With two or more family members, the manager can <strong>hand over</strong> the role in the Receiver app. If the manager disconnects, the next family member to have connected becomes the manager.</p>
+          <p class="lang-en" hidden>The first family member to connect is the manager. With two or more family members, the manager can <strong>hand over</strong> the role in the Receiver app. If the manager disconnects, the next family member to have connected becomes the manager.</p><p class="lang-ja" hidden>最初につながった家族が管理者です。家族が2人以上いる場合、管理者は見守る人のアプリで役割を<strong>引き継ぐ</strong>ことができます。管理者がつながりを解除すると、次につながった家族が管理者になります。</p><p class="lang-zh" hidden>第一位連結的家人是管理者。家人有兩位以上時，管理者可以在關心者 App 中<strong>移交</strong>管理者身分。管理者解除連結時，下一位連結的家人會成為管理者。</p>
         </div>
       </details>
 
       <details class="faq-item">
         <summary>
           <span class="lang-ko">경고는 언제 오나요? 어떻게 끄나요?</span>
-          <span class="lang-en" hidden>When do alerts come, and how do I stop them?</span>
+          <span class="lang-en" hidden>When do alerts come, and how do I stop them?</span><span class="lang-ja" hidden>警告はいつ届きますか？どうすれば止まりますか？</span><span class="lang-zh" hidden>什麼時候會收到警示？要怎麼停止？</span>
         </summary>
         <div class="faq-body">
           <p class="lang-ko">알람이 울린 뒤 <strong>30분 안에 끄지 않으면</strong> 받는 분 앱에 경고가 가요. 끌 때까지 10분마다 다시 알려 드려요(최대 6번).</p>
-          <p class="lang-ko">경고 화면의 <strong>"○○에게 전화하기"</strong>를 눌러 전화하면 경고가 꺼지고, 그 알람은 기록에 "전화"로 남아요. 그 사이 전하는 분이 알람을 끄면 경고도 멈춰요.</p>
-          <p class="lang-en" hidden>If an alarm is <strong>not turned off within 30 minutes</strong>, the Receiver app gets an alert, repeated every 10 minutes until it is turned off (up to 6 times).</p>
-          <p class="lang-en" hidden>Tap <strong>"Call ○○"</strong> on the alert screen to call and dismiss the alert; that alarm is recorded as "Called". If the sender turns the alarm off in the meantime, the alerts stop.</p>
+          <p class="lang-ko"><strong>"10분 뒤 다시"로 미루면</strong> 다시 울린 때부터 30분을 새로 세요(미루기를 누른 때부터는 40분). 여러 번 미루면 그때마다 다시 세기 때문에, 미루는 동안에는 경고가 가지 않아요. 대신 미룰 때마다 가족에게 "10분 미뤘어요" 소식이 가요.</p>
+          <p class="lang-ko">경고 화면의 <strong>"○○에게 전화하기"</strong>를 눌러 전화하면 경고가 꺼지고, 그 알람은 기록에 "전화"로 남아요. <strong>누가 몇 시에 전화했는지</strong>는 연결된 가족 모두의 화면에 보여요. 전화로 확인한 알람도 기록에서는 놓친 알람으로 세요. 그 사이 전하는 분이 알람을 끄면 경고도 멈춰요.</p>
+          <p class="lang-en" hidden>If an alarm is <strong>not turned off within 30 minutes</strong>, the Receiver app gets an alert, repeated every 10 minutes until it is turned off (up to 6 times).</p><p class="lang-ja" hidden>アラームが鳴ってから<strong>30分以内に止められないと</strong>、見守る人のアプリに警告が届きます。止められるまで10分ごとに再通知します（最大6回）。</p><p class="lang-zh" hidden>鬧鐘響起後<strong>30 分鐘內未關閉</strong>，關心者 App 會收到警示。在關閉之前每 10 分鐘會再提醒一次（最多 6 次）。</p>
+          <p class="lang-en" hidden><strong>If the alarm is snoozed</strong> ("10 minutes later"), the 30 minutes restart from when it rings again (40 minutes from the snooze). Each snooze restarts the count, so no alert is sent while snoozing. Instead, family gets a "Snoozed for 10 minutes" update each time.</p><p class="lang-ja" hidden><strong>「10分後にもう一度」でスヌーズすると</strong>、もう一度鳴った時から30分を数え直します（スヌーズを押した時からは40分）。スヌーズするたびに数え直すため、スヌーズ中は警告は届きません。その代わり、スヌーズするたびに家族に「10分スヌーズしました」と届きます。</p><p class="lang-zh" hidden><strong>若按「10 分鐘後再響」貪睡</strong>，會從再次響起時重新計算 30 分鐘（從按下貪睡起算為 40 分鐘）。每次貪睡都會重新計算，因此貪睡期間不會發出警示。不過，每次貪睡家人都會收到「已貪睡 10 分鐘」的消息。</p>
+          <p class="lang-en" hidden>Tap <strong>"Call ○○"</strong> on the alert screen to call and dismiss the alert; that alarm is recorded as "Called". <strong>Who called and when</strong> is shown to all connected family. Alarms confirmed by phone still count as missed in the history. If the sender turns the alarm off in the meantime, the alerts stop.</p><p class="lang-ja" hidden>警告画面の<strong>「○○に電話する」</strong>で電話をかけると警告が止まり、そのアラームは記録に「電話」と残ります。<strong>誰が何時に電話したか</strong>は、つながっている家族全員の画面に表示されます。電話で確認したアラームも、記録上は逃したアラームとして数えます。その間に知らせる人がアラームを止めた場合も警告は止まります。</p><p class="lang-zh" hidden>在警示畫面按<strong>「打電話給○○」</strong>撥打電話後警示就會停止，該鬧鐘會在紀錄中標示為「電話」。<strong>誰在幾點打了電話</strong>會顯示在所有已連結家人的畫面上。以電話確認的鬧鐘，在紀錄中仍算作錯過的鬧鐘。若在這期間報平安者關掉了鬧鐘，警示也會停止。</p>
         </div>
       </details>
 
       <details class="faq-item">
         <summary>
           <span class="lang-ko">알림이 오지 않아요</span>
-          <span class="lang-en" hidden>I'm not getting notifications</span>
+          <span class="lang-en" hidden>I'm not getting notifications</span><span class="lang-ja" hidden>通知が届きません</span><span class="lang-zh" hidden>收不到通知</span>
         </summary>
         <div class="faq-body">
           <p class="lang-ko">기기 설정에서 안부 앱의 <strong>알림 허용</strong>이 켜져 있는지 확인해 주세요.</p>
           <p class="lang-ko">iPhone·iPad의 <strong>집중 모드</strong>(방해금지)를 쓰고 있다면, 집중 모드 설정에서 <strong>"긴급한 알림"</strong>을 켜야 경고가 떠요.</p>
-          <p class="lang-en" hidden>Check that <strong>notifications are allowed</strong> for Anbu in your device settings.</p>
-          <p class="lang-en" hidden>If you use a <strong>Focus</strong> mode (Do Not Disturb) on iPhone or iPad, turn on <strong>"Time Sensitive Notifications"</strong> in that Focus to receive alerts.</p>
+          <p class="lang-en" hidden>Check that <strong>notifications are allowed</strong> for All Well in your device settings.</p><p class="lang-ja" hidden>端末の設定で、たよりの<strong>通知が許可されている</strong>か確認してください。</p><p class="lang-zh" hidden>請在裝置設定中確認報平安的<strong>通知已允許</strong>。</p>
+          <p class="lang-en" hidden>If you use a <strong>Focus</strong> mode (Do Not Disturb) on iPhone or iPad, turn on <strong>"Time Sensitive Notifications"</strong> in that Focus to receive alerts.</p><p class="lang-ja" hidden>iPhoneやiPadで<strong>集中モード</strong>（おやすみモード）を使っている場合は、その集中モードの設定で<strong>「時間制限付き通知」</strong>をオンにすると警告が表示されます。</p><p class="lang-zh" hidden>若在 iPhone 或 iPad 使用<strong>專注模式</strong>（勿擾模式），請在該專注模式設定中開啟<strong>「時效性通知」</strong>，才會顯示警示。</p>
         </div>
       </details>
 
       <details class="faq-item">
         <summary>
           <span class="lang-ko">기기를 껐다 켠 직후에도 알람이 울리나요?</span>
-          <span class="lang-en" hidden>Does the alarm ring right after restarting the device?</span>
+          <span class="lang-en" hidden>Does the alarm ring right after restarting the device?</span><span class="lang-ja" hidden>端末を再起動した直後もアラームは鳴りますか？</span><span class="lang-zh" hidden>裝置重新開機後鬧鐘還會響嗎？</span>
         </summary>
         <div class="faq-body">
           <p class="lang-ko">네, 알람은 울려요. 다만 <strong>와이파이 전용 iPad</strong>는 전원을 켠 뒤 잠금을 한 번 풀기 전에는 알람을 끈 소식이 늦게 전달될 수 있어요. iPhone과 Android 폰은 정상적으로 전달돼요.</p>
-          <p class="lang-en" hidden>Yes, the alarm rings. However, on a <strong>Wi-Fi-only iPad</strong>, the update that the alarm was turned off may be delayed until the iPad is unlocked once after restarting. iPhone and Android phones send it normally.</p>
+          <p class="lang-en" hidden>Yes, the alarm rings. However, on a <strong>Wi-Fi-only iPad</strong>, the update that the alarm was turned off may be delayed until the iPad is unlocked once after restarting. iPhone and Android phones send it normally.</p><p class="lang-ja" hidden>はい、アラームは鳴ります。ただし<strong>Wi-Fiモデルの iPad</strong>では、再起動後に一度ロックを解除するまで、アラームを止めた知らせが遅れて届くことがあります。iPhoneとAndroidのスマートフォンは通常どおり届きます。</p><p class="lang-zh" hidden>會，鬧鐘會響。不過在<strong>Wi-Fi 版 iPad</strong>上，重新開機後到第一次解鎖之前，關閉鬧鐘的消息可能會延遲送達。iPhone 與 Android 手機則會正常送達。</p>
         </div>
       </details>
 
       <details class="faq-item">
         <summary>
           <span class="lang-ko">가족이 모두 끊기거나 전화가 와도 알람은 울리나요?</span>
-          <span class="lang-en" hidden>Do alarms still ring if family disconnects or a call comes in?</span>
+          <span class="lang-en" hidden>Do alarms still ring if family disconnects or a call comes in?</span><span class="lang-ja" hidden>家族のつながりが切れたり、電話がかかってきたりしてもアラームは鳴りますか？</span><span class="lang-zh" hidden>家人解除連結或有來電時，鬧鐘還會響嗎？</span>
         </summary>
         <div class="faq-body">
           <p class="lang-ko">네. 연결된 가족이 모두 끊겨도 알람은 그대로 울리고, 알람이 울리는 중에 전화가 와도 계속 울려요.</p>
-          <p class="lang-en" hidden>Yes. Alarms keep ringing even if all family disconnects, and they keep ringing if a phone call comes in.</p>
+          <p class="lang-en" hidden>Yes. Alarms keep ringing even if all family disconnects, and they keep ringing if a phone call comes in.</p><p class="lang-ja" hidden>はい。つながっている家族が全員いなくなってもアラームは鳴り続け、電話がかかってきてもアラームは鳴り続けます。</p><p class="lang-zh" hidden>會。即使所有家人都解除連結，鬧鐘仍會繼續響；有來電時鬧鐘也會繼續響。</p>
         </div>
       </details>
 
       <details class="faq-item">
         <summary>
           <span class="lang-ko">가족이 알람을 대신 맞춰 줄 수 있나요?</span>
-          <span class="lang-en" hidden>Can family set alarms for me?</span>
+          <span class="lang-en" hidden>Can family set alarms for me?</span><span class="lang-ja" hidden>家族がアラームを設定してくれますか？</span><span class="lang-zh" hidden>家人可以幫我設定鬧鐘嗎？</span>
         </summary>
         <div class="faq-body">
           <p class="lang-ko">받는 분 앱에서 알람 <strong>추가·수정·삭제를 부탁</strong>할 수 있어요. 전하는 분이 <strong>승인해야</strong> 적용되고, 7일 동안 답이 없으면 자동으로 취소돼요.</p>
-          <p class="lang-en" hidden>Family can <strong>request</strong> to add, change, or delete alarms from the Receiver app. Changes apply <strong>only after the sender approves</strong>, and requests are cancelled automatically after 7 days without an answer.</p>
+          <p class="lang-en" hidden>Family can <strong>request</strong> to add, change, or delete alarms from the Receiver app. Changes apply <strong>only after the sender approves</strong>, and requests are cancelled automatically after 7 days without an answer.</p><p class="lang-ja" hidden>家族は見守る人のアプリから、アラームの追加・変更・削除を<strong>依頼</strong>できます。<strong>知らせる人が承認したときだけ</strong>反映され、7日間返事がないと依頼は自動で取り消されます。</p><p class="lang-zh" hidden>家人可以在關心者 App 中<strong>請求</strong>新增、修改或刪除鬧鐘。<strong>只有報平安者核准後</strong>才會生效，7 天內沒有回應的請求會自動取消。</p>
         </div>
       </details>
 
       <details class="faq-item">
         <summary>
           <span class="lang-ko">결제는 언제, 왜 다시 하나요?</span>
-          <span class="lang-en" hidden>When do I pay, and why again?</span>
+          <span class="lang-en" hidden>When do I pay, and why again?</span><span class="lang-ja" hidden>購入はいつ必要ですか？なぜ再度必要なのですか？</span><span class="lang-zh" hidden>什麼時候需要付款？為什麼要再付一次？</span>
         </summary>
         <div class="faq-body">
           <p class="lang-ko">전하는 분 한 명마다 가족 2명까지 무료예요. 세 번째 가족부터는 <strong>한 명을 연결할 때마다 4,400원</strong>을 관리자가 받는 분 앱에서 결제해요.</p>
           <p class="lang-ko">연결 한 번에 쓰는 상품이라, 가족을 내보낸 뒤 다시 추가하면 다시 결제해요. 그래서 "구매 복원"은 없어요. 결제했는데 연결을 못 했다면 그 결제는 남아 있다가 다음 연결 때 쓰여요.</p>
           <p class="lang-ko">결제는 결제한 사람에게 묶여서, 그 사람이 관리하는 어느 전하는 분에게든 쓸 수 있어요. 관리자가 바뀌면 새 관리자가 결제해요.</p>
-          <p class="lang-en" hidden>Up to 2 family members are free per sender. From the third, the manager pays <strong>₩4,400 for each new connection</strong> in the Receiver app.</p>
-          <p class="lang-en" hidden>Each purchase covers one connection, so removing and re-adding someone requires a new purchase, and there is no "Restore Purchases". If you paid but did not complete a connection, the purchase stays available for your next connection.</p>
-          <p class="lang-en" hidden>Purchases belong to the person who paid and can be used for any sender they manage. If the manager changes, the new manager pays.</p>
+          <p class="lang-en" hidden>Up to 2 family members are free per sender. From the third, the manager pays <strong>₩4,400 for each new connection</strong> in the Receiver app (prices vary by country).</p><p class="lang-ja" hidden>知らせる人1人につき家族2人までは無料です。3人目からは、見守る人のアプリで管理者が<strong>1人つなぐごとに4,400ウォン</strong>を支払います（国によって価格は異なります）。</p><p class="lang-zh" hidden>每位報平安者可免費連結 2 位家人。從第三位起，由管理者在關心者 App 中<strong>每連結一人支付 4,400 韓元</strong>（價格依國家而異）。</p>
+          <p class="lang-en" hidden>Each purchase covers one connection, so removing and re-adding someone requires a new purchase, and there is no "Restore Purchases". If you paid but did not complete a connection, the purchase stays available for your next connection.</p><p class="lang-ja" hidden>1回の購入で1人分のつながりに使われるため、外した人を再び追加する場合はもう一度購入が必要で、「購入を復元」はありません。購入したのにつながらなかった場合、その購入分は次につなぐときに使えます。</p><p class="lang-zh" hidden>每次購買只用於連結一人，因此移除後再次加入需要重新購買，也沒有「恢復購買」。若付款後沒有完成連結，該購買項目會保留到下次連結時使用。</p>
+          <p class="lang-en" hidden>Purchases belong to the person who paid and can be used for any sender they manage. If the manager changes, the new manager pays.</p><p class="lang-ja" hidden>購入は支払った人のものになり、その人が管理するどの知らせる人にも使えます。管理者が変わった場合は、新しい管理者が購入します。</p><p class="lang-zh" hidden>購買屬於付款的人，可用於他所管理的任何一位報平安者。管理者更換時，由新的管理者購買。</p>
         </div>
       </details>
 
       <details class="faq-item">
         <summary>
           <span class="lang-ko">환불받고 싶어요</span>
-          <span class="lang-en" hidden>I want a refund</span>
+          <span class="lang-en" hidden>I want a refund</span><span class="lang-ja" hidden>返金したい</span><span class="lang-zh" hidden>我想退款</span>
         </summary>
         <div class="faq-body">
           <p class="lang-ko">결제는 Apple과 Google이 처리하므로 환불도 각 스토어를 통해 요청해 주세요. iPhone·iPad는 <a href="https://reportaproblem.apple.com" target="_blank" rel="noopener">reportaproblem.apple.com</a>, Android는 Google Play의 주문 내역에서 요청할 수 있어요. 회사는 결제 정보에 접근할 수 없어 직접 환불해 드릴 수 없어요.</p>
-          <p class="lang-en" hidden>Payments are processed by Apple and Google, so please request refunds through each store: <a href="https://reportaproblem.apple.com" target="_blank" rel="noopener">reportaproblem.apple.com</a> for iPhone and iPad, or your order history in Google Play for Android. We cannot access payment details and cannot issue refunds directly.</p>
+          <p class="lang-en" hidden>Payments are processed by Apple and Google, so please request refunds through each store: <a href="https://reportaproblem.apple.com" target="_blank" rel="noopener">reportaproblem.apple.com</a> for iPhone and iPad, or your order history in Google Play for Android. We cannot access payment details and cannot issue refunds directly.</p><p class="lang-ja" hidden>決済はAppleとGoogleが処理するため、返金は各ストアで申請してください。iPhone・iPadは<a href="https://reportaproblem.apple.com" target="_blank" rel="noopener">reportaproblem.apple.com</a>、AndroidはGoogle Playの購入履歴から申請できます。当社は決済情報を見ることができず、直接返金することはできません。</p><p class="lang-zh" hidden>付款由 Apple 與 Google 處理，請透過各商店申請退款：iPhone 與 iPad 請至 <a href="https://reportaproblem.apple.com" target="_blank" rel="noopener">reportaproblem.apple.com</a>，Android 請從 Google Play 的訂單紀錄申請。本公司無法查看付款資訊，也無法直接退款。</p>
         </div>
       </details>
 
       <details class="faq-item">
         <summary>
           <span class="lang-ko">앱을 지우면 어떻게 되나요?</span>
-          <span class="lang-en" hidden>What happens if I delete the app?</span>
+          <span class="lang-en" hidden>What happens if I delete the app?</span><span class="lang-ja" hidden>アプリを削除するとどうなりますか？</span><span class="lang-zh" hidden>刪除 App 會怎麼樣？</span>
         </summary>
         <div class="faq-body">
           <p class="lang-ko">기기 안의 데이터는 바로 지워져요. 다시 설치하면 처음부터 다시 연결해야 해요.</p>
           <p class="lang-ko">서버의 데이터는 자동으로 정리돼요. 전하는 분의 소식이 15일 동안 없으면 가족에게 "소식 없음"을 알리고, 30일이 지나면 그 전하는 분의 데이터(알람, 기록, 연결, 결제 기록)를 모두 지우고 연결을 끊어요.</p>
-          <p class="lang-en" hidden>Data on the device is deleted right away. If you reinstall, you will need to connect again from the start.</p>
-          <p class="lang-en" hidden>Server data is cleaned up automatically. If there is no word from a sender for 15 days, family is notified; after 30 days, all of that sender's data (alarms, history, connections, and purchase records) is deleted and the connections are removed.</p>
+          <p class="lang-en" hidden>Data on the device is deleted right away. If you reinstall, you will need to connect again from the start.</p><p class="lang-ja" hidden>端末内のデータはすぐに削除されます。再インストールした場合は、最初からつなぎ直す必要があります。</p><p class="lang-zh" hidden>裝置中的資料會立即刪除。重新安裝時需要從頭再連結一次。</p>
+          <p class="lang-en" hidden>Server data is cleaned up automatically. If there is no word from a sender for 15 days, family is notified; after 30 days, all of that sender's data (alarms, history, connections, and purchase records) is deleted and the connections are removed.</p><p class="lang-ja" hidden>サーバーのデータは自動で整理されます。知らせる人から15日間知らせがないと家族に「知らせなし」をお知らせし、30日が過ぎるとその知らせる人のデータ（アラーム、記録、つながり、購入記録）をすべて削除し、つながりを解除します。</p><p class="lang-zh" hidden>伺服器上的資料會自動整理。報平安者 15 天沒有消息時，會通知家人「沒有消息」；超過 30 天，會刪除該報平安者的所有資料（鬧鐘、紀錄、連結、購買紀錄）並解除連結。</p>
         </div>
       </details>
 
       <details class="faq-item">
         <summary>
           <span class="lang-ko">데이터를 지우고 싶어요</span>
-          <span class="lang-en" hidden>How do I delete my data?</span>
+          <span class="lang-en" hidden>How do I delete my data?</span><span class="lang-ja" hidden>データを削除したい</span><span class="lang-zh" hidden>我想刪除資料</span>
         </summary>
         <div class="faq-body">
           <p class="lang-ko">안부는 회원가입이 없어서 계정 삭제 버튼도 없어요. 서버에는 무작위로 만든 기기 값만 있어 이메일로는 누구의 데이터인지 확인할 수 없기 때문에, 회사가 따로 지워 드릴 수도 없어요. 대신 데이터는 이렇게 지워져요.</p>
           <p class="lang-ko"><strong>연결 끊기</strong>를 하면 그 연결은 바로 끊어져요. <strong>앱을 지우면</strong> 기기 안의 데이터는 바로 지워지고, 서버의 데이터(알람, 기록, 연결, 결제 기록)는 <strong>30일 뒤 자동으로 모두 지워져요.</strong></p>
-          <p class="lang-en" hidden>Anbu has no accounts, so there is no delete-account button. The server only holds random device values, so we cannot tell by email whose data is whose and cannot delete it for you. Instead, data is deleted like this:</p>
-          <p class="lang-en" hidden><strong>Disconnect</strong> removes that connection immediately. <strong>Deleting the app</strong> deletes data on the device right away, and server data (alarms, history, connections, purchase records) is <strong>deleted automatically after 30 days.</strong></p>
+          <p class="lang-en" hidden>All Well has no accounts, so there is no delete-account button. The server only holds random device values, so we cannot tell by email whose data is whose and cannot delete it for you. Instead, data is deleted like this:</p><p class="lang-ja" hidden>たよりには会員登録がないため、アカウント削除ボタンもありません。サーバーにはランダムに作成した端末の値しかなく、メールでは誰のデータかを確認できないため、当社が個別に削除することもできません。その代わり、データは次のように削除されます。</p><p class="lang-zh" hidden>報平安不需註冊，因此也沒有刪除帳號的按鈕。伺服器上只有隨機產生的裝置值，無法透過電子郵件確認是誰的資料，所以本公司也無法另外幫您刪除。資料會以下列方式刪除：</p>
+          <p class="lang-en" hidden><strong>Disconnect</strong> removes that connection immediately. <strong>Deleting the app</strong> deletes data on the device right away, and server data (alarms, history, connections, purchase records) is <strong>deleted automatically after 30 days.</strong></p><p class="lang-ja" hidden><strong>つながりの解除</strong>をすると、そのつながりはすぐに解除されます。<strong>アプリを削除すると</strong>端末内のデータはすぐに削除され、サーバーのデータ（アラーム、記録、つながり、購入記録）は<strong>30日後に自動ですべて削除されます。</strong></p><p class="lang-zh" hidden><strong>解除連結</strong>後，該連結會立即解除。<strong>刪除 App</strong> 後，裝置中的資料會立即刪除，伺服器上的資料（鬧鐘、紀錄、連結、購買紀錄）會<strong>在 30 天後自動全部刪除。</strong></p>
         </div>
       </details>
     </div>
@@ -447,7 +451,7 @@
     <div class="wrap">
       <h2 class="section-title">
         <span class="lang-ko">문의하기</span>
-        <span class="lang-en" hidden>Contact</span>
+        <span class="lang-en" hidden>Contact</span><span class="lang-ja" hidden>お問い合わせ</span><span class="lang-zh" hidden>聯絡我們</span>
       </h2>
       <div class="contact-card">
         <div>
@@ -456,7 +460,7 @@
         </div>
         <a class="btn" href="mailto:octobersky0515@naver.com">
           <span class="lang-ko">이메일 보내기</span>
-          <span class="lang-en" hidden>Send an email</span>
+          <span class="lang-en" hidden>Send an email</span><span class="lang-ja" hidden>メールを送る</span><span class="lang-zh" hidden>寄送電子郵件</span>
         </a>
       </div>
     </div>
@@ -469,9 +473,9 @@
       <div class="footer-brand">October Sky · 옥토버 스카이</div>
       <div class="footer-links">
         <a href="mailto:octobersky0515@naver.com">octobersky0515@naver.com</a>
-        <a href="/anbu/"><span class="lang-ko">안부</span><span class="lang-en" hidden>Anbu</span></a>
-        <a href="/anbu/privacy/"><span class="lang-ko">개인정보처리방침</span><span class="lang-en" hidden>Privacy Policy</span></a>
-        <a href="/"><span class="lang-ko">홈으로</span><span class="lang-en" hidden>Home</span></a>
+        <a href="/anbu/"><span class="lang-ko">안부</span><span class="lang-en" hidden>All Well</span><span class="lang-ja" hidden>たより</span><span class="lang-zh" hidden>報平安</span></a>
+        <a href="/anbu/privacy/"><span class="lang-ko">개인정보처리방침</span><span class="lang-en" hidden>Privacy Policy</span><span class="lang-ja" hidden>プライバシーポリシー</span><span class="lang-zh" hidden>隱私權政策</span></a>
+        <a href="/"><span class="lang-ko">홈으로</span><span class="lang-en" hidden>Home</span><span class="lang-ja" hidden>ホーム</span><span class="lang-zh" hidden>首頁</span></a>
       </div>
     </div>
     <div class="biz-info">
@@ -507,18 +511,25 @@
   var KEY = 'anbu-site-lang';
   function apply(lang){
     document.querySelectorAll('.lang-ko').forEach(function(el){ el.hidden = (lang !== 'ko'); });
-    document.querySelectorAll('.lang-en').forEach(function(el){ el.hidden = (lang !== 'en'); });
+    ['en','ja','zh'].forEach(function(c){ document.querySelectorAll('.lang-'+c).forEach(function(el){ el.hidden = (lang !== c); }); });
     document.querySelectorAll('[data-lang-btn]').forEach(function(b){
       b.classList.toggle('active', b.getAttribute('data-lang-btn') === lang);
     });
-    document.documentElement.lang = lang;
+    document.documentElement.lang = (lang === 'zh' ? 'zh-Hant' : lang);
   }
-  var saved = localStorage.getItem(KEY) || 'ko';
+  var LANGS = ['ko','en','ja','zh'];
+  function guess(){ var n = ((navigator.languages && navigator.languages[0]) || navigator.language || 'ko').toLowerCase();
+    if (n.indexOf('ko') === 0) return 'ko'; if (n.indexOf('ja') === 0) return 'ja'; if (n.indexOf('zh') === 0) return 'zh'; return 'en'; }
+  var hash = (location.hash || '').replace('#', '');
+  var saved = null;
+  try { saved = localStorage.getItem(KEY); } catch (e) {}
+  if (LANGS.indexOf(hash) >= 0) saved = hash;
+  if (LANGS.indexOf(saved) < 0) saved = guess();
   apply(saved);
   document.querySelectorAll('[data-lang-btn]').forEach(function(b){
     b.addEventListener('click', function(){
       var lang = b.getAttribute('data-lang-btn');
-      localStorage.setItem(KEY, lang);
+      try { localStorage.setItem(KEY, lang); } catch (e) {}
       apply(lang);
     });
   });
